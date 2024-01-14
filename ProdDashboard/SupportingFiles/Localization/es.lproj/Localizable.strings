@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  ProdDashboard
+
+  Created by Christo Polydorou on 12/21/23.
+  
+*/
+
+"ContentView.WelcomeMessage" = "¡Hola, mundo!";
+"LoginView.email" = "Correo Electrónico";
+"LoginView.password" = "Contraseña";

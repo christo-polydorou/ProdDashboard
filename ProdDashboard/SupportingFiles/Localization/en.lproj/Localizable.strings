@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  ProdDashboard
+
+  Created by Christo Polydorou on 12/21/23.
+  
+*/
+
+// Common practice: ViewName.ComponentName.Purpose
+
+"ContentView.WelcomeMessage" = "Hello, World!";
+"LoginView.email" = "Email";
+"LoginView.password" = "Password";
