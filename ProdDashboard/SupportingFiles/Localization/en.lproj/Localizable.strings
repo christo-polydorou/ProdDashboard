@@ -9,5 +9,8 @@
 // Common practice: ViewName.ComponentName.Purpose
 
 "ContentView.WelcomeMessage" = "Hello, World!";
+
+
+
 "LoginView.email" = "Email";
 "LoginView.password" = "Password";

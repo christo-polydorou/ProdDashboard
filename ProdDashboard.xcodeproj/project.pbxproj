@@ -72,12 +72,12 @@
 		314D2EFF2B35308E008B4281 /* ProdDashboard */ = {
 			isa = PBXGroup;
 			children = (
+				314D2F022B35308E008B4281 /* ContentView.swift */,
+				314D2F002B35308E008B4281 /* ProdDashboardApp.swift */,
 				DD18CF202B573ABF00CF3F82 /* Code */,
 				DD18CF1F2B573ABC00CF3F82 /* Config */,
 				DD18CF1D2B573AAF00CF3F82 /* Resources */,
 				314D2F112B3533FA008B4281 /* SupportingFiles */,
-				314D2F002B35308E008B4281 /* ProdDashboardApp.swift */,
-				314D2F022B35308E008B4281 /* ContentView.swift */,
 				314D2F062B35308E008B4281 /* Preview Content */,
 			);
 			path = ProdDashboard;
@@ -153,15 +153,15 @@
 			children = (
 				DD18CF302B573B8D00CF3F82 /* Common */,
 				DD18CF2E2B573B6E00CF3F82 /* Root */,
+				DD18CF252B573B3500CF3F82 /* Logo Page */,
+				DD18CF262B573B3E00CF3F82 /* Login */,
+				DD18CF2A2B573B4E00CF3F82 /* Task List */,
+				DD18CF292B573B4B00CF3F82 /* New Task */,
 				DD18CF2C2B573B5D00CF3F82 /* Calendar - Day */,
 				DD18CF2B2B573B5200CF3F82 /* Calendar - Week */,
 				DD18CF2D2B573B6100CF3F82 /* Calendar - Month */,
-				DD18CF2A2B573B4E00CF3F82 /* Task List */,
-				DD18CF292B573B4B00CF3F82 /* New Task */,
 				DD18CF282B573B4800CF3F82 /* Stats */,
 				DD18CF272B573B4400CF3F82 /* Settings */,
-				DD18CF262B573B3E00CF3F82 /* Login */,
-				DD18CF252B573B3500CF3F82 /* Logo Page */,
 			);
 			path = Features;
 			sourceTree = "<group>";
