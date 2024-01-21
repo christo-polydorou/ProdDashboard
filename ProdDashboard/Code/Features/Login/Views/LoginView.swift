@@ -1,13 +1,15 @@
 //
-//  ContentView.swift
+//  LoginView.swift
 //  ProdDashboard
 //
-//  Created by Christo Polydorou on 12/19/23.
+//  Created by Christo Polydorou on 1/20/24.
 //
 
+import Foundation
 import SwiftUI
 
-struct ContentView: View {
+
+struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
     
