@@ -15,6 +15,8 @@ struct AddFoodView: View {
     
     @State private var name = ""
     @State private var calories: Double = 0
+    @State private var selectedDate = Date()
+    @State private var dates: Set<DateComponents> = []
     
     var body: some View {
             Form {
@@ -27,10 +29,21 @@ struct AddFoodView: View {
 //                    }
 //                    .padding()
                     
+//                    DatePicker("Select a date", selection: $selectedDate, displayedComponents: .date)
+//                        .datePickerStyle(DefaultDatePickerStyle()) // You can choose a different style if needed
+//
+//                    
+                    
+//                    VStack {
+//                        
+//                        MultiDatePicker("Select dates", selection: $dates
+//                        )
+//                    }
+                    
                     HStack {
                         Spacer()
                         Button("Submit") {
-                            DataController().addTask(name: name, context: managedObjContext)
+                            DataController().addTask(name: name, date: selectedDate, context: managedObjContext)
                             dismiss()
                         }
                         Spacer()

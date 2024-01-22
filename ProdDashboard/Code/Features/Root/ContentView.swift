@@ -10,55 +10,94 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.managedObjectContext) var managedObjContext
     @FetchRequest(sortDescriptors: []) var task: FetchedResults<Task>
-    
+
     @State private var showingAddView = false
     @State private var editMode: EditMode = .inactive
     
+    
     var body: some View {
+        
         NavigationView {
             VStack(alignment: .leading) {
-//                Text("\(Int(totalCaloriesToday())) KCal (Today)")
-//                    .foregroundColor(.gray)
-//                    .padding([.horizontal])
-                List {
-                    ForEach(task) { task in
-                        NavigationLink(destination: EditTaskView(task: task)) {
-                            HStack {
-                                VStack(alignment: .leading, spacing: 6) {
-                                    Text(task.name!)
-                                        .bold()
+                
+                Text("Today")
+                    .font(.largeTitle) // Make the title larger
+                    .padding(.top, -50) // Adjust top padding as needed
+                    .padding(.leading, 20)
+                
+                Text(currentDate()) // Display the current date
+                    .font(.subheadline)
+                    .foregroundColor(.black)
+                    .padding(.top, -25) // Adjust top padding as needed
+                    .padding(.leading, 20)
+                
+                Section {
+                    List {
+                        ForEach(task.prefix(5)) { task in
+                            NavigationLink(destination: EditTaskView(task: task)) {
+                                HStack {
+                                    VStack(alignment: .leading, spacing: 6) {
+                                        Text(task.name!)
+                                            .bold()
+                                    }
+                                    Spacer()
                                 }
-                                Spacer()
-                          
                             }
                         }
+                        .onDelete(perform: deleteTask)
                     }
-                    .onDelete(perform: deleteTask)
+                    .listStyle(DefaultListStyle()) // Use PlainListStyle for a more compact appearance
+                    .background(Color.white)
+                    .cornerRadius(10) // Add corner radius for a container-like appearance
+                    .padding(.bottom, 10)
                 }
-                .listStyle(.plain)
+                
+                HStack (alignment: .bottom) {
+                    Text("Nav Bar")
+
+                }
             }
-            .navigationTitle("Taskify")
+            .background(Color(hex: 0xF9E7C4))
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
                         showingAddView.toggle()
                         editMode = .inactive
                     } label: {
-                        Label("Add Task", systemImage: "plus.circle")
+                        Image("AddTask")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 100, height: 100) // Adjust the size as needed
                     }
                 }
-                ToolbarItem(placement: .navigationBarLeading) {
-                    EditButton()
-                }
+                //                ToolbarItem(placement: .navigationBarLeading) {
+                //                    EditButton()
+                //                }
             }
             .sheet(isPresented: $showingAddView) {
                 AddFoodView()
             }
         }
-        .environment(\.editMode, $editMode)
-        .navigationViewStyle(.stack) // Removes sidebar on iPad
+        
+//        NavigationView {
+//            HStack () {
+//                Text("Content")
+//                    .toolbar {
+//                        Button("Add 1") {}
+//                        Button("Add 2") {}
+//                        Button("Add 3") {}
+//                    }
+//            }
+//        }
+//        
+//        HStack () {
+//            Text("NavBar")
+//                .background(Color(hex: 0xF9E7C4))
+//            
+//                .environment(\.editMode, $editMode)
+//                .navigationViewStyle(.stack)
+//        }
     }
-    
 //     Deletes food at the current offset
     private func deleteTask(offsets: IndexSet) {
         withAnimation {
@@ -70,19 +109,12 @@ struct ContentView: View {
         }
     }
     
-    // Calculates the total calories consumed today
-//    private func totalCaloriesToday() -> Double {
-//        var caloriesToday: Double = 0
-//        for item in food {
-//            if Calendar.current.isDateInToday(item.date!) {
-//                caloriesToday += item.calories
-//            }
-//        }
-//        print("Calories today: \(caloriesToday)")
-//        return caloriesToday
-//    }
+    func currentDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM dd, yyyy" // Customize the date format as needed
+        return dateFormatter.string(from: Date())
+    }
 }
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

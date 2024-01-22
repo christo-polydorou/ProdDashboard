@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1F214CA8A4572811015BBBC8 /* Pods_ProdDashboard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60DF6C57689886B599F674B9 /* Pods_ProdDashboard.framework */; };
+		311363F92B5E104900559799 /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311363F82B5E104900559799 /* extensions.swift */; };
+		311363FB2B5E149600559799 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 311363FA2B5E149600559799 /* Media.xcassets */; };
 		314D2F012B35308E008B4281 /* ProdDashboardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314D2F002B35308E008B4281 /* ProdDashboardApp.swift */; };
 		314D2F032B35308E008B4281 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314D2F022B35308E008B4281 /* ContentView.swift */; };
 		314D2F052B35308E008B4281 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 314D2F042B35308E008B4281 /* Assets.xcassets */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		311363F82B5E104900559799 /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
+		311363FA2B5E149600559799 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		314D2EFD2B35308E008B4281 /* ProdDashboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProdDashboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		314D2F002B35308E008B4281 /* ProdDashboardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProdDashboardApp.swift; sourceTree = "<group>"; };
 		314D2F022B35308E008B4281 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -304,6 +308,7 @@
 			children = (
 				314D2F022B35308E008B4281 /* ContentView.swift */,
 				DD18CF2F2B573B7800CF3F82 /* Screens */,
+				311363FA2B5E149600559799 /* Media.xcassets */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -331,6 +336,7 @@
 		DD18CF312B573B9400CF3F82 /* ViewModifiers */ = {
 			isa = PBXGroup;
 			children = (
+				311363F82B5E104900559799 /* extensions.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -750,6 +756,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				311363FB2B5E149600559799 /* Media.xcassets in Resources */,
 				314D2F102B353308008B4281 /* .swiftlint.yml in Resources */,
 				314D2F152B353470008B4281 /* Localizable.strings in Resources */,
 				314D2F082B35308E008B4281 /* Preview Assets.xcassets in Resources */,
@@ -810,6 +817,7 @@
 				314D2F032B35308E008B4281 /* ContentView.swift in Sources */,
 				31CCD7042B5C95C00001616D /* AddTaskView.swift in Sources */,
 				31CCD6D92B5C5CD80001616D /* DataController.swift in Sources */,
+				311363F92B5E104900559799 /* extensions.swift in Sources */,
 				314D2F012B35308E008B4281 /* ProdDashboardApp.swift in Sources */,
 				31CCD7022B5C94920001616D /* EditTaskView.swift in Sources */,
 				31CCD7002B5C932D0001616D /* LoginView.swift in Sources */,

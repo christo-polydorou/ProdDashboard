@@ -15,7 +15,9 @@ struct EditTaskView: View {
     var task: FetchedResults<Task>.Element
     
     @State private var name = ""
-    @State private var date: Double = 0
+    @State private var dates: Set<DateComponents> = []
+    @State private var selectedDate = Date()
+    
     
     var body: some View {
         Form {
@@ -25,10 +27,26 @@ struct EditTaskView: View {
                         name = task.name!
                     }
                 
+                VStack {
+
+                    DatePicker("Select a date", selection: Binding(get: {
+                        task.date ?? Date()
+                    }, set: { currDate in
+                        selectedDate = currDate
+                    }), displayedComponents: .date)
+                    .datePickerStyle(DefaultDatePickerStyle())
+                }
+                
+//                VStack {
+//                    
+//                    MultiDatePicker("Select dates", selection: $dates
+//                    )
+//                }
+                
                 HStack {
                     Spacer()
                     Button("Submit") {
-                        DataController().editTask(task: task, name: name, context: managedObjContext)
+                        DataController().editTask(task: task, name: name, date: selectedDate, context: managedObjContext)
                         dismiss()
                     }
                     Spacer()
