@@ -39,6 +39,7 @@ struct ContentView: View {
                                     VStack(alignment: .leading, spacing: 6) {
                                         Text(task.name!)
                                             .bold()
+//                                        Text(convertDateToTimeString(date: task.date!))
                                     }
                                     Spacer()
                                 }
@@ -113,6 +114,12 @@ struct ContentView: View {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM dd, yyyy" // Customize the date format as needed
         return dateFormatter.string(from: Date())
+    }
+    
+    func convertDateToTimeString(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm:ss"
+        return formatter.string(from: date)
     }
 }
 

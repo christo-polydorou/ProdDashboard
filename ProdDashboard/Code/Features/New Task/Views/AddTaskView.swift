@@ -16,34 +16,32 @@ struct AddFoodView: View {
     @State private var name = ""
     @State private var calories: Double = 0
     @State private var selectedDate = Date()
-    @State private var dates: Set<DateComponents> = []
+    @State private var selectedDates: Set<DateComponents> = []
     
     var body: some View {
             Form {
                 Section() {
                     TextField("Task name", text: $name)
+
                     
-//                    VStack {
-//                        Text("Calories: \(Int(calories))")
-//                        Slider(value: $calories, in: 0...1000, step: 10)
-//                    }
-//                    .padding()
+                    DatePicker("Select a date", selection: $selectedDate, displayedComponents: .date)
+                        .datePickerStyle(DefaultDatePickerStyle())
+
                     
-//                    DatePicker("Select a date", selection: $selectedDate, displayedComponents: .date)
-//                        .datePickerStyle(DefaultDatePickerStyle()) // You can choose a different style if needed
-//
-//                    
                     
-//                    VStack {
-//                        
-//                        MultiDatePicker("Select dates", selection: $dates
-//                        )
-//                    }
+                    VStack {
+                        MultiDatePicker("Select dates", selection: $selectedDates)
+                    }
                     
+                    let convertedDates = selectedDates.compactMap { dateComponents -> Date? in
+                        let calendar = Calendar.current
+                        return calendar.date(from: dateComponents)
+                    }
+
                     HStack {
                         Spacer()
                         Button("Submit") {
-                            DataController().addTask(name: name, date: selectedDate, context: managedObjContext)
+                            DataController().addTask(name: name, date: selectedDate, dates: convertedDates, context: managedObjContext)
                             dismiss()
                         }
                         Spacer()

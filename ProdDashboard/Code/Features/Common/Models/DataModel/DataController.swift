@@ -29,11 +29,13 @@ class DataController: ObservableObject {
         }
     }
     
-    func addTask(name: String, date: Date, context: NSManagedObjectContext) {
+    func addTask(name: String, date: Date, dates: [Date], context: NSManagedObjectContext) {
         let task = Task(context: context)
     
         task.name = name
         task.date = date
+        task.dates = dates
+        print(dates)
 //        task.recurring = recurring
 //        task.id = UUID()
 //
