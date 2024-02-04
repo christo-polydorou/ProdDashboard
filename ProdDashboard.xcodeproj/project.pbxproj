@@ -16,14 +16,6 @@
 		314D2F082B35308E008B4281 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 314D2F072B35308E008B4281 /* Preview Assets.xcassets */; };
 		314D2F102B353308008B4281 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 314D2F0F2B353308008B4281 /* .swiftlint.yml */; };
 		314D2F152B353470008B4281 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 314D2F172B353470008B4281 /* Localizable.strings */; };
-		DD07C8AA2B5E094300190D9C /* HomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD07C8A92B5E094300190D9C /* HomeButton.swift */; };
-		DD07C8AC2B5E0C5200190D9C /* SettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD07C8AB2B5E0C5200190D9C /* SettingsButton.swift */; };
-		DD07C8AE2B5E0C5A00190D9C /* WeekButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD07C8AD2B5E0C5A00190D9C /* WeekButton.swift */; };
-		DD07C8B02B5E0C6100190D9C /* MonthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD07C8AF2B5E0C6100190D9C /* MonthButton.swift */; };
-		DDBD68902B59E8DC004E9D40 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBD688F2B59E8DC004E9D40 /* Checkbox.swift */; };
-		DDBD68922B5D999A004E9D40 /* TaskListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDBD68912B5D999A004E9D40 /* TaskListScreen.swift */; };
-		DDDC49B12B5DC9640054400D /* NewTaskButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDC49B02B5DC9640054400D /* NewTaskButton.swift */; };
-		DDDC49B32B5DCD490054400D /* NavigationMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDC49B22B5DCD490054400D /* NavigationMenu.swift */; };
 		31CCD6D72B5C58420001616D /* TaskModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31CCD6D52B5C58420001616D /* TaskModel.xcdatamodeld */; };
 		31CCD6D92B5C5CD80001616D /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CCD6D82B5C5CD80001616D /* DataController.swift */; };
 		31CCD7002B5C932D0001616D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CCD6FF2B5C932D0001616D /* LoginView.swift */; };
@@ -50,14 +42,6 @@
 		60DF6C57689886B599F674B9 /* Pods_ProdDashboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProdDashboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B720F694C42BE6ED43A379D0 /* Pods-ProdDashboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProdDashboard.release.xcconfig"; path = "Target Support Files/Pods-ProdDashboard/Pods-ProdDashboard.release.xcconfig"; sourceTree = "<group>"; };
 		C5A91E2B2AB39743184B0F8E /* Pods-ProdDashboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProdDashboard.debug.xcconfig"; path = "Target Support Files/Pods-ProdDashboard/Pods-ProdDashboard.debug.xcconfig"; sourceTree = "<group>"; };
-		DD07C8A92B5E094300190D9C /* HomeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeButton.swift; sourceTree = "<group>"; };
-		DD07C8AB2B5E0C5200190D9C /* SettingsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsButton.swift; sourceTree = "<group>"; };
-		DD07C8AD2B5E0C5A00190D9C /* WeekButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekButton.swift; sourceTree = "<group>"; };
-		DD07C8AF2B5E0C6100190D9C /* MonthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthButton.swift; sourceTree = "<group>"; };
-		DDBD688F2B59E8DC004E9D40 /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
-		DDBD68912B5D999A004E9D40 /* TaskListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListScreen.swift; sourceTree = "<group>"; };
-		DDDC49B02B5DC9640054400D /* NewTaskButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskButton.swift; sourceTree = "<group>"; };
-		DDDC49B22B5DCD490054400D /* NavigationMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationMenu.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,13 +138,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		DD07C8B12B5E0F7200190D9C /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		DD18CF1D2B573AAF00CF3F82 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,7 +191,6 @@
 		DD18CF232B573B0200CF3F82 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				DD07C8B12B5E0F7200190D9C /* Extensions */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -360,12 +336,6 @@
 		DD18CF312B573B9400CF3F82 /* ViewModifiers */ = {
 			isa = PBXGroup;
 			children = (
-				DDBD688F2B59E8DC004E9D40 /* Checkbox.swift */,
-				DDDC49B02B5DC9640054400D /* NewTaskButton.swift */,
-				DD07C8A92B5E094300190D9C /* HomeButton.swift */,
-				DD07C8AB2B5E0C5200190D9C /* SettingsButton.swift */,
-				DD07C8AD2B5E0C5A00190D9C /* WeekButton.swift */,
-				DD07C8AF2B5E0C6100190D9C /* MonthButton.swift */,
 				311363F82B5E104900559799 /* extensions.swift */,
 			);
 			path = ViewModifiers;
@@ -396,7 +366,6 @@
 		DD18CF352B573BA300CF3F82 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				DDDC49B22B5DCD490054400D /* NavigationMenu.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -617,7 +586,6 @@
 		DD18CF542B573C3400CF3F82 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				DDBD68912B5D999A004E9D40 /* TaskListScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -846,15 +814,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD07C8B02B5E0C6100190D9C /* MonthButton.swift in Sources */,
-				DDBD68902B59E8DC004E9D40 /* Checkbox.swift in Sources */,
-				DDDC49B12B5DC9640054400D /* NewTaskButton.swift in Sources */,
 				314D2F032B35308E008B4281 /* ContentView.swift in Sources */,
-				DD07C8AA2B5E094300190D9C /* HomeButton.swift in Sources */,
-				DD07C8AC2B5E0C5200190D9C /* SettingsButton.swift in Sources */,
-				DD07C8AE2B5E0C5A00190D9C /* WeekButton.swift in Sources */,
-				DDDC49B32B5DCD490054400D /* NavigationMenu.swift in Sources */,
-				DDBD68922B5D999A004E9D40 /* TaskListScreen.swift in Sources */,
 				31CCD7042B5C95C00001616D /* AddTaskView.swift in Sources */,
 				31CCD6D92B5C5CD80001616D /* DataController.swift in Sources */,
 				311363F92B5E104900559799 /* extensions.swift in Sources */,
