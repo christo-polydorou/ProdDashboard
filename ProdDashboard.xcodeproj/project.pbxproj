@@ -21,6 +21,7 @@
 		31CCD7002B5C932D0001616D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CCD6FF2B5C932D0001616D /* LoginView.swift */; };
 		31CCD7022B5C94920001616D /* EditTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CCD7012B5C94920001616D /* EditTaskView.swift */; };
 		31CCD7042B5C95C00001616D /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CCD7032B5C95C00001616D /* AddTaskView.swift */; };
+		682113D02B70268A002EC834 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682113CF2B70268A002EC834 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		31CCD7012B5C94920001616D /* EditTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskView.swift; sourceTree = "<group>"; };
 		31CCD7032B5C95C00001616D /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
 		60DF6C57689886B599F674B9 /* Pods_ProdDashboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProdDashboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		682113CF2B70268A002EC834 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B720F694C42BE6ED43A379D0 /* Pods-ProdDashboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProdDashboard.release.xcconfig"; path = "Target Support Files/Pods-ProdDashboard/Pods-ProdDashboard.release.xcconfig"; sourceTree = "<group>"; };
 		C5A91E2B2AB39743184B0F8E /* Pods-ProdDashboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProdDashboard.debug.xcconfig"; path = "Target Support Files/Pods-ProdDashboard/Pods-ProdDashboard.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -458,6 +460,7 @@
 		DD18CF422B573BF300CF3F82 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				682113CF2B70268A002EC834 /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -817,6 +820,7 @@
 				314D2F032B35308E008B4281 /* ContentView.swift in Sources */,
 				31CCD7042B5C95C00001616D /* AddTaskView.swift in Sources */,
 				31CCD6D92B5C5CD80001616D /* DataController.swift in Sources */,
+				682113D02B70268A002EC834 /* SettingsView.swift in Sources */,
 				311363F92B5E104900559799 /* extensions.swift in Sources */,
 				314D2F012B35308E008B4281 /* ProdDashboardApp.swift in Sources */,
 				31CCD7022B5C94920001616D /* EditTaskView.swift in Sources */,

@@ -5,8 +5,6 @@
 //  Created by Christo Polydorou on 1/20/24.
 //
 
-import Foundation
-
 import SwiftUI
 
 struct AddFoodView: View {
@@ -19,15 +17,13 @@ struct AddFoodView: View {
     @State private var selectedDates: Set<DateComponents> = []
     
     var body: some View {
+        NavigationView {
             Form {
-                Section() {
+                Section {
                     TextField("Task name", text: $name)
-
                     
                     DatePicker("Select a date", selection: $selectedDate, displayedComponents: .date)
                         .datePickerStyle(DefaultDatePickerStyle())
-
-                    
                     
                     VStack {
                         MultiDatePicker("Select dates", selection: $selectedDates)
@@ -40,13 +36,21 @@ struct AddFoodView: View {
 
                     HStack {
                         Spacer()
-                        Button("Submit") {
+                        Button("Add Task") {
                             DataController().addTask(name: name, date: selectedDate, dates: convertedDates, context: managedObjContext)
                             dismiss()
                         }
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.green)
+                        .cornerRadius(8)
                         Spacer()
                     }
+                    
                 }
+            }
+            .background(Color(hex: 0xF9E7C4)) // Set background color for the entire view
+            .navigationBarTitle("New Task") // Set navigation bar title
         }
     }
 }

@@ -13,6 +13,7 @@ struct ContentView: View {
 
     @State private var showingAddView = false
     @State private var editMode: EditMode = .inactive
+    @State private var showingSettings = false
     
     
     var body: some View {
@@ -53,9 +54,23 @@ struct ContentView: View {
                     .padding(.bottom, 10)
                 }
                 
-                HStack (alignment: .bottom) {
+                HStack(alignment: .bottom) {
                     Text("Nav Bar")
-
+                    Spacer()
+                    // NavigationLink to navigate to SettingsView
+                    NavigationLink(destination: SettingsView(), isActive: $showingSettings) {
+                            EmptyView()
+                        }
+                        .hidden()
+                        Button {
+                            showingSettings.toggle()
+                        } label: {
+                            Image(systemName: "gear")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.black)
+                        }
                 }
             }
             .background(Color(hex: 0xF9E7C4))
