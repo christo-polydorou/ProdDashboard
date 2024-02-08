@@ -21,6 +21,12 @@
 		31CCD7002B5C932D0001616D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CCD6FF2B5C932D0001616D /* LoginView.swift */; };
 		31CCD7022B5C94920001616D /* EditTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CCD7012B5C94920001616D /* EditTaskView.swift */; };
 		31CCD7042B5C95C00001616D /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CCD7032B5C95C00001616D /* AddTaskView.swift */; };
+		55B42F412B72B373007C3334 /* DateScrollerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B42F402B72B372007C3334 /* DateScrollerView.swift */; };
+		55B42F442B72B3A9007C3334 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B42F422B72B3A9007C3334 /* CalendarCell.swift */; };
+		55B42F452B72B3A9007C3334 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B42F432B72B3A9007C3334 /* CalendarHelper.swift */; };
+		55B42F472B72B3E7007C3334 /* Dateholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B42F462B72B3E6007C3334 /* Dateholder.swift */; };
+		55B42F492B72B3EE007C3334 /* MonthStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B42F482B72B3EE007C3334 /* MonthStruct.swift */; };
+		55E15D602B7467CC00C05363 /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E15D5F2B7467CC00C05363 /* DayView.swift */; };
 		682113D02B70268A002EC834 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682113CF2B70268A002EC834 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +46,12 @@
 		31CCD6FF2B5C932D0001616D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		31CCD7012B5C94920001616D /* EditTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskView.swift; sourceTree = "<group>"; };
 		31CCD7032B5C95C00001616D /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
+		55B42F402B72B372007C3334 /* DateScrollerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateScrollerView.swift; path = "ProdDashboard/Code/Features/Calendar - Month/Views/DateScrollerView.swift"; sourceTree = SOURCE_ROOT; };
+		55B42F422B72B3A9007C3334 /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		55B42F432B72B3A9007C3334 /* CalendarHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
+		55B42F462B72B3E6007C3334 /* Dateholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dateholder.swift; path = ../../../../../../../winterTerm/ProdDashboard2/ProdDashboard/Code/Features/Root/Dateholder.swift; sourceTree = "<group>"; };
+		55B42F482B72B3EE007C3334 /* MonthStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MonthStruct.swift; path = ../../../../../../../winterTerm/ProdDashboard2/ProdDashboard/Code/Features/Root/MonthStruct.swift; sourceTree = "<group>"; };
+		55E15D5F2B7467CC00C05363 /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
 		60DF6C57689886B599F674B9 /* Pods_ProdDashboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProdDashboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		682113CF2B70268A002EC834 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B720F694C42BE6ED43A379D0 /* Pods-ProdDashboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProdDashboard.release.xcconfig"; path = "Target Support Files/Pods-ProdDashboard/Pods-ProdDashboard.release.xcconfig"; sourceTree = "<group>"; };
@@ -603,6 +615,11 @@
 		DD18CF562B573C5D00CF3F82 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				55B42F482B72B3EE007C3334 /* MonthStruct.swift */,
+				55B42F462B72B3E6007C3334 /* Dateholder.swift */,
+				55B42F422B72B3A9007C3334 /* CalendarCell.swift */,
+				55B42F432B72B3A9007C3334 /* CalendarHelper.swift */,
+				55B42F402B72B372007C3334 /* DateScrollerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -666,6 +683,7 @@
 		DD18CF5F2B573C7700CF3F82 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				55E15D5F2B7467CC00C05363 /* DayView.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -818,11 +836,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				314D2F032B35308E008B4281 /* ContentView.swift in Sources */,
+				55E15D602B7467CC00C05363 /* DayView.swift in Sources */,
+				55B42F452B72B3A9007C3334 /* CalendarHelper.swift in Sources */,
 				31CCD7042B5C95C00001616D /* AddTaskView.swift in Sources */,
+				55B42F472B72B3E7007C3334 /* Dateholder.swift in Sources */,
 				31CCD6D92B5C5CD80001616D /* DataController.swift in Sources */,
 				682113D02B70268A002EC834 /* SettingsView.swift in Sources */,
 				311363F92B5E104900559799 /* extensions.swift in Sources */,
 				314D2F012B35308E008B4281 /* ProdDashboardApp.swift in Sources */,
+				55B42F442B72B3A9007C3334 /* CalendarCell.swift in Sources */,
+				55B42F492B72B3EE007C3334 /* MonthStruct.swift in Sources */,
+				55B42F412B72B373007C3334 /* DateScrollerView.swift in Sources */,
 				31CCD7022B5C94920001616D /* EditTaskView.swift in Sources */,
 				31CCD7002B5C932D0001616D /* LoginView.swift in Sources */,
 				31CCD6D72B5C58420001616D /* TaskModel.xcdatamodeld in Sources */,
