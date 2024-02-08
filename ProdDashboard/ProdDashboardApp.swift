@@ -15,8 +15,12 @@ struct ProdDashboardApp: App {
     
     var body: some Scene {
         WindowGroup {
+            
+            let dateHolder = DateHolder()
+            
             ContentView()
                 .environment(\.managedObjectContext, dataController.container.viewContext)
+                .environmentObject(dateHolder)
         }
     }
 }

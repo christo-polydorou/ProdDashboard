@@ -8,12 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var dateHolder: DateHolder
     @Environment(\.managedObjectContext) var managedObjContext
     @FetchRequest(sortDescriptors: []) var task: FetchedResults<Task>
 
     @State private var showingAddView = false
     @State private var editMode: EditMode = .inactive
     @State private var showingSettings = false
+    @State private var showingMonthCal = false
+    
+    private var currentDateString: String {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMMM dd, yyyy"
+            return dateFormatter.string(from: Date())
+        }
     
     
     var body: some View {
@@ -34,7 +42,7 @@ struct ContentView: View {
                 
                 Section {
                     List {
-                        ForEach(task.prefix(5)) { task in
+                        ForEach(filteredTasks, id: \.self) { task in
                             NavigationLink(destination: EditTaskView(task: task)) {
                                 HStack {
                                     VStack(alignment: .leading, spacing: 6) {
@@ -55,8 +63,8 @@ struct ContentView: View {
                 }
                 
                 HStack(alignment: .bottom) {
-                    Text("Nav Bar")
-                    Spacer()
+                   // Text("Nav Bar: ").padding(10).bold()
+                    Spacer().frame(width: 135, height: 0)
                     // NavigationLink to navigate to SettingsView
                     NavigationLink(destination: SettingsView(), isActive: $showingSettings) {
                             EmptyView()
@@ -64,13 +72,37 @@ struct ContentView: View {
                         .hidden()
                         Button {
                             showingSettings.toggle()
+                            
                         } label: {
                             Image(systemName: "gear")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: 30, height: 30)
+                            .frame(width: 35, height: 35)
                             .foregroundColor(.black)
                         }
+                    
+                    
+                    Spacer().frame(width: 20, height: 0)
+                    
+                    NavigationLink(destination: DateScrollerView(), isActive: $showingMonthCal) {
+                        EmptyView()
+                    }
+                    .hidden()
+                    Button {
+                        showingMonthCal.toggle()
+                        
+                        
+                        
+                    } label: {
+                        Image(systemName: "calendar")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 35, height: 35)
+                        .foregroundColor(.black)
+                    }
+                    
+                    Spacer().frame(width: 20, height: 0)
+                    
                 }
             }
             .background(Color(hex: 0xF9E7C4))
@@ -136,10 +168,77 @@ struct ContentView: View {
         formatter.dateFormat = "HH:mm:ss"
         return formatter.string(from: date)
     }
+    
+    
+    var daysOfWeekStack: some View {
+        HStack(spacing: 1) {
+            Text("Sun").dayOfWeek()
+            Text("Mon").dayOfWeek()
+            Text("Tue").dayOfWeek()
+            Text("Wed").dayOfWeek()
+            Text("Thu").dayOfWeek()
+            Text("Fri").dayOfWeek()
+            Text("Sat").dayOfWeek()
+        }
+    }
+
+    var calendarGrid: some View {
+        
+        VStack(spacing: 1) {
+            let daysInMonth = CalendarHelper().daysInMonth(dateHolder.date)
+            let firstDayOfMonth = CalendarHelper().firstOfMonth(dateHolder.date)
+            let startingSpaces = CalendarHelper().weekDay(firstDayOfMonth)
+            let prevMonth = CalendarHelper().minusMonth(dateHolder.date)
+            let daysInPrevMonth = CalendarHelper().daysInMonth(prevMonth)
+            
+            ForEach(0..<6) {
+                row in
+                HStack(spacing: 1) {
+                    ForEach(1..<8) {
+                        column in
+                        let count = column + (row * 7)
+                        
+                        CalendarCell(count: count, startingSpaces: startingSpaces, daysInMonth: daysInMonth, daysInPrevMonth: daysInPrevMonth)
+                            .environmentObject(dateHolder)
+                    }
+                }
+            }
+        }.frame(maxHeight: .infinity)
+    }
+    
+    
+    private var filteredTasks: [Task] {
+            task.filter { Calendar.current.isDate($0.date ?? Date(), inSameDayAs: Date()) }
+        }
+    
+    
+    
+    
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+extension Text {
+    func dayOfWeek() -> some View {
+        self.frame(maxWidth: .infinity)
+            .padding(.top, 1)
+            .lineLimit(1)
     }
 }
