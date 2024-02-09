@@ -683,7 +683,6 @@
 		DD18CF5F2B573C7700CF3F82 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				55E15D5F2B7467CC00C05363 /* DayView.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -691,6 +690,7 @@
 		DD18CF602B573C7A00CF3F82 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				55E15D5F2B7467CC00C05363 /* DayView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
