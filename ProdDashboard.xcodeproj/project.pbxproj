@@ -22,8 +22,8 @@
 		31725A7A2B79D36400A35808 /* NewTaskButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31725A792B79D36400A35808 /* NewTaskButton.swift */; };
 		31725A7C2B79D37D00A35808 /* HomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31725A7B2B79D37D00A35808 /* HomeButton.swift */; };
 		31725A7E2B79D38F00A35808 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31725A7D2B79D38F00A35808 /* Checkbox.swift */; };
+		31725A802B79D88F00A35808 /* NavigationMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31725A7F2B79D88F00A35808 /* NavigationMenu.swift */; };
 		31AC4E042B797B3300D10361 /* TaskListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC4E032B797B3300D10361 /* TaskListScreen.swift */; };
-		31AC4E062B797B6F00D10361 /* NavigationMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC4E052B797B6F00D10361 /* NavigationMenu.swift */; };
 		31AC4E082B797E0D00D10361 /* NSPredicate+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC4E072B797E0D00D10361 /* NSPredicate+helper.swift */; };
 		31AC4E0A2B79BFEF00D10361 /* MonthStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC4E092B79BFEF00D10361 /* MonthStruct.swift */; };
 		31AC4E0C2B79C00A00D10361 /* DateHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC4E0B2B79C00A00D10361 /* DateHolder.swift */; };
@@ -58,8 +58,8 @@
 		31725A792B79D36400A35808 /* NewTaskButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskButton.swift; sourceTree = "<group>"; };
 		31725A7B2B79D37D00A35808 /* HomeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeButton.swift; sourceTree = "<group>"; };
 		31725A7D2B79D38F00A35808 /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
+		31725A7F2B79D88F00A35808 /* NavigationMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationMenu.swift; sourceTree = "<group>"; };
 		31AC4E032B797B3300D10361 /* TaskListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListScreen.swift; sourceTree = "<group>"; };
-		31AC4E052B797B6F00D10361 /* NavigationMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationMenu.swift; path = ../../../../../../../other/ProdDashboard/ProdDashboard/Code/Features/Common/Views/NavigationMenu.swift; sourceTree = "<group>"; };
 		31AC4E072B797E0D00D10361 /* NSPredicate+helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPredicate+helper.swift"; sourceTree = "<group>"; };
 		31AC4E092B79BFEF00D10361 /* MonthStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthStruct.swift; sourceTree = "<group>"; };
 		31AC4E0B2B79C00A00D10361 /* DateHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHolder.swift; sourceTree = "<group>"; };
@@ -398,7 +398,7 @@
 		DD18CF352B573BA300CF3F82 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				31AC4E052B797B6F00D10361 /* NavigationMenu.swift */,
+				31725A7F2B79D88F00A35808 /* NavigationMenu.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -824,6 +824,7 @@
 				314D2F032B35308E008B4281 /* ContentView.swift in Sources */,
 				31725A742B79D2CE00A35808 /* MonthButton.swift in Sources */,
 				55E15D602B7467CC00C05363 /* DayView.swift in Sources */,
+				31725A802B79D88F00A35808 /* NavigationMenu.swift in Sources */,
 				55B42F452B72B3A9007C3334 /* CalendarHelper.swift in Sources */,
 				31CCD7042B5C95C00001616D /* AddTaskView.swift in Sources */,
 				31AC4E0A2B79BFEF00D10361 /* MonthStruct.swift in Sources */,
@@ -844,7 +845,6 @@
 				55B42F412B72B373007C3334 /* DateScrollerView.swift in Sources */,
 				31CCD7022B5C94920001616D /* EditTaskView.swift in Sources */,
 				31CCD7002B5C932D0001616D /* LoginView.swift in Sources */,
-				31AC4E062B797B6F00D10361 /* NavigationMenu.swift in Sources */,
 				31CCD6D72B5C58420001616D /* TaskModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
