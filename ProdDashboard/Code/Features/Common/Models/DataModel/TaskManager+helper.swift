@@ -57,4 +57,8 @@ extension CDTask {
         return request
     }
     
+//    static func fetchCurrDate(_ predicate: NSPredicate = .all) -> NSFetchRequest<CDTask> ) {
+//        
+//    }
+    
 }

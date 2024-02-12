@@ -167,7 +167,7 @@ struct DayView: View {
             .forEach(managedObjContext.delete)
             
             // Saves to our database
-            DataController().save(context: managedObjContext)
+            DataController().save()
         }
     }
     

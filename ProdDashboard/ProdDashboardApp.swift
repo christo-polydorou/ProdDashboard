@@ -19,8 +19,8 @@ struct ProdDashboardApp: App {
             
             let dateHolder = DateHolder()
             
-            ContentView()
-//             TaskListScreen()
+//            ContentView()
+             TaskListScreen()
                 .environment(\.managedObjectContext, dataController.container.viewContext)
                 .environmentObject(dateHolder)
         }

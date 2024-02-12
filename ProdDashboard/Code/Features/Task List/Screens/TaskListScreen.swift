@@ -10,6 +10,8 @@ import SwiftUI
 import CoreData
 
 struct TaskListScreen: View {
+    
+    @State private var addTask = false
         
     var body: some View {
         ZStack {
@@ -19,7 +21,7 @@ struct TaskListScreen: View {
                     Text("Today").font(Font.custom("Montserrat", size: 50)) // Title
                     Spacer()
                     Button("+ Add Task") {
-                        
+                        addTask.toggle()
                     }.modifier(NewTaskButton())
                 }.padding(.leading).padding(.trailing)
                 let date = Date().formatted(date: .abbreviated, time: .omitted)
@@ -27,6 +29,9 @@ struct TaskListScreen: View {
                 UncompletedSection()
                 CompletedSection()
                 NavigationMenu().offset(y: 20)
+            }
+            .sheet(isPresented: $addTask) {
+                AddTaskView()
             }
         }
     }
@@ -62,14 +67,14 @@ struct UncompletedSection: View {
                     }
 //                }
             }.scrollContentBackground(.hidden)
-            .gesture(
-                LongPressGesture(minimumDuration: 1.0)
-                    .onEnded { _ in
-                        // Perform the action when long press ends
-                        // You can show an action sheet or navigate to a delete view here
-                        // For simplicity, let's assume you want to delete the task directly
-                        CDTask.delete(task: task)                    }
-            )
+//            .gesture(
+//                LongPressGesture(minimumDuration: 1.0)
+//                    .onEnded { _ in
+//                        // Perform the action when long press ends
+//                        // You can show an action sheet or navigate to a delete view here
+//                        // For simplicity, let's assume you want to delete the task directly
+//                        CDTask.delete(task: task)                    }
+//            )
             
                 
         }
@@ -83,7 +88,7 @@ struct CompletedSection: View {
     
     var body: some View {
         VStack {
-            Text("Completed").offset(x: -135, y: 12).font(.title).fontWeight(.light).underline()
+            Text("Done").offset(x: -135, y: 12).font(.title).fontWeight(.light).underline()
             List(tasks) { task in
                 if (task.completed) {
                     VStack {

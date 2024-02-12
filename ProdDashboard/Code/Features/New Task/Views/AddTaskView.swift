@@ -12,7 +12,6 @@ struct AddTaskView: View {
     @Environment(\.dismiss) var dismiss
     let dataController = DataController.shared
     
-    
     @State private var name = ""
     @State private var selectedDate = Date()
     @State private var selectedDates: Set<DateComponents> = []

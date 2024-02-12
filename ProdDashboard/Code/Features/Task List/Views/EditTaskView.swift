@@ -30,7 +30,7 @@ struct EditTaskView: View {
     @Environment(\.managedObjectContext) var managedObjContext
     @Environment(\.dismiss) var dismiss
     
-    var CDTask: FetchedResults<CDTask>.Element
+    var task: FetchedResults<Task>.Element
     
     @State private var name = ""
     @State private var currentDates: Set<DateComponents> = []
@@ -39,9 +39,9 @@ struct EditTaskView: View {
     var body: some View {
         Form {
             Section() {
-                TextField("\(CDTask.name)", text: $name)
+                TextField("\(task.name1)", text: $name)
                     .onAppear {
-                        name = CDTask.name
+                        name = task.name1
                     }
                 
                 VStack {
