@@ -48,11 +48,12 @@ struct ContentView: View {
                                     VStack(alignment: .leading, spacing: 6) {
                                         Text(task.name!)
                                             .bold()
+
 //                                        Text(convertDateToTimeString(date: task.date!))
-                                    }
-                                    Spacer()
                                 }
+                                Spacer()
                             }
+//                            }
                         }
                         .onDelete(perform: deleteTask)
                     }
@@ -123,7 +124,7 @@ struct ContentView: View {
                 //                }
             }
             .sheet(isPresented: $showingAddView) {
-                AddFoodView()
+                AddTaskView()
             }
         }
         
@@ -153,7 +154,7 @@ struct ContentView: View {
             .forEach(managedObjContext.delete)
             
             // Saves to our database
-            DataController().save(context: managedObjContext)
+            DataController().save()
         }
     }
     

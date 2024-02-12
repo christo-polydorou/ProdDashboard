@@ -30,7 +30,7 @@ struct EditTaskView: View {
     @Environment(\.managedObjectContext) var managedObjContext
     @Environment(\.dismiss) var dismiss
     
-    var task: FetchedResults<Task>.Element
+    var CDTask: FetchedResults<CDTask>.Element
     
     @State private var name = ""
     @State private var currentDates: Set<DateComponents> = []
@@ -39,15 +39,15 @@ struct EditTaskView: View {
     var body: some View {
         Form {
             Section() {
-                TextField("\(task.name!)", text: $name)
+                TextField("\(CDTask.name)", text: $name)
                     .onAppear {
-                        name = task.name!
+                        name = CDTask.name
                     }
                 
                 VStack {
 
                     DatePicker("Select a date", selection: Binding(get: {
-                        task.date ?? Date()
+                        task.date1 ?? Date()
                     }, set: { currDate in
                         selectedDate = currDate
                     }), displayedComponents: .date)

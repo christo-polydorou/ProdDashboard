@@ -10,7 +10,8 @@ import SwiftUI
 @main
 struct ProdDashboardApp: App {
     
-    @StateObject private var dataController = DataController()
+//    @StateObject private var dataController = DataController()
+    let dataController = DataController.shared
     
     
     var body: some Scene {
@@ -19,6 +20,7 @@ struct ProdDashboardApp: App {
             let dateHolder = DateHolder()
             
             ContentView()
+//             TaskListScreen()
                 .environment(\.managedObjectContext, dataController.container.viewContext)
                 .environmentObject(dateHolder)
         }

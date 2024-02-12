@@ -16,6 +16,15 @@
 		314D2F082B35308E008B4281 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 314D2F072B35308E008B4281 /* Preview Assets.xcassets */; };
 		314D2F102B353308008B4281 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 314D2F0F2B353308008B4281 /* .swiftlint.yml */; };
 		314D2F152B353470008B4281 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 314D2F172B353470008B4281 /* Localizable.strings */; };
+		31AC4DF82B797AEC00D10361 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC4DF72B797AEC00D10361 /* Checkbox.swift */; };
+		31AC4DFA2B797AF000D10361 /* NewTaskButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC4DF92B797AF000D10361 /* NewTaskButton.swift */; };
+		31AC4DFC2B797AF500D10361 /* HomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC4DFB2B797AF500D10361 /* HomeButton.swift */; };
+		31AC4DFE2B797AFB00D10361 /* SettingsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC4DFD2B797AFB00D10361 /* SettingsButton.swift */; };
+		31AC4E002B797B0000D10361 /* MonthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC4DFF2B797B0000D10361 /* MonthButton.swift */; };
+		31AC4E022B797B0400D10361 /* WeekButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC4E012B797B0400D10361 /* WeekButton.swift */; };
+		31AC4E042B797B3300D10361 /* TaskListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC4E032B797B3300D10361 /* TaskListScreen.swift */; };
+		31AC4E062B797B6F00D10361 /* NavigationMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC4E052B797B6F00D10361 /* NavigationMenu.swift */; };
+		31AC4E082B797E0D00D10361 /* NSPredicate+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC4E072B797E0D00D10361 /* NSPredicate+helper.swift */; };
 		31CCD6D72B5C58420001616D /* TaskModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 31CCD6D52B5C58420001616D /* TaskModel.xcdatamodeld */; };
 		31CCD6D92B5C5CD80001616D /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CCD6D82B5C5CD80001616D /* DataController.swift */; };
 		31CCD7002B5C932D0001616D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CCD6FF2B5C932D0001616D /* LoginView.swift */; };
@@ -27,6 +36,8 @@
 		55B42F472B72B3E7007C3334 /* Dateholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B42F462B72B3E6007C3334 /* Dateholder.swift */; };
 		55B42F492B72B3EE007C3334 /* MonthStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B42F482B72B3EE007C3334 /* MonthStruct.swift */; };
 		55E15D602B7467CC00C05363 /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E15D5F2B7467CC00C05363 /* DayView.swift */; };
+		31D4D2A02B7966D7005D0C32 /* Task+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4D29F2B7966D7005D0C32 /* Task+helper.swift */; };
+		31D4D2AE2B797353005D0C32 /* TaskManager+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4D2AD2B797353005D0C32 /* TaskManager+helper.swift */; };
 		682113D02B70268A002EC834 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682113CF2B70268A002EC834 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +52,15 @@
 		314D2F0F2B353308008B4281 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		314D2F162B353470008B4281 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		314D2F182B35349B008B4281 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		31AC4DF72B797AEC00D10361 /* Checkbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Checkbox.swift; path = ../../../../../../../other/ProdDashboard/ProdDashboard/Code/Features/Common/ViewModifiers/Checkbox.swift; sourceTree = "<group>"; };
+		31AC4DF92B797AF000D10361 /* NewTaskButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewTaskButton.swift; path = ../../../../../../../other/ProdDashboard/ProdDashboard/Code/Features/Common/ViewModifiers/NewTaskButton.swift; sourceTree = "<group>"; };
+		31AC4DFB2B797AF500D10361 /* HomeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeButton.swift; path = ../../../../../../../other/ProdDashboard/ProdDashboard/Code/Features/Common/ViewModifiers/HomeButton.swift; sourceTree = "<group>"; };
+		31AC4DFD2B797AFB00D10361 /* SettingsButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsButton.swift; path = ../../../../../../../other/ProdDashboard/ProdDashboard/Code/Features/Common/ViewModifiers/SettingsButton.swift; sourceTree = "<group>"; };
+		31AC4DFF2B797B0000D10361 /* MonthButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MonthButton.swift; path = ../../../../../../../other/ProdDashboard/ProdDashboard/Code/Features/Common/ViewModifiers/MonthButton.swift; sourceTree = "<group>"; };
+		31AC4E012B797B0400D10361 /* WeekButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeekButton.swift; path = ../../../../../../../other/ProdDashboard/ProdDashboard/Code/Features/Common/ViewModifiers/WeekButton.swift; sourceTree = "<group>"; };
+		31AC4E032B797B3300D10361 /* TaskListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListScreen.swift; sourceTree = "<group>"; };
+		31AC4E052B797B6F00D10361 /* NavigationMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NavigationMenu.swift; path = ../../../../../../../other/ProdDashboard/ProdDashboard/Code/Features/Common/Views/NavigationMenu.swift; sourceTree = "<group>"; };
+		31AC4E072B797E0D00D10361 /* NSPredicate+helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPredicate+helper.swift"; sourceTree = "<group>"; };
 		31CCD6D62B5C58420001616D /* TaskModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskModel.xcdatamodel; sourceTree = "<group>"; };
 		31CCD6D82B5C5CD80001616D /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		31CCD6FF2B5C932D0001616D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -52,6 +72,8 @@
 		55B42F462B72B3E6007C3334 /* Dateholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Dateholder.swift; path = ../../../../../../../winterTerm/ProdDashboard2/ProdDashboard/Code/Features/Root/Dateholder.swift; sourceTree = "<group>"; };
 		55B42F482B72B3EE007C3334 /* MonthStruct.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MonthStruct.swift; path = ../../../../../../../winterTerm/ProdDashboard2/ProdDashboard/Code/Features/Root/MonthStruct.swift; sourceTree = "<group>"; };
 		55E15D5F2B7467CC00C05363 /* DayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayView.swift; sourceTree = "<group>"; };
+		31D4D29F2B7966D7005D0C32 /* Task+helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+helper.swift"; sourceTree = "<group>"; };
+		31D4D2AD2B797353005D0C32 /* TaskManager+helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskManager+helper.swift"; sourceTree = "<group>"; };
 		60DF6C57689886B599F674B9 /* Pods_ProdDashboard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProdDashboard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		682113CF2B70268A002EC834 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B720F694C42BE6ED43A379D0 /* Pods-ProdDashboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProdDashboard.release.xcconfig"; path = "Target Support Files/Pods-ProdDashboard/Pods-ProdDashboard.release.xcconfig"; sourceTree = "<group>"; };
@@ -140,6 +162,9 @@
 			children = (
 				31CCD6D52B5C58420001616D /* TaskModel.xcdatamodeld */,
 				31CCD6D82B5C5CD80001616D /* DataController.swift */,
+				31D4D29F2B7966D7005D0C32 /* Task+helper.swift */,
+				31D4D2AD2B797353005D0C32 /* TaskManager+helper.swift */,
+				31AC4E072B797E0D00D10361 /* NSPredicate+helper.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -189,7 +214,6 @@
 			children = (
 				DD18CF302B573B8D00CF3F82 /* Common */,
 				DD18CF2E2B573B6E00CF3F82 /* Root */,
-				DD18CF252B573B3500CF3F82 /* Logo Page */,
 				DD18CF262B573B3E00CF3F82 /* Login */,
 				DD18CF2A2B573B4E00CF3F82 /* Task List */,
 				DD18CF292B573B4B00CF3F82 /* New Task */,
@@ -207,18 +231,6 @@
 			children = (
 			);
 			path = Utilities;
-			sourceTree = "<group>";
-		};
-		DD18CF252B573B3500CF3F82 /* Logo Page */ = {
-			isa = PBXGroup;
-			children = (
-				DD18CF3B2B573BDC00CF3F82 /* Screens */,
-				DD18CF3A2B573BD900CF3F82 /* Actions */,
-				DD18CF392B573BD700CF3F82 /* Models */,
-				DD18CF382B573BD300CF3F82 /* Views */,
-				DD18CF372B573BCF00CF3F82 /* ViewModels */,
-			);
-			path = "Logo Page";
 			sourceTree = "<group>";
 		};
 		DD18CF262B573B3E00CF3F82 /* Login */ = {
@@ -350,6 +362,12 @@
 		DD18CF312B573B9400CF3F82 /* ViewModifiers */ = {
 			isa = PBXGroup;
 			children = (
+				31AC4DF72B797AEC00D10361 /* Checkbox.swift */,
+				31AC4DFB2B797AF500D10361 /* HomeButton.swift */,
+				31AC4DF92B797AF000D10361 /* NewTaskButton.swift */,
+				31AC4DFD2B797AFB00D10361 /* SettingsButton.swift */,
+				31AC4E012B797B0400D10361 /* WeekButton.swift */,
+				31AC4DFF2B797B0000D10361 /* MonthButton.swift */,
 				311363F82B5E104900559799 /* extensions.swift */,
 			);
 			path = ViewModifiers;
@@ -380,6 +398,7 @@
 		DD18CF352B573BA300CF3F82 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				31AC4E052B797B6F00D10361 /* NavigationMenu.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -389,41 +408,6 @@
 			children = (
 			);
 			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		DD18CF372B573BCF00CF3F82 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		DD18CF382B573BD300CF3F82 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		DD18CF392B573BD700CF3F82 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		DD18CF3A2B573BD900CF3F82 /* Actions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Actions;
-			sourceTree = "<group>";
-		};
-		DD18CF3B2B573BDC00CF3F82 /* Screens */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Screens;
 			sourceTree = "<group>";
 		};
 		DD18CF3C2B573BE100CF3F82 /* ViewModels */ = {
@@ -601,6 +585,7 @@
 		DD18CF542B573C3400CF3F82 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				31AC4E032B797B3300D10361 /* TaskListScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -835,20 +820,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31AC4E082B797E0D00D10361 /* NSPredicate+helper.swift in Sources */,
 				314D2F032B35308E008B4281 /* ContentView.swift in Sources */,
 				55E15D602B7467CC00C05363 /* DayView.swift in Sources */,
 				55B42F452B72B3A9007C3334 /* CalendarHelper.swift in Sources */,
 				31CCD7042B5C95C00001616D /* AddTaskView.swift in Sources */,
 				55B42F472B72B3E7007C3334 /* Dateholder.swift in Sources */,
+				31D4D2A02B7966D7005D0C32 /* Task+helper.swift in Sources */,
 				31CCD6D92B5C5CD80001616D /* DataController.swift in Sources */,
+				31AC4E042B797B3300D10361 /* TaskListScreen.swift in Sources */,
+				31D4D2AE2B797353005D0C32 /* TaskManager+helper.swift in Sources */,
+				31AC4E022B797B0400D10361 /* WeekButton.swift in Sources */,
 				682113D02B70268A002EC834 /* SettingsView.swift in Sources */,
 				311363F92B5E104900559799 /* extensions.swift in Sources */,
+				31AC4DFE2B797AFB00D10361 /* SettingsButton.swift in Sources */,
+				31AC4DFA2B797AF000D10361 /* NewTaskButton.swift in Sources */,
 				314D2F012B35308E008B4281 /* ProdDashboardApp.swift in Sources */,
 				55B42F442B72B3A9007C3334 /* CalendarCell.swift in Sources */,
 				55B42F492B72B3EE007C3334 /* MonthStruct.swift in Sources */,
 				55B42F412B72B373007C3334 /* DateScrollerView.swift in Sources */,
+				31AC4DF82B797AEC00D10361 /* Checkbox.swift in Sources */,
+				31AC4DFC2B797AF500D10361 /* HomeButton.swift in Sources */,
 				31CCD7022B5C94920001616D /* EditTaskView.swift in Sources */,
 				31CCD7002B5C932D0001616D /* LoginView.swift in Sources */,
+				31AC4E062B797B6F00D10361 /* NavigationMenu.swift in Sources */,
+				31AC4E002B797B0000D10361 /* MonthButton.swift in Sources */,
 				31CCD6D72B5C58420001616D /* TaskModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
