@@ -35,16 +35,16 @@ struct ContentView: View {
                 Section {
                     List {
                         ForEach(task.prefix(5)) { task in
-                            NavigationLink(destination: EditTaskView(task: task)) {
-                                HStack {
-                                    VStack(alignment: .leading, spacing: 6) {
-                                        Text(task.name!)
-                                            .bold()
+//                            NavigationLink(destination: EditTaskView(task: task)) {
+                            HStack {
+                                VStack(alignment: .leading, spacing: 6) {
+                                    Text(task.name1)
+                                        .bold()
 //                                        Text(convertDateToTimeString(date: task.date!))
-                                    }
-                                    Spacer()
                                 }
+                                Spacer()
                             }
+//                            }
                         }
                         .onDelete(perform: deleteTask)
                     }
@@ -91,7 +91,7 @@ struct ContentView: View {
                 //                }
             }
             .sheet(isPresented: $showingAddView) {
-                AddFoodView()
+                AddTaskView()
             }
         }
         
@@ -121,7 +121,7 @@ struct ContentView: View {
             .forEach(managedObjContext.delete)
             
             // Saves to our database
-            DataController().save(context: managedObjContext)
+            DataController().save()
         }
     }
     

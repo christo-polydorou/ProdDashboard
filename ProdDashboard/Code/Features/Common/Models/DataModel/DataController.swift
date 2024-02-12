@@ -11,6 +11,8 @@ import CoreData
 class DataController: ObservableObject {
     let container = NSPersistentContainer(name: "TaskModel")
     
+    static let shared = DataController()
+    
     init() {
         container.loadPersistentStores { description, error in
             if let error = error {
@@ -19,7 +21,12 @@ class DataController: ObservableObject {
         }
     }
     
-    func save(context: NSManagedObjectContext) {
+    func save() {
+        
+        let context = container.viewContext
+        
+        guard context.hasChanges else { return }
+        
         do {
             try context.save()
             print("Data saved.")
@@ -32,21 +39,21 @@ class DataController: ObservableObject {
     func addTask(name: String, date: Date, dates: [Date], context: NSManagedObjectContext) {
         let task = Task(context: context)
     
-        task.name = name
-        task.date = date
-        task.dates = dates
-        print(dates)
+        task.name1 = name
+        task.date1 = date
 //        task.recurring = recurring
 //        task.id = UUID()
 //
-        save(context: context)
+        save()
     }
     
     func editTask(task: Task, name: String, date: Date, context: NSManagedObjectContext) {
-        task.name = name
-        task.date = date
+        task.name1 = name
+        task.date1 = date
         
-        save(context: context)
+        save()
     }
+    
+    
     
 }

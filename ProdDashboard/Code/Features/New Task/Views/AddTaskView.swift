@@ -7,12 +7,13 @@
 
 import SwiftUI
 
-struct AddFoodView: View {
-    @Environment(\.managedObjectContext) var managedObjContext
+struct AddTaskView: View {
+    @Environment(\.managedObjectContext) var context
     @Environment(\.dismiss) var dismiss
+    let dataController = DataController.shared
+    
     
     @State private var name = ""
-    @State private var calories: Double = 0
     @State private var selectedDate = Date()
     @State private var selectedDates: Set<DateComponents> = []
     
@@ -37,7 +38,10 @@ struct AddFoodView: View {
                     HStack {
                         Spacer()
                         Button("Add Task") {
-                            DataController().addTask(name: name, date: selectedDate, dates: convertedDates, context: managedObjContext)
+//                            DataController().addTask(name: name, date: selectedDate, dates: convertedDates, context: managedObjContext)
+//                            dismiss()
+                            let task = CDTask(name: name, startDate: Date(), context: context)
+                            DataController.shared.save()
                             dismiss()
                         }
                         .foregroundColor(.white)
@@ -55,8 +59,8 @@ struct AddFoodView: View {
     }
 }
 
-struct AddFoodView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddFoodView()
-    }
-}
+//struct AddFoodView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddTaskView()
+//    }
+//}

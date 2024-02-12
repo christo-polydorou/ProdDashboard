@@ -10,12 +10,14 @@ import SwiftUI
 @main
 struct ProdDashboardApp: App {
     
-    @StateObject private var dataController = DataController()
+//    @StateObject private var dataController = DataController()
+    let dataController = DataController.shared
     
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+            TaskListScreen()
                 .environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }
