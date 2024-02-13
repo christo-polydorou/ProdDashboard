@@ -20,9 +20,11 @@ struct ProdDashboardApp: App {
             let dateHolder = DateHolder()
             
 //            ContentView()
-             TaskListScreen()
+//             TaskListScreen()
+            RootView()
                 .environment(\.managedObjectContext, dataController.container.viewContext)
                 .environmentObject(dateHolder)
+                .navigationViewStyle(StackNavigationViewStyle())
         }
     }
 }

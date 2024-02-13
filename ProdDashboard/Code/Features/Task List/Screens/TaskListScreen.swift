@@ -28,7 +28,7 @@ struct TaskListScreen: View {
                 Text(date).frame(maxWidth: .infinity, alignment: .leading).padding(.leading, 25).padding(.bottom, 25).fontWeight(.light) // Date
                 UncompletedSection()
                 CompletedSection()
-                NavigationMenu().offset(y: 20)
+//                NavigationMenu().offset(y: 20)
             }
             .sheet(isPresented: $addTask) {
                 AddTaskView()
