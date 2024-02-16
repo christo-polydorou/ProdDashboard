@@ -353,27 +353,27 @@ struct UncompletedSection2: View {
 //            }.scrollContentBackground(.hidden)
             
             List {
-                            ForEach(filteredTasks) { task in
-                                if !(task.completed) {
-                                    VStack {
-                                        HStack {
-                                            Image(systemName: task.completed ? "largecircle.fill.circle" : "circle")
-                                                .onTapGesture {
-                                                    task.completed.toggle()
-                                                    DataController.shared.save()
-                                                }
-                                            Text(task.name).bold().frame(width: 175, height: 15, alignment: .leading)
-                                        }
-                                        HStack {
-                                            Image(systemName: "calendar.badge.clock")
-                                                .font(.system(size: 20, weight: .light))
-                                            Text("insert start date")
-                                        }.frame(width: 175, height: 15, alignment: .leading)
-                                            
+                ForEach(filteredTasks) { task in
+                    if !(task.completed) {
+                        VStack {
+                            HStack {
+                                Image(systemName: task.completed ? "largecircle.fill.circle" : "circle")
+                                    .onTapGesture {
+                                        task.completed.toggle()
+                                        DataController.shared.save()
                                     }
-                                }
-                            }.onDelete(perform: deleteTask)
-                        }.scrollContentBackground(.hidden)
+                                Text(task.name).bold().frame(width: 175, height: 15, alignment: .leading)
+                            }
+                            HStack {
+                                Image(systemName: "calendar.badge.clock")
+                                    .font(.system(size: 20, weight: .light))
+                                Text("insert start date")
+                            }.frame(width: 175, height: 15, alignment: .leading)
+                                
+                        }
+                    }
+                }.onDelete(perform: deleteTask)
+            }.scrollContentBackground(.hidden)
             
             
             
@@ -476,31 +476,62 @@ struct CompletedSection2: View {
     var body: some View {
         VStack {
             Text("Done").offset(x: -135, y: 12).font(.title).fontWeight(.light).underline()
-            List(filteredTasks) { task in
-                if (task.completed) {
-                    VStack {
-                        HStack {
-                            Image(systemName: task.completed ? "largecircle.fill.circle" : "circle")
-                                .onTapGesture {
-                                    task.completed.toggle()
-                                    DataController.shared.save()
-                                }
-                            Text(task.name).bold().frame(width: 175, height: 15, alignment: .leading)
+//            List(filteredTasks) { task in
+//                if (task.completed) {
+//                    VStack {
+//                        HStack {
+//                            Image(systemName: task.completed ? "largecircle.fill.circle" : "circle")
+//                                .onTapGesture {
+//                                    task.completed.toggle()
+//                                    DataController.shared.save()
+//                                }
+//                            Text(task.name).bold().frame(width: 175, height: 15, alignment: .leading)
+//                        }
+//                        HStack {
+//                            Image(systemName: "calendar.badge.clock")
+//                                .font(.system(size: 20, weight: .light))
+//                            Text("insert start date")
+//                        }.frame(width: 175, height: 15, alignment: .leading)
+//                    }
+//                
+//                }
+//            }.scrollContentBackground(.hidden)
+            List {
+                ForEach(filteredTasks) { task in
+                    if (task.completed) {
+                        VStack {
+                            HStack {
+                                Image(systemName: task.completed ? "largecircle.fill.circle" : "circle")
+                                    .onTapGesture {
+                                        task.completed.toggle()
+                                        DataController.shared.save()
+                                    }
+                                Text(task.name).bold().frame(width: 175, height: 15, alignment: .leading)
+                            }
+                            HStack {
+                                Image(systemName: "calendar.badge.clock")
+                                    .font(.system(size: 20, weight: .light))
+                                Text("insert start date")
+                            }.frame(width: 175, height: 15, alignment: .leading)
+                                
                         }
-                        HStack {
-                            Image(systemName: "calendar.badge.clock")
-                                .font(.system(size: 20, weight: .light))
-                            Text("insert start date")
-                        }.frame(width: 175, height: 15, alignment: .leading)
                     }
-                
-                }
+                }.onDelete(perform: deleteTask)
             }.scrollContentBackground(.hidden)
                 
         }
         
         
     }
+    
+    private func deleteTask(offsets: IndexSet) {
+            withAnimation {
+                offsets.map { tasks[$0] }
+                    .forEach(context.delete)
+                
+                DataController.shared.save()
+            }
+        }
     
     func currentDate() -> String {
         let dateFormatter = DateFormatter()
