@@ -11,7 +11,9 @@ import CoreData
 
 struct TaskListScreen: View {
     
+    @Environment(\.managedObjectContext) var context
     @State private var addTask = false
+    
         
     var body: some View {
         ZStack {
@@ -34,19 +36,47 @@ struct TaskListScreen: View {
                 AddTaskView()
             }
         }
+        
     }
+    
+    
 }
 
 struct UncompletedSection: View {
 
+    @Environment(\.managedObjectContext) var context
     @FetchRequest(fetchRequest: CDTask.fetch(), animation: .bouncy)
     var tasks: FetchedResults<CDTask>
     
     var body: some View {
         VStack {
             Text("To-Do").offset(x: -135, y: 12).font(.title).fontWeight(.light).underline()
-            List(tasks) { task in
-//                NavigationLink(destination: EditTaskView(task: task)) {
+//            List(filteredTasks) { task in
+////                NavigationLink(destination: EditTaskView(task: task)) {
+//                    if !(task.completed) {
+//                        VStack {
+//                            HStack {
+//                                Image(systemName: task.completed ? "largecircle.fill.circle" : "circle")
+//                                    .onTapGesture {
+//                                        task.completed.toggle()
+//                                        DataController.shared.save()
+//                                    }
+//                                Text(task.name).bold().frame(width: 175, height: 15, alignment: .leading)
+//                            }
+//                            HStack {
+//                                Image(systemName: "calendar.badge.clock")
+//                                    .font(.system(size: 20, weight: .light))
+//                                Text("insert start date")
+//                            }.frame(width: 175, height: 15, alignment: .leading)
+//                                
+//                        }
+//                        
+//                    }
+////                }
+//            }.scrollContentBackground(.hidden)
+            
+            List {
+                ForEach(filteredTasks) { task in
                     if !(task.completed) {
                         VStack {
                             HStack {
@@ -62,11 +92,15 @@ struct UncompletedSection: View {
                                     .font(.system(size: 20, weight: .light))
                                 Text("insert start date")
                             }.frame(width: 175, height: 15, alignment: .leading)
+                                
                         }
-                        
                     }
-//                }
+                }.onDelete(perform: deleteTask)
             }.scrollContentBackground(.hidden)
+            
+            
+            
+            
 //            .gesture(
 //                LongPressGesture(minimumDuration: 1.0)
 //                    .onEnded { _ in
@@ -78,42 +112,118 @@ struct UncompletedSection: View {
             
                 
         }
+        
+        
+    }
+    private func deleteTask(offsets: IndexSet) {
+            withAnimation {
+                offsets.map { tasks[$0] }
+                    .forEach(context.delete)
+                
+                DataController.shared.save()
+            }
+        }
+//    private var filteredTasks: [CDTask] {
+//            let currentDate = Date()
+//            return tasks.filter { task in
+//                guard let taskDate = task.startDate_ else { return false } // Ensure task has a date
+//                return Calendar.current.isDate(taskDate, inSameDayAs: currentDate)
+//            }
+//        }
+    private var filteredTasks: [CDTask] {
+        let currentDate = Date()
+        let currentDayStart = Calendar.current.startOfDay(for: currentDate)
+        return tasks.filter { task in
+            guard let taskDate = task.startDate_ else { return false } // Ensure task has a date
+            let taskDayStart = Calendar.current.startOfDay(for: taskDate)
+            return taskDayStart == currentDayStart
+        }
     }
 }
 
 
 struct CompletedSection: View {
+    @Environment(\.managedObjectContext) var context
     @FetchRequest(fetchRequest: CDTask.fetch(), animation: .bouncy)
     var tasks: FetchedResults<CDTask>
     
     var body: some View {
         VStack {
             Text("Done").offset(x: -135, y: 12).font(.title).fontWeight(.light).underline()
-            List(tasks) { task in
-                if (task.completed) {
-                    VStack {
-                        HStack {
-                            Image(systemName: task.completed ? "largecircle.fill.circle" : "circle")
-                                .onTapGesture {
-                                    task.completed.toggle()
-                                    DataController.shared.save()
-                                }
-                            Text(task.name).bold().frame(width: 175, height: 15, alignment: .leading)
+//            List(filteredTasks) { task in
+//                if (task.completed) {
+//                    VStack {
+//                        HStack {
+//                            Image(systemName: task.completed ? "largecircle.fill.circle" : "circle")
+//                                .onTapGesture {
+//                                    task.completed.toggle()
+//                                    DataController.shared.save()
+//                                }
+//                            Text(task.name).bold().frame(width: 175, height: 15, alignment: .leading)
+//                        }
+//                        HStack {
+//                            Image(systemName: "calendar.badge.clock")
+//                                .font(.system(size: 20, weight: .light))
+//                            Text("insert start date")
+//                        }.frame(width: 175, height: 15, alignment: .leading)
+//                    }
+//                
+//                }
+//            }.scrollContentBackground(.hidden)
+            List {
+                ForEach(filteredTasks) { task in
+                    if (task.completed) {
+                        VStack {
+                            HStack {
+                                Image(systemName: task.completed ? "largecircle.fill.circle" : "circle")
+                                    .onTapGesture {
+                                        task.completed.toggle()
+                                        DataController.shared.save()
+                                    }
+                                Text(task.name).bold().frame(width: 175, height: 15, alignment: .leading)
+                            }
+                            HStack {
+                                Image(systemName: "calendar.badge.clock")
+                                    .font(.system(size: 20, weight: .light))
+                                Text("insert start date")
+                            }.frame(width: 175, height: 15, alignment: .leading)
+                                
                         }
-                        HStack {
-                            Image(systemName: "calendar.badge.clock")
-                                .font(.system(size: 20, weight: .light))
-                            Text("insert start date")
-                        }.frame(width: 175, height: 15, alignment: .leading)
                     }
-                
-                }
+                }.onDelete(perform: deleteTask)
             }.scrollContentBackground(.hidden)
                 
         }
+        
+        
     }
+    
+    private func deleteTask(offsets: IndexSet) {
+            withAnimation {
+                offsets.map { tasks[$0] }
+                    .forEach(context.delete)
+                
+                DataController.shared.save()
+            }
+        }
+    
+    private var filteredTasks: [CDTask] {
+        let currentDate = Date()
+        let currentDayStart = Calendar.current.startOfDay(for: currentDate)
+        return tasks.filter { task in
+            guard let taskDate = task.startDate_ else { return false } // Ensure task has a date
+            let taskDayStart = Calendar.current.startOfDay(for: taskDate)
+            return taskDayStart == currentDayStart
+        }
+    }
+    
 }
+
+
+
 
 #Preview {
     TaskListScreen()
 }
+
+

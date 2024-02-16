@@ -39,7 +39,7 @@ struct AddTaskView: View {
                         Button("Add Task") {
 //                            DataController().addTask(name: name, date: selectedDate, dates: convertedDates, context: managedObjContext)
 //                            dismiss()
-                            let task = CDTask(name: name, startDate: Date(), context: context)
+                            let task = CDTask(name: name, startDate: selectedDate, context: context)
                             DataController.shared.save()
                             dismiss()
                         }
@@ -58,8 +58,8 @@ struct AddTaskView: View {
     }
 }
 
-//struct AddFoodView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AddTaskView()
-//    }
-//}
+struct AddTaskView_Previews: PreviewProvider {
+    static var previews: some View {
+        AddTaskView()
+    }
+}

@@ -33,7 +33,7 @@ struct RootView: View {
                     Label("Week", systemImage: "note")
                 }
                 .tag(3)
-            TaskListScreen()
+            DateScrollerView()
                 .tabItem() {
                     Label("Month", systemImage: "calendar")
                 }
@@ -47,3 +47,5 @@ struct RootView: View {
 #Preview {
     RootView()
 }
+
+
