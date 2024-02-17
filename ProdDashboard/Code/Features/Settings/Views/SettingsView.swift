@@ -1,10 +1,17 @@
 import SwiftUI
 
+// Model to represent a schedule entry
+struct ScheduleEntry {
+    var startTime: Date
+    var endTime: Date
+}
+
 struct SettingsView: View {
     @AppStorage("machineLearningEnabled") private var machineLearningEnabled = false
     @Environment(\.colorScheme) private var colorScheme
     @State private var isShowingNewSchedule = false
     @State private var selectedDate = Date()
+    @State private var schedules: [[ScheduleEntry]] = [] // Array to store schedule entries
 
     var body: some View {
         ZStack {
@@ -17,8 +24,8 @@ struct SettingsView: View {
                 }
                 .padding(.horizontal)
                 .padding(.top)
-                Spacer()
-                Spacer()
+                //Spacer()
+                //Spacer()
                 
                 
                 Section{
@@ -37,7 +44,6 @@ struct SettingsView: View {
                 
                 VStack {
                     Section(header: Text("Schedule Settings")) {
-                        //Spacer()
                         Button("Add Schedule") {
                             isShowingNewSchedule = true
                         }
@@ -47,45 +53,38 @@ struct SettingsView: View {
                         .background(Color.green)
                         .cornerRadius(8)
                         .sheet(isPresented: $isShowingNewSchedule) {
-                            NewScheduleView(selectedDate: $selectedDate)
+                            NewScheduleView(schedules: $schedules)
                         }
                     }
-                    //Spacer()
                 }
-                .padding(.top, 30)
+                .padding(.top, 450)
                 
-                VStack {
-
-                    Button("Edit Schedule") {
-                        isShowingNewSchedule = true
-                    }
-                    .frame(maxWidth: .infinity) // Center the button horizontally
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(Color.green)
-                    .cornerRadius(8)
-                    .sheet(isPresented: $isShowingNewSchedule) {
-                        NewScheduleView(selectedDate: $selectedDate)
-                    }
-                    Spacer()
-                    
-                }
-                .padding(.bottom, 30)
+                // Your existing code for Edit Schedule button and Spacer
             }
         }
     }
 }
 
 struct NewScheduleView: View {
-    @Binding var selectedDate: Date
+    @Binding var schedules: [[ScheduleEntry]] // Binding to update the parent array
+    @State private var startTime = Date()
+    @State private var endTime = Date()
 
     var body: some View {
         VStack {
-            DatePicker("Select Date and Time", selection: $selectedDate, displayedComponents: [.date, .hourAndMinute])
+            // Date pickers for start and end times
+            DatePicker("Start Time", selection: $startTime, displayedComponents: [.hourAndMinute])
                 .datePickerStyle(GraphicalDatePickerStyle())
                 .padding()
-            Button("Submit New Schedule") {
-                // Handle submitting new schedule
+            DatePicker("End Time", selection: $endTime, displayedComponents: [.hourAndMinute])
+                .datePickerStyle(GraphicalDatePickerStyle())
+                .padding()
+            
+            // Button to add the schedule entry
+            Button("Add Schedule") {
+                let newEntry = ScheduleEntry(startTime: startTime, endTime: endTime)
+                schedules.append([newEntry])
+                // Optionally, you can add validation or handle duplicates here
             }
             .frame(maxWidth: .infinity)
             .foregroundColor(.white)
@@ -102,5 +101,3 @@ struct SettingsView_Previews: PreviewProvider {
         SettingsView()
     }
 }
-
-
