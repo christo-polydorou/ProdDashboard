@@ -23,10 +23,7 @@ struct SettingsView: View {
                     Toggle("Machine Learning Suggestions", isOn: $machineLearningEnabled)
                 }
                 .padding(.horizontal)
-                .padding(.top)
-                //Spacer()
-                //Spacer()
-                
+                .padding(.top, 50)
                 
                 Section{
                     Toggle("Dark Mode", isOn: Binding(
@@ -41,6 +38,7 @@ struct SettingsView: View {
                     ))
                 }
                 .padding(.horizontal)
+                //.padding(.top, 50)
                 
                 VStack {
                     Section(header: Text("Schedule Settings")) {
@@ -57,10 +55,11 @@ struct SettingsView: View {
                         }
                     }
                 }
-                .padding(.top, 450)
+                .padding(.top, 40)
                 
                 // Your existing code for Edit Schedule button and Spacer
             }
+            .padding(.top, -300)
         }
     }
 }
