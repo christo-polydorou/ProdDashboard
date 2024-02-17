@@ -133,10 +133,6 @@ struct EditScheduleView: View {
                 }
             }
             .navigationTitle("Edit Schedule")
-            .navigationBarItems(trailing: Button("Done") {
-                // Dismiss the sheet
-                schedules = [] // Clear schedules after editing
-            })
         }
     }
     
