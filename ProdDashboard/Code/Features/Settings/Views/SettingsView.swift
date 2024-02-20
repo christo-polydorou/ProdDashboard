@@ -4,7 +4,7 @@ import SwiftUI
 struct ScheduleEntry: Hashable {
     var startTime: Date
     var endTime: Date
-    var isRecurring: Bool
+    var weekday: Int // 1 for Sunday, 2 for Monday, ..., 7 for Saturday
 }
 
 struct SettingsView: View {
@@ -13,7 +13,7 @@ struct SettingsView: View {
     @State private var isShowingNewSchedule = false
     @State private var isShowingEditSchedule = false
     @State private var selectedDate = Date()
-    @State private var schedules: [[ScheduleEntry]] = [] // Array to store schedule entries
+    @State private var schedules: [ScheduleEntry] = [] // Array to store schedule entries
 
     var body: some View {
         ZStack {
@@ -40,7 +40,6 @@ struct SettingsView: View {
                     ))
                 }
                 .padding(.horizontal)
-                //.padding(.top, 50)
                 
                 VStack {
                     Section(header: Text("Schedule Settings")) {
@@ -70,8 +69,6 @@ struct SettingsView: View {
                     }
                 }
                 .padding(.top, 40)
-                
-                // Your existing code for Edit Schedule button and Spacer
             }
             .padding(.top, -350)
         }
@@ -79,10 +76,10 @@ struct SettingsView: View {
 }
 
 struct NewScheduleView: View {
-    @Binding var schedules: [[ScheduleEntry]] // Binding to update the parent array
+    @Binding var schedules: [ScheduleEntry] // Binding to update the parent array
     @State private var startTime = Date()
     @State private var endTime = Date()
-    @State private var isRecurring = false // Added state for recurring checkbox
+    @State private var selectedWeekdays: Set<Int> = [] // Set to store selected weekdays
 
     var body: some View {
         VStack {
@@ -94,14 +91,32 @@ struct NewScheduleView: View {
                 .datePickerStyle(GraphicalDatePickerStyle())
                 .padding()
             
-            // Checkbox for recurrence
-            Toggle("Recurring", isOn: $isRecurring)
-                .padding()
+            // Buttons for each weekday
+            HStack {
+                ForEach(1 ..< 8, id: \.self) { weekday in
+                    Button(action: {
+                        if selectedWeekdays.contains(weekday) {
+                            selectedWeekdays.remove(weekday)
+                        } else {
+                            selectedWeekdays.insert(weekday)
+                        }
+                    }) {
+                        Text(weekdayLabel(for: weekday))
+                            .padding()
+                            .foregroundColor(selectedWeekdays.contains(weekday) ? .white : .black)
+                            .background(selectedWeekdays.contains(weekday) ? Color.blue : Color.gray.opacity(0.5))
+                            .cornerRadius(8)
+                    }
+                }
+            }
+            .padding()
             
             // Button to add the schedule entry
             Button("Add Schedule") {
-                let newEntry = ScheduleEntry(startTime: startTime, endTime: endTime, isRecurring: isRecurring)
-                schedules.append([newEntry])
+                for weekday in selectedWeekdays {
+                    let newEntry = ScheduleEntry(startTime: startTime, endTime: endTime, weekday: weekday)
+                    schedules.append(newEntry)
+                }
                 // Optionally, you can add validation or handle duplicates here
             }
             .frame(maxWidth: .infinity)
@@ -112,22 +127,38 @@ struct NewScheduleView: View {
             .padding()
         }
     }
+    
+    func weekdayLabel(for weekday: Int) -> String {
+        switch weekday {
+        case 1: return "S"
+        case 2: return "M"
+        case 3: return "T"
+        case 4: return "W"
+        case 5: return "T"
+        case 6: return "F"
+        case 7: return "S"
+        default: return ""
+        }
+    }
 }
 
 struct EditScheduleView: View {
-    @Binding var schedules: [[ScheduleEntry]] // Binding to update the parent array
+    @Binding var schedules: [ScheduleEntry] // Binding to update the parent array
     
     var body: some View {
         NavigationView {
             List {
                 ForEach(schedules.indices, id: \.self) { index in
                     Section(header: Text("Schedule \(index + 1)")) {
-                        ForEach(schedules[index], id: \.self) { entry in
-                            VStack {
-                                Text("Start Time: \(entry.startTime, formatter: dateFormatter)")
-                                Text("End Time: \(entry.endTime, formatter: dateFormatter)")
-                                Text("Recurring: \(entry.isRecurring ? "Yes" : "No")")
+                        let schedule = schedules[index]
+                        VStack {
+                            Text("Start Time: \(schedule.startTime, formatter: dateFormatter)")
+                            Text("End Time: \(schedule.endTime, formatter: dateFormatter)")
+                            Text("Weekday: \(weekdayLabel(for: schedule.weekday))")
+                            Button("Remove Schedule") {
+                                schedules.remove(at: index)
                             }
+                            .foregroundColor(.red)
                         }
                     }
                 }
@@ -141,6 +172,19 @@ struct EditScheduleView: View {
         formatter.timeStyle = .short
         return formatter
     }()
+    
+    private func weekdayLabel(for weekday: Int) -> String {
+        switch weekday {
+        case 1: return "Sunday"
+        case 2: return "Monday"
+        case 3: return "Tuesday"
+        case 4: return "Wednesday"
+        case 5: return "Thursday"
+        case 6: return "Friday"
+        case 7: return "Saturday"
+        default: return ""
+        }
+    }
 }
 
 
