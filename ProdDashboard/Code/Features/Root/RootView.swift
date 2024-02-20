@@ -28,7 +28,7 @@ struct RootView: View {
                     Label("Home", systemImage: "house.fill")
                 }
                 .tag(2)
-            TaskListScreen()
+            WeekView()
                 .tabItem() {
                     Label("Week", systemImage: "note")
                 }

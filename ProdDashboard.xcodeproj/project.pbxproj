@@ -36,6 +36,9 @@
 		31CCD7042B5C95C00001616D /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CCD7032B5C95C00001616D /* AddTaskView.swift */; };
 		31D4D2A02B7966D7005D0C32 /* Task+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4D29F2B7966D7005D0C32 /* Task+helper.swift */; };
 		31D4D2AE2B797353005D0C32 /* TaskManager+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4D2AD2B797353005D0C32 /* TaskManager+helper.swift */; };
+		559B3AC92B82D01300CBB4A2 /* weekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559B3AC82B82D01300CBB4A2 /* weekView.swift */; };
+		559B3ACB2B82F5E400CBB4A2 /* interWeekview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559B3ACA2B82F5E400CBB4A2 /* interWeekview.swift */; };
+		559B3ACD2B82F81D00CBB4A2 /* weekCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559B3ACC2B82F81D00CBB4A2 /* weekCell.swift */; };
 		55B42F412B72B373007C3334 /* DateScrollerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B42F402B72B372007C3334 /* DateScrollerView.swift */; };
 		55B42F442B72B3A9007C3334 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B42F422B72B3A9007C3334 /* CalendarCell.swift */; };
 		55B42F452B72B3A9007C3334 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B42F432B72B3A9007C3334 /* CalendarHelper.swift */; };
@@ -74,6 +77,9 @@
 		31CCD7032B5C95C00001616D /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
 		31D4D29F2B7966D7005D0C32 /* Task+helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+helper.swift"; sourceTree = "<group>"; };
 		31D4D2AD2B797353005D0C32 /* TaskManager+helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskManager+helper.swift"; sourceTree = "<group>"; };
+		559B3AC82B82D01300CBB4A2 /* weekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weekView.swift; sourceTree = "<group>"; };
+		559B3ACA2B82F5E400CBB4A2 /* interWeekview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = interWeekview.swift; sourceTree = "<group>"; };
+		559B3ACC2B82F81D00CBB4A2 /* weekCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weekCell.swift; sourceTree = "<group>"; };
 		55B42F402B72B372007C3334 /* DateScrollerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateScrollerView.swift; path = "ProdDashboard/Code/Features/Calendar - Month/Views/DateScrollerView.swift"; sourceTree = SOURCE_ROOT; };
 		55B42F422B72B3A9007C3334 /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		55B42F432B72B3A9007C3334 /* CalendarHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
@@ -611,6 +617,7 @@
 				55B42F402B72B372007C3334 /* DateScrollerView.swift */,
 				31AC4E092B79BFEF00D10361 /* MonthStruct.swift */,
 				31AC4E0B2B79C00A00D10361 /* DateHolder.swift */,
+				559B3ACC2B82F81D00CBB4A2 /* weekCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -646,6 +653,8 @@
 		DD18CF5B2B573C6B00CF3F82 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				559B3AC82B82D01300CBB4A2 /* weekView.swift */,
+				559B3ACA2B82F5E400CBB4A2 /* interWeekview.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -829,6 +838,7 @@
 				31AC4E082B797E0D00D10361 /* NSPredicate+helper.swift in Sources */,
 				314D2F032B35308E008B4281 /* ContentView.swift in Sources */,
 				31725A742B79D2CE00A35808 /* MonthButton.swift in Sources */,
+				559B3ACB2B82F5E400CBB4A2 /* interWeekview.swift in Sources */,
 				55E15D602B7467CC00C05363 /* DayView.swift in Sources */,
 				31AC4E102B7BEDE400D10361 /* RootView.swift in Sources */,
 				31725A802B79D88F00A35808 /* NavigationMenu.swift in Sources */,
@@ -839,10 +849,12 @@
 				31D4D2A02B7966D7005D0C32 /* Task+helper.swift in Sources */,
 				31CCD6D92B5C5CD80001616D /* DataController.swift in Sources */,
 				31725A7E2B79D38F00A35808 /* Checkbox.swift in Sources */,
+				559B3ACD2B82F81D00CBB4A2 /* weekCell.swift in Sources */,
 				31AC4E042B797B3300D10361 /* TaskListScreen.swift in Sources */,
 				31D4D2AE2B797353005D0C32 /* TaskManager+helper.swift in Sources */,
 				31AC4E0E2B7BE03600D10361 /* StatsButton.swift in Sources */,
 				31725A7C2B79D37D00A35808 /* HomeButton.swift in Sources */,
+				559B3AC92B82D01300CBB4A2 /* weekView.swift in Sources */,
 				682113D02B70268A002EC834 /* SettingsView.swift in Sources */,
 				311363F92B5E104900559799 /* extensions.swift in Sources */,
 				31725A762B79D30300A35808 /* WeekButton.swift in Sources */,

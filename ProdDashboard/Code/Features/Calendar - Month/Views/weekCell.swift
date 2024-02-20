@@ -1,13 +1,13 @@
 //
-//  CalendarCell.swift
-//  
+//  weekCell.swift
+//  ProdDashboard
 //
-//  Created by Cole Roseth on 1/30/24.
+//  Created by Cole Roseth on 2/18/24.
 //
 
 import SwiftUI
 
-struct CalendarCell: View {
+struct WeekCell: View {
     @Environment(\.managedObjectContext) var context
     @FetchRequest(fetchRequest: CDTask.fetch(), animation: .bouncy)
     var tasks: FetchedResults<CDTask>
@@ -24,29 +24,47 @@ struct CalendarCell: View {
     var body: some View {
         
         Rectangle().foregroundColor(.clear)
-            .background(cellColor)
+            .background(Color(red: 0.96, green: 0.89, blue: 0.83))
             .edgesIgnoringSafeArea(.all) // Background Color
             .overlay(
-                VStack {
-                    Text(monthStruct().day())
-                    .foregroundColor(textColor(type: monthStruct().monthType))
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .padding()
-                    .background(Color.clear)
-                    .cornerRadius(5)
-                    .bold()
-                    //Text("#: "+"\(filteredTasks.count)")
+                HStack {
+                   Text(monthStruct().day())
+                        .foregroundColor(textColor(type: monthStruct().monthType))
+                        //.frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .padding()
+                        .background(Color.clear)
+                        .cornerRadius(5)
+                        .bold()
+                    List {
+                        ForEach(filteredTasks) { task in
+                            if !(task.completed) {
+                                VStack {
+                                    HStack {
+                                        Image(systemName: task.completed ? "largecircle.fill.circle" : "circle")
+                                            .onTapGesture {
+                                                task.completed.toggle()
+                                                DataController.shared.save()
+                                            }
+                                        Text(task.name).bold().frame(width: 135, height: 10, alignment: .leading)
+                                    }
+                                    HStack {
+                                        Image(systemName: "calendar.badge.clock")
+                                            .font(.system(size: 15, weight: .light))
+                                        Text("insert start date")
+                                    }.frame(width: 135, height: 15, alignment: .leading)
+                                        
+                                }
+                            }
+                        }.onDelete(perform: deleteTask)
+                    }.scrollContentBackground(.hidden)
+                    
+                    
                 }
-                
-                
-                
             )
             //.padding()
             .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .cornerRadius(5)
                     .shadow(radius: 3, y: 5)
-                    
-        
         
         
         
@@ -60,30 +78,15 @@ struct CalendarCell: View {
 //            .cornerRadius(5).shadow(radius: 3, y: 5)
     }
     
-    private var cellColor: Color {
-        let taskCount = filteredTasks.count
-        let maxTaskCount = 10 // Define the maximum task count to adjust the darkness
-        let maxDarkness: Double = 0.5 // Define the maximum darkness
-        
-        // Calculate the darkness based on the task count
-        let darkness = min(1.0, Double(taskCount) / Double(maxTaskCount)) * maxDarkness
-        
-        // Get the base color components
-        let baseColor = Color(red: 0.96, green: 0.89, blue: 0.83)
-        var baseRed: CGFloat = 0
-        var baseGreen: CGFloat = 0
-        var baseBlue: CGFloat = 0
-        UIColor(baseColor).getRed(&baseRed, green: &baseGreen, blue: &baseBlue, alpha: nil)
-        
-        // Calculate the adjusted color with darkness
-        let adjustedRed = max(0, baseRed - CGFloat(darkness))
-        let adjustedGreen = max(0, baseGreen - CGFloat(darkness))
-        let adjustedBlue = max(0, baseBlue - CGFloat(darkness))
-        
-        return Color(red: Double(adjustedRed), green: Double(adjustedGreen), blue: Double(adjustedBlue))
-    }
     
-    
+    private func deleteTask(offsets: IndexSet) {
+            withAnimation {
+                offsets.map { tasks[$0] }
+                    .forEach(context.delete)
+                
+                DataController.shared.save()
+            }
+        }
     
     
     private var filteredTasks: [CDTask] {
@@ -118,9 +121,10 @@ struct CalendarCell: View {
     }
 }
 
-struct CalendarCell_Previews: PreviewProvider {
+struct WeekCell_Previews: PreviewProvider {
     static var previews: some View {
         CalendarCell(count: 1, startingSpaces: 1, daysInMonth: 1, daysInPrevMonth: 1)
     }
 }
  
+

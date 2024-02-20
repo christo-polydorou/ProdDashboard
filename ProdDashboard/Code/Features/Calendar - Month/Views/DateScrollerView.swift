@@ -43,6 +43,7 @@ struct DateScrollerView: View {
         }
     
     var body: some View {
+//        Rectangle().foregroundColor(.clear).background(Color(red: 1, green: 0.95, blue: 0.91)).edgesIgnoringSafeArea(.all) // Background Color
         VStack {
             HStack {
                 Spacer()
@@ -50,6 +51,7 @@ struct DateScrollerView: View {
                     Image(systemName: "arrow.left")
                         .imageScale(.large)
                         .font(Font.title.weight(.bold))
+                        .foregroundColor(Color(red: 0.02, green: 0.47, blue: 0.34))
                 }
                 
                 Text(CalendarHelper().monthYearString(dateHolder.date))
@@ -62,6 +64,7 @@ struct DateScrollerView: View {
                     Image(systemName: "arrow.right")
                         .imageScale(.large)
                         .font(Font.title.weight(.bold))
+                        .foregroundColor(Color(red: 0.02, green: 0.47, blue: 0.34))
                 }
                 
                 
@@ -74,6 +77,8 @@ struct DateScrollerView: View {
             daysOfWeekStack
             calendarGrid
         }
+        .background(Color(red: 1, green: 0.95, blue: 0.91))
+        
         
     }
     
@@ -118,6 +123,7 @@ struct DateScrollerView: View {
                         column in
                         let count = column + (row * 7)
                            // EmptyView()
+                        
                         CalendarCell(count: count, startingSpaces: startingSpaces, daysInMonth: daysInMonth, daysInPrevMonth: daysInPrevMonth)
                             .environmentObject(dateHolder)
                             .onTapGesture {
@@ -144,7 +150,7 @@ struct DateScrollerView: View {
         }
         .frame(maxHeight: .infinity)
         .sheet(isPresented: $showingDayView) {
-            DayView(count: sendCount, startingSpaces: startingSpaces,  daysInMonth: daysInMonth, daysInPrevMonth: daysInPrevMonth, sendDate: formattedDate)
+            DayView(count: sendCount, startingSpaces: startingSpaces, daysInMonth: daysInMonth, daysInPrevMonth: daysInPrevMonth, sendDate: formattedDate)
         }
     }
     
