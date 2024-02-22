@@ -11,6 +11,7 @@ struct SettingsButton: ViewModifier {
     func body(content: Content) -> some View {
         VStack {
             Image(systemName: "gear")
+                .imageScale(.large)
             content
         }
     }

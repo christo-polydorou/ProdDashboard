@@ -11,6 +11,7 @@ struct HomeButton: ViewModifier {
     func body(content: Content) -> some View {
         VStack {
             Image(systemName: "house.fill")
+                .imageScale(.large)
             content
         }
     }

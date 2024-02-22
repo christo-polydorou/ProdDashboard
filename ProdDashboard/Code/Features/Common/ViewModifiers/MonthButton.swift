@@ -11,6 +11,7 @@ struct MonthButton: ViewModifier {
     func body(content: Content) -> some View {
         VStack {
             Image(systemName: "calendar")
+                .imageScale(.large)
             content
         }
     }

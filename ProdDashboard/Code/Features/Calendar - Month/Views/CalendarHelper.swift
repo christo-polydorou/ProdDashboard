@@ -21,8 +21,17 @@ class CalendarHelper {
         return calendar.date(byAdding: .month, value: 1, to: date)!
     }
     
+    
     func minusMonth(_ date: Date) -> Date {
         return calendar.date(byAdding: .month, value: -1, to: date)!
+    }
+    
+    func plusWeek(_ date: Date) -> Date {
+        return calendar.date(byAdding: .day, value: 7, to: date)!
+    }
+    
+    func minusWeek(_ date: Date) -> Date {
+        return calendar.date(byAdding: .day, value: -7, to: date)!
     }
     
     func daysInMonth(_ date: Date) -> Int {
@@ -44,6 +53,10 @@ class CalendarHelper {
         let components = calendar.dateComponents([.weekday], from: date)
         return components.weekday!-1
     }
+    
+    
+    
+
     
     
     

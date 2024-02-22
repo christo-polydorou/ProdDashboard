@@ -1,16 +1,18 @@
 //
-//  WeekButton.swift
+//  StatsButton.swift
 //  ProdDashboard
 //
-//  Created by Aidan Morris on 1/21/24.
+//  Created by Christo Polydorou on 2/13/24.
 //
+
+import Foundation
 
 import SwiftUI
 
-struct WeekButton: ViewModifier {
+struct StatsButton: ViewModifier {
     func body(content: Content) -> some View {
         VStack {
-            Image(systemName: "note")
+            Image(systemName: "chart.bar")
                 .imageScale(.large)
             content
         }
