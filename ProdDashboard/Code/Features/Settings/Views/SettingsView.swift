@@ -43,52 +43,20 @@ struct SettingsView: View {
                     }
                 }
                 .padding(.horizontal)
-//                .padding(.bottom, 20)
-//                Spacer()
-//                Section(header: Text("Change Appearance")
-//                    .font(.title2)
-//                    .foregroundColor(.blue)
-//                ) {
-//                    HStack {
-//                        ForEach(0..<ThemeManager.themes.count, id: \.self) { theme in
-//                            Button(action: {
-//                                dataSource.selectedThemeAS = theme
-//                            }) {
-//                                Text(ThemeManager.themes[theme].themeName)
-//                                    .foregroundColor(.white) // Set text color
-//                                    .padding(15) // Add padding for better spacing
-//                            }
-//                            .buttonStyle(BorderedButtonStyle())
-//                            .foregroundColor(.white) // Set text color
-//                            .background(ThemeManager.themes[theme].buttonColor
-//                                .overlay(
-//                                    Circle().stroke(.black, lineWidth: dataSource.selectedThemeAS == theme ? 10 : 0)
-//                                )
-//                            )
-//    //                            .cornerRadius(8) // Set corner radius for rounded corners
-//                            .clipShape(Circle())
-//
-//                        }
-//                    }
-//                }
-//                .padding(.horizontal)
-//                .padding(.bottom, 20)
-//                
-//                
-                
+
                 Section(header: Text("Schedule Settings")
                     .font(.title2)
                     .foregroundColor(.black)
                     .fontWeight(.semibold)
                 ) {
-                    HStack {
+                    HStack(spacing: 20) {
                         Button("Add Schedule") {
                             isShowingNewSchedule = true
                         }
                         .foregroundColor(.white)
                         .padding()
-                        .background(Color(red: 0.02, green: 0.47, blue: 0.34))
-                        .cornerRadius(8)
+                        .background(dataSource.selectedTheme.buttonColor)
+                        .cornerRadius(10)
                         .sheet(isPresented: $isShowingNewSchedule) {
                             NewScheduleView(schedules: $schedules)
                         }
@@ -98,8 +66,8 @@ struct SettingsView: View {
                         }
                         .foregroundColor(.white)
                         .padding()
-                        .background(Color(red: 0.02, green: 0.47, blue: 0.34))
-                        .cornerRadius(8)
+                        .background(dataSource.selectedTheme.buttonColor)
+                        .cornerRadius(10)
                         .sheet(isPresented: $isShowingEditSchedule) {
                             EditScheduleView(schedules: $schedules)
                         }
@@ -113,59 +81,40 @@ struct SettingsView: View {
                     .fontWeight(.semibold)
                     .padding(.bottom, 10)
                 ) {
-                    VStack {
+                    HStack {
                         ForEach(0..<ThemeManager.themes.count, id: \.self) { theme in
                             Button(action: {
                                 dataSource.selectedThemeAS = theme
                             }) {
-                                Text(ThemeManager.themes[theme].themeName)
-                                    .foregroundColor(.white) // Set text color
-                                    .padding(15) // Add padding for better spacing
-                                    .frame(maxWidth: .infinity)
-                                    .cornerRadius(10)
+                                VStack {
+                                    Text(ThemeManager.themes[theme].themeName)
+                                        .foregroundColor(ThemeManager.themes[theme].buttonColor) // Set text color
+//                                        .padding(15) // Add padding for better spacing
+                                        .frame(maxWidth: dataSource.selectedThemeAS == theme ? 150 : 130, minHeight: dataSource.selectedThemeAS == theme ? 80 : 70)
+                                        .cornerRadius(10)
+                                        .fontWeight(.bold)
+//                                    if dataSource.selectedThemeAS == theme {
+//
+//                                    }
+                                }
                             }
-//                            .buttonStyle(BorderedButtonStyle())
-                            .foregroundColor(.white)
-//                            .cornerRadius(30)
-                            .background(ThemeManager.themes[theme].buttonColor
-                                .overlay(
-                                    Circle().stroke(.black, lineWidth: dataSource.selectedThemeAS == theme ? 10 : 0)
-                                )
-                            )
+                            .background(.white)
                             .cornerRadius(30)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 30)
+                                    .stroke(dataSource.selectedThemeAS == theme ? dataSource.selectedTheme.buttonColor : Color.clear, lineWidth: 2)
+                            )
                         }
                     }
                 }
                 .padding(.horizontal)
-//                .padding(.top, 20)
-                .padding(.bottom, 60)
                 
             }
             .padding(.top, 10)
+            .padding(.bottom, 200)
         }
     }
 }
-
-//HStack {
-//    Button(action: {
-//        // Present your sheet here
-//    }) {
-//        Text("Change Appearance")
-//            .foregroundColor(.accentColor)
-//    }
-//    Button {
-//        // Action to perform when the button is tapped
-//        // Add your code here
-//    } label: {
-//        Text("The Outline")
-//            .padding()
-//            .background {
-//                RoundedRectangle(cornerRadius: 8)
-//                    .stroke(.yellow, lineWidth: 2) // Use Color.buttonGoldColor if it's a custom color
-//            }
-//    }
-//}
-//.padding(.bottom, 200)
 
 struct NewScheduleView: View {
     @Binding var schedules: [ScheduleEntry] // Binding to update the parent array

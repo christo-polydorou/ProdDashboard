@@ -29,17 +29,17 @@ struct RootView: View {
                 .tabItem() {
                     Label("Home", systemImage: "house.fill")
                 }
-                .tag(2)
+                .tag(1)
             WeekView()
                 .tabItem() {
                     Label("Week", systemImage: "note")
                 }
-                .tag(3)
+                .tag(2)
             DateScrollerView()
                 .tabItem() {
                     Label("Month", systemImage: "calendar")
                 }
-                .tag(4)
+                .tag(3)
             
         }
         .accentColor(Color("TabView"))

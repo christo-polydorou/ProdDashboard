@@ -25,11 +25,15 @@ extension CDTask {
         set { startDate_ = newValue }
     }
     
-//    var completed_b: Binding<Bool> {
-//        get { $completed }
-//        set { completed = newValue }
-//    }
-//    
+    var duration: Double {
+        get { duration_ }
+        set { duration_ = newValue }
+    }
+    
+    var tag: String {
+        get { tag_ ?? ""}
+        set { tag_ = newValue }
+    }
     
     convenience init(name: String,
                      startDate: Date, 

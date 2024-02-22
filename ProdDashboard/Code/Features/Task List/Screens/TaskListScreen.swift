@@ -32,10 +32,9 @@ struct TaskListScreen: View {
                 CompletedSection()
             }
             .sheet(isPresented: $addTask) {
-                
                 AddTaskView()
             }
-        }        
+        }
     }
 }
 
@@ -89,7 +88,7 @@ struct UncompletedSection: View {
                             HStack {
                                 Image(systemName: "calendar.badge.clock")
                                     .font(.system(size: 20, weight: .light))
-                                Text("insert start date")
+                                Text(getHourAndMinute(from: task.startDate))
                             }.frame(width: 175, height: 15, alignment: .leading)
                                 
                         }
@@ -135,6 +134,41 @@ struct UncompletedSection: View {
             let taskDayStart = Calendar.current.startOfDay(for: taskDate)
             return taskDayStart == currentDayStart
         }
+    }
+    
+    func getHourAndMinute(from date: Date) -> String {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.hour, .minute], from: date)
+        
+        // Extracting individual time components
+        let hour = components.hour ?? 0
+        let minute = components.minute ?? 0
+        
+        // Determine AM/PM
+        let amPM: String
+        if hour >= 12 {
+            amPM = "PM"
+        } else {
+            amPM = "AM"
+        }
+        
+        // Convert to 12-hour format
+        var hourIn12HourFormat = hour % 12
+        if hourIn12HourFormat == 0 {
+            hourIn12HourFormat = 12 // 0 hour is 12 AM in 12-hour format
+        }
+
+        // Formatting the time string
+        let hourString: String
+        if hourIn12HourFormat < 10 {
+            hourString = "\(hourIn12HourFormat)"
+        } else {
+            hourString = String(format: "%02d", hourIn12HourFormat)
+        }
+        
+        let timeString = "\(hourString):\(String(format: "%02d", minute)) \(amPM)"
+        
+        return timeString
     }
 }
 
