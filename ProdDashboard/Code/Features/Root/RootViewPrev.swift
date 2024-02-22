@@ -1,22 +1,20 @@
 //
-//  RootView.swift
+//  RootViewPrev.swift
 //  ProdDashboard
 //
-//  Created by Christo Polydorou on 2/13/24.
+//  Created by Christo Polydorou on 2/22/24.
 //
 
 import Foundation
 import SwiftUI
 
-struct RootView: View {
-    @State private var selection = 1
-    
-    @Binding var selectedTab: Int
+struct RootViewPrev: View {
+    @State private var selection = 0
     
     var body: some View {
-        TabView(selection: $selectedTab) {
+        TabView(selection: $selection) {
             SettingsView()
-                .tabItem() {
+                .tabItem(){
                     Label("Settings", systemImage: "gear")
                 }
                 .tag(0)
@@ -26,29 +24,30 @@ struct RootView: View {
 //                }
 //                .tag(1)
             TaskListScreen()
-                .tabItem() {
+                .tabItem(){
                     Label("Home", systemImage: "house.fill")
                 }
-                .tag(2)
+                .tag(1)
             WeekView()
-                .tabItem() {
+                .tabItem(){
                     Label("Week", systemImage: "note")
                 }
-                .tag(3)
+                .tag(2)
             DateScrollerView()
-                .tabItem() {
+                .tabItem(){
                     Label("Month", systemImage: "calendar")
                 }
-                .tag(4)
+                .tag(3)
             
         }
-        .accentColor(Color("TabView"))
-
+        .accentColor(.black)
+        .background(.black)
     }
 }
 
-//#Preview {
-//    RootView()
-//        .environmentObject(DataSource())
-//        .environmentObject(DateHolder())
-//}
+#Preview {
+    RootViewPrev()
+        .environmentObject(DataSource())
+        .environmentObject(DateHolder())
+}
+

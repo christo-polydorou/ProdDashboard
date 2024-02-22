@@ -2,3 +2,9 @@ disabled_rules:
 #
 - vertical_whitespace
 - trailing_whitespace
+- empty_parentheses_with_trailing_closure
+- opening_brace
+- trailing_newline
+- comment_spacing
+- line_length
+- closure_parameter_position

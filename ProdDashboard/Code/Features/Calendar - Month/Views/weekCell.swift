@@ -9,6 +9,7 @@ import SwiftUI
 
 struct WeekCell: View {
     @Environment(\.managedObjectContext) var context
+    @EnvironmentObject var dataSource: DataSource
     @FetchRequest(fetchRequest: CDTask.fetch(), animation: .bouncy)
     var tasks: FetchedResults<CDTask>
     
@@ -17,14 +18,11 @@ struct WeekCell: View {
     let startingSpaces: Int
     let daysInMonth: Int
     let daysInPrevMonth: Int
-    //var sendDate: String
-    
-    
-    
+
     var body: some View {
         
         Rectangle().foregroundColor(.clear)
-            .background(Color(red: 0.96, green: 0.89, blue: 0.83))
+            .background(.white)
             .edgesIgnoringSafeArea(.all) // Background Color
             .overlay(
                 HStack {
@@ -57,25 +55,11 @@ struct WeekCell: View {
                             }
                         }.onDelete(perform: deleteTask)
                     }.scrollContentBackground(.hidden)
-                    
-                    
                 }
             )
-            //.padding()
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .cornerRadius(5)
-                    .shadow(radius: 3, y: 5)
-        
-        
-        
-        
-        
-        
-//        Text(monthStruct().day())
-//            .foregroundColor(textColor(type: monthStruct().monthType))
-//            //.background(Color(red: 0.02, green: 0.47, blue: 0.34))
-//            .frame(maxWidth: .infinity, maxHeight: .infinity)
-//            .cornerRadius(5).shadow(radius: 3, y: 5)
+            .frame(maxWidth: 350, maxHeight: 82)
+                    .cornerRadius(10)
+//                    .shadow(radius: 3, y: 5)
     }
     
     
@@ -99,8 +83,6 @@ struct WeekCell: View {
             return Calendar.current.isDate(taskDayDate, inSameDayAs: currentDayDate)
         }
     }
-    
-    
     
     func textColor(type: MonthType) -> Color {
         return type == MonthType.current ? Color.black: Color.gray

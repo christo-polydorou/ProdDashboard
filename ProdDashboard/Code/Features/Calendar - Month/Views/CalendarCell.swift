@@ -13,6 +13,7 @@ struct CalendarCell: View {
     var tasks: FetchedResults<CDTask>
     
     @EnvironmentObject var dateHolder: DateHolder
+    @EnvironmentObject var dataSource: DataSource
     let count: Int
     let startingSpaces: Int
     let daysInMonth: Int
@@ -31,33 +32,15 @@ struct CalendarCell: View {
                     Text(monthStruct().day())
                     .foregroundColor(textColor(type: monthStruct().monthType))
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .padding()
                     .background(Color.clear)
                     .cornerRadius(5)
-                    .bold()
-                    //Text("#: "+"\(filteredTasks.count)")
+                    .font(.system(size: 16))
+                    .padding(.bottom, 30)
                 }
-                
-                
-                
             )
-            //.padding()
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    .cornerRadius(5)
-                    .shadow(radius: 3, y: 5)
-                    
-        
-        
-        
-        
-        
-        
-        
-//        Text(monthStruct().day())
-//            .foregroundColor(textColor(type: monthStruct().monthType))
-//            //.background(Color(red: 0.02, green: 0.47, blue: 0.34))
-//            .frame(maxWidth: .infinity, maxHeight: .infinity)
-//            .cornerRadius(5).shadow(radius: 3, y: 5)
+            .frame(maxWidth: 100, maxHeight: .infinity)
+                    .cornerRadius(10)
+//                    .shadow(radius: 3, y: 5)
     }
     
     private var cellColor: Color {
@@ -69,7 +52,7 @@ struct CalendarCell: View {
         let darkness = min(1.0, Double(taskCount) / Double(maxTaskCount)) * maxDarkness
         
         // Get the base color components
-        let baseColor = Color(red: 0.96, green: 0.89, blue: 0.83)
+        let baseColor = Color(.white)
         var baseRed: CGFloat = 0
         var baseGreen: CGFloat = 0
         var baseBlue: CGFloat = 0

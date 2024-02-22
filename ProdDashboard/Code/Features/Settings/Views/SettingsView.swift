@@ -10,6 +10,7 @@ struct ScheduleEntry: Hashable {
 struct SettingsView: View {
     @AppStorage("machineLearningEnabled") private var machineLearningEnabled = false
     @Environment(\.colorScheme) private var colorScheme
+    @EnvironmentObject var dataSource: DataSource
     @State private var isShowingNewSchedule = false
     @State private var isShowingEditSchedule = false
     @State private var selectedDate = Date()
@@ -17,36 +18,73 @@ struct SettingsView: View {
 
     var body: some View {
         ZStack {
-            Rectangle().foregroundColor(.clear).background(Color(red: 1, green: 0.95, blue: 0.91)).edgesIgnoringSafeArea(.all) // Background Color
+            Rectangle().foregroundColor(.clear).background(dataSource.selectedTheme.backgroundColor).edgesIgnoringSafeArea(.all) // Background Color
             VStack {
                 Text("Settings").font(Font.custom("Montserrat", size: 50)).padding(.leading).padding(.trailing)
+                    .padding(.bottom, 50)
                 
-                Section(header: Text("General Settings")) {
-                    Toggle("Machine Learning Suggestions", isOn: $machineLearningEnabled)
-                }
-                .padding(.horizontal)
-                .padding(.top, 20)
-                
-                Section{
-                    Toggle("Dark Mode", isOn: Binding(
-                        get: { colorScheme == .dark },
-                        set: { _ in
-                            if colorScheme == .dark {
-                                UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .light
-                            } else {
-                                UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .dark
+                Section(header: Text("General Settings")
+                    .font(.title2)
+                    .foregroundColor(.black)
+                    .fontWeight(.semibold)
+                ) {
+                    VStack {
+                        Toggle("Machine Learning Suggestions", isOn: $machineLearningEnabled)
+                        Toggle("Dark Mode", isOn: Binding(
+                            get: { colorScheme == .dark },
+                            set: { _ in
+                                if colorScheme == .dark {
+                                    UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .light
+                                } else {
+                                    UIApplication.shared.windows.first?.overrideUserInterfaceStyle = .dark
+                                }
                             }
-                        }
-                    ))
+                        ))
+                    }
                 }
                 .padding(.horizontal)
+//                .padding(.bottom, 20)
+//                Spacer()
+//                Section(header: Text("Change Appearance")
+//                    .font(.title2)
+//                    .foregroundColor(.blue)
+//                ) {
+//                    HStack {
+//                        ForEach(0..<ThemeManager.themes.count, id: \.self) { theme in
+//                            Button(action: {
+//                                dataSource.selectedThemeAS = theme
+//                            }) {
+//                                Text(ThemeManager.themes[theme].themeName)
+//                                    .foregroundColor(.white) // Set text color
+//                                    .padding(15) // Add padding for better spacing
+//                            }
+//                            .buttonStyle(BorderedButtonStyle())
+//                            .foregroundColor(.white) // Set text color
+//                            .background(ThemeManager.themes[theme].buttonColor
+//                                .overlay(
+//                                    Circle().stroke(.black, lineWidth: dataSource.selectedThemeAS == theme ? 10 : 0)
+//                                )
+//                            )
+//    //                            .cornerRadius(8) // Set corner radius for rounded corners
+//                            .clipShape(Circle())
+//
+//                        }
+//                    }
+//                }
+//                .padding(.horizontal)
+//                .padding(.bottom, 20)
+//                
+//                
                 
-                VStack {
-                    Section(header: Text("Schedule Settings")) {
+                Section(header: Text("Schedule Settings")
+                    .font(.title2)
+                    .foregroundColor(.black)
+                    .fontWeight(.semibold)
+                ) {
+                    HStack {
                         Button("Add Schedule") {
                             isShowingNewSchedule = true
                         }
-                        .frame(maxWidth: .infinity) // Center the button horizontally
                         .foregroundColor(.white)
                         .padding()
                         .background(Color(red: 0.02, green: 0.47, blue: 0.34))
@@ -58,7 +96,6 @@ struct SettingsView: View {
                         Button("Edit Schedule") {
                             isShowingEditSchedule = true
                         }
-                        .frame(maxWidth: .infinity) // Center the button horizontally
                         .foregroundColor(.white)
                         .padding()
                         .background(Color(red: 0.02, green: 0.47, blue: 0.34))
@@ -68,12 +105,67 @@ struct SettingsView: View {
                         }
                     }
                 }
-                .padding(.top, 40)
+                .padding(.bottom, 20)
+                
+                Section(header: Text("Appearance")
+                    .font(.title2)
+                    .foregroundColor(.black)
+                    .fontWeight(.semibold)
+                    .padding(.bottom, 10)
+                ) {
+                    VStack {
+                        ForEach(0..<ThemeManager.themes.count, id: \.self) { theme in
+                            Button(action: {
+                                dataSource.selectedThemeAS = theme
+                            }) {
+                                Text(ThemeManager.themes[theme].themeName)
+                                    .foregroundColor(.white) // Set text color
+                                    .padding(15) // Add padding for better spacing
+                                    .frame(maxWidth: .infinity)
+                                    .cornerRadius(10)
+                            }
+//                            .buttonStyle(BorderedButtonStyle())
+                            .foregroundColor(.white)
+//                            .cornerRadius(30)
+                            .background(ThemeManager.themes[theme].buttonColor
+                                .overlay(
+                                    Circle().stroke(.black, lineWidth: dataSource.selectedThemeAS == theme ? 10 : 0)
+                                )
+                            )
+                            .cornerRadius(30)
+                        }
+                    }
+                }
+                .padding(.horizontal)
+//                .padding(.top, 20)
+                .padding(.bottom, 60)
+                
             }
-            .padding(.top, -350)
+            .padding(.top, 10)
         }
     }
 }
+
+//HStack {
+//    Button(action: {
+//        // Present your sheet here
+//    }) {
+//        Text("Change Appearance")
+//            .foregroundColor(.accentColor)
+//    }
+//    Button {
+//        // Action to perform when the button is tapped
+//        // Add your code here
+//    } label: {
+//        Text("The Outline")
+//            .padding()
+//            .background {
+//                RoundedRectangle(cornerRadius: 8)
+//                    .stroke(.yellow, lineWidth: 2) // Use Color.buttonGoldColor if it's a custom color
+//            }
+//    }
+//}
+//.padding(.bottom, 200)
 
 struct NewScheduleView: View {
     @Binding var schedules: [ScheduleEntry] // Binding to update the parent array
@@ -191,5 +283,6 @@ struct EditScheduleView: View {
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
+            .environmentObject(DataSource())
     }
 }

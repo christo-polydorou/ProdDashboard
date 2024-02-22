@@ -16,6 +16,7 @@ struct DayView: View {
     
     @Environment(\.managedObjectContext) var context
     @EnvironmentObject var dateHolder: DateHolder
+    @EnvironmentObject var dataSource: DataSource
     //@Environment(\.managedObjectContext) var managedObjContext
     @FetchRequest(sortDescriptors: []) var tasks: FetchedResults<CDTask>
 
@@ -23,6 +24,7 @@ struct DayView: View {
     @State private var editMode: EditMode = .inactive
     @State private var showingSettings = false
     @State private var showingMonthCal = false
+    @State private var currDate = Date()
     
     @State private var addTask = false
     
@@ -34,17 +36,19 @@ struct DayView: View {
     
     var body: some View {
         ZStack {
-            Rectangle().foregroundColor(.clear).background(Color(red: 1, green: 0.95, blue: 0.91)).edgesIgnoringSafeArea(.all) // Background Color
+            Rectangle().foregroundColor(.clear).background(dataSource.selectedTheme.backgroundColor).edgesIgnoringSafeArea(.all) // Background Color
             VStack {
                 HStack {
                     Text(monthStruct().day()).font(Font.custom("Montserrat", size: 50)) // Title
+                        .padding(.leading, 15)
+                        .padding(.top, 15)
                     Spacer()
                     Button("+ Add Task") {
                         addTask.toggle()
-                    }.modifier(NewTaskButton())
+                    }.modifier(NewTaskButton(dataSource: dataSource))
                 }.padding(.leading).padding(.trailing)
                 let date = Date().formatted(date: .abbreviated, time: .omitted)
-                Text(sendDate).frame(maxWidth: .infinity, alignment: .leading).padding(.leading, 25).padding(.bottom, 25).fontWeight(.light) // Date
+//                Text(sendDate).frame(maxWidth: .infinity, alignment: .leading).padding(.leading, 25).padding(.bottom, 25).fontWeight(.light) // Date
                 UncompletedSection2(count: count,
                                     startingSpaces: startingSpaces,
                                     daysInMonth: daysInMonth,
@@ -56,9 +60,10 @@ struct DayView: View {
 //                NavigationMenu().offset(y: 20)
             }
             .sheet(isPresented: $addTask) {
-                AddTaskView()
+                AddTaskView(selectedDate: $currDate)
             }
         }
+        .presentationDetents([.fraction(0.9)])
         
     }
     
@@ -585,8 +590,7 @@ struct CompletedSection2: View {
 struct DayView_Previews: PreviewProvider {
     static var previews: some View {
         DayView(count: 1, startingSpaces: 1, daysInMonth: 1, daysInPrevMonth: 1, sendDate: "")
-        
-   
+            .environmentObject(DataSource())
     }
 }
 

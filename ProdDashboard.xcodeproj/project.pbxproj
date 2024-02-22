@@ -13,7 +13,6 @@
 		314D2F012B35308E008B4281 /* ProdDashboardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314D2F002B35308E008B4281 /* ProdDashboardApp.swift */; };
 		314D2F032B35308E008B4281 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 314D2F022B35308E008B4281 /* ContentView.swift */; };
 		314D2F052B35308E008B4281 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 314D2F042B35308E008B4281 /* Assets.xcassets */; };
-		314D2F082B35308E008B4281 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 314D2F072B35308E008B4281 /* Preview Assets.xcassets */; };
 		314D2F102B353308008B4281 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 314D2F0F2B353308008B4281 /* .swiftlint.yml */; };
 		314D2F152B353470008B4281 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 314D2F172B353470008B4281 /* Localizable.strings */; };
 		31725A742B79D2CE00A35808 /* MonthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31725A732B79D2CE00A35808 /* MonthButton.swift */; };
@@ -23,6 +22,15 @@
 		31725A7C2B79D37D00A35808 /* HomeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31725A7B2B79D37D00A35808 /* HomeButton.swift */; };
 		31725A7E2B79D38F00A35808 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31725A7D2B79D38F00A35808 /* Checkbox.swift */; };
 		31725A802B79D88F00A35808 /* NavigationMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31725A7F2B79D88F00A35808 /* NavigationMenu.swift */; };
+		31A18B592B87217B0014078B /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A18B582B87217B0014078B /* Theme.swift */; };
+		31A18B5B2B8721B70014078B /* ColorThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A18B5A2B8721B70014078B /* ColorThemes.swift */; };
+		31A18B5F2B8721F10014078B /* DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A18B5E2B8721F10014078B /* DataSource.swift */; };
+		31A18B612B87222F0014078B /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A18B602B87222F0014078B /* ThemeManager.swift */; };
+		31A18B632B8722800014078B /* TagButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A18B622B8722800014078B /* TagButton.swift */; };
+		31A18B652B8722940014078B /* ThemeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A18B642B8722940014078B /* ThemeButton.swift */; };
+		31A18B672B87246E0014078B /* WrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A18B662B87246E0014078B /* WrapperView.swift */; };
+		31A18B692B872D1D0014078B /* RootViewPrev.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A18B682B872D1D0014078B /* RootViewPrev.swift */; };
+		31A18B6D2B8754760014078B /* AppearanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A18B6C2B8754760014078B /* AppearanceView.swift */; };
 		31AC4E042B797B3300D10361 /* TaskListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC4E032B797B3300D10361 /* TaskListScreen.swift */; };
 		31AC4E082B797E0D00D10361 /* NSPredicate+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC4E072B797E0D00D10361 /* NSPredicate+helper.swift */; };
 		31AC4E0A2B79BFEF00D10361 /* MonthStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31AC4E092B79BFEF00D10361 /* MonthStruct.swift */; };
@@ -53,7 +61,6 @@
 		314D2F002B35308E008B4281 /* ProdDashboardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProdDashboardApp.swift; sourceTree = "<group>"; };
 		314D2F022B35308E008B4281 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		314D2F042B35308E008B4281 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		314D2F072B35308E008B4281 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		314D2F0F2B353308008B4281 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		314D2F162B353470008B4281 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		314D2F182B35349B008B4281 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -64,6 +71,15 @@
 		31725A7B2B79D37D00A35808 /* HomeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeButton.swift; sourceTree = "<group>"; };
 		31725A7D2B79D38F00A35808 /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
 		31725A7F2B79D88F00A35808 /* NavigationMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationMenu.swift; sourceTree = "<group>"; };
+		31A18B582B87217B0014078B /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		31A18B5A2B8721B70014078B /* ColorThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemes.swift; sourceTree = "<group>"; };
+		31A18B5E2B8721F10014078B /* DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSource.swift; sourceTree = "<group>"; };
+		31A18B602B87222F0014078B /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
+		31A18B622B8722800014078B /* TagButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagButton.swift; sourceTree = "<group>"; };
+		31A18B642B8722940014078B /* ThemeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeButton.swift; sourceTree = "<group>"; };
+		31A18B662B87246E0014078B /* WrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrapperView.swift; sourceTree = "<group>"; };
+		31A18B682B872D1D0014078B /* RootViewPrev.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewPrev.swift; sourceTree = "<group>"; };
+		31A18B6C2B8754760014078B /* AppearanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppearanceView.swift; sourceTree = "<group>"; };
 		31AC4E032B797B3300D10361 /* TaskListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListScreen.swift; sourceTree = "<group>"; };
 		31AC4E072B797E0D00D10361 /* NSPredicate+helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSPredicate+helper.swift"; sourceTree = "<group>"; };
 		31AC4E092B79BFEF00D10361 /* MonthStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthStruct.swift; sourceTree = "<group>"; };
@@ -135,20 +151,10 @@
 				314D2F0F2B353308008B4281 /* .swiftlint.yml */,
 				314D2F002B35308E008B4281 /* ProdDashboardApp.swift */,
 				DD18CF202B573ABF00CF3F82 /* Code */,
-				DD18CF1F2B573ABC00CF3F82 /* Config */,
 				DD18CF1D2B573AAF00CF3F82 /* Resources */,
 				314D2F112B3533FA008B4281 /* SupportingFiles */,
-				314D2F062B35308E008B4281 /* Preview Content */,
 			);
 			path = ProdDashboard;
-			sourceTree = "<group>";
-		};
-		314D2F062B35308E008B4281 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				314D2F072B35308E008B4281 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		314D2F112B3533FA008B4281 /* SupportingFiles */ = {
@@ -167,6 +173,26 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
+		31A18B522B871FA90014078B /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				DD18CF262B573B3E00CF3F82 /* Login */,
+				DD18CF282B573B4800CF3F82 /* Stats */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		31A18B552B8721530014078B /* Themes */ = {
+			isa = PBXGroup;
+			children = (
+				314D2F042B35308E008B4281 /* Assets.xcassets */,
+				31A18B582B87217B0014078B /* Theme.swift */,
+				31A18B5A2B8721B70014078B /* ColorThemes.swift */,
+				31A18B602B87222F0014078B /* ThemeManager.swift */,
+			);
+			path = Themes;
+			sourceTree = "<group>";
+		};
 		31CCD6D42B5C58210001616D /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +201,7 @@
 				31D4D29F2B7966D7005D0C32 /* Task+helper.swift */,
 				31D4D2AD2B797353005D0C32 /* TaskManager+helper.swift */,
 				31AC4E072B797E0D00D10361 /* NSPredicate+helper.swift */,
+				31A18B5E2B8721F10014078B /* DataSource.swift */,
 			);
 			path = DataModel;
 			sourceTree = "<group>";
@@ -195,18 +222,11 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		DD18CF1F2B573ABC00CF3F82 /* Config */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Config;
-			sourceTree = "<group>";
-		};
 		DD18CF202B573ABF00CF3F82 /* Code */ = {
 			isa = PBXGroup;
 			children = (
-				DD18CF232B573B0200CF3F82 /* Utilities */,
 				DD18CF222B573AF800CF3F82 /* Features */,
+				31A18B522B871FA90014078B /* Other */,
 			);
 			path = Code;
 			sourceTree = "<group>";
@@ -214,7 +234,6 @@
 		DD18CF212B573AD400CF3F82 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				314D2F042B35308E008B4281 /* Assets.xcassets */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -224,33 +243,20 @@
 			children = (
 				DD18CF302B573B8D00CF3F82 /* Common */,
 				DD18CF2E2B573B6E00CF3F82 /* Root */,
-				DD18CF262B573B3E00CF3F82 /* Login */,
 				DD18CF2A2B573B4E00CF3F82 /* Task List */,
 				DD18CF292B573B4B00CF3F82 /* New Task */,
 				DD18CF2C2B573B5D00CF3F82 /* Calendar - Day */,
 				DD18CF2B2B573B5200CF3F82 /* Calendar - Week */,
 				DD18CF2D2B573B6100CF3F82 /* Calendar - Month */,
-				DD18CF282B573B4800CF3F82 /* Stats */,
 				DD18CF272B573B4400CF3F82 /* Settings */,
 			);
 			path = Features;
 			sourceTree = "<group>";
 		};
-		DD18CF232B573B0200CF3F82 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utilities;
-			sourceTree = "<group>";
-		};
 		DD18CF262B573B3E00CF3F82 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				DD18CF402B573BEB00CF3F82 /* Screens */,
-				DD18CF3F2B573BE800CF3F82 /* Actions */,
-				DD18CF3E2B573BE600CF3F82 /* Models */,
 				DD18CF3D2B573BE400CF3F82 /* Views */,
-				DD18CF3C2B573BE100CF3F82 /* ViewModels */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -258,11 +264,7 @@
 		DD18CF272B573B4400CF3F82 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				DD18CF452B573BFB00CF3F82 /* Screens */,
-				DD18CF442B573BF900CF3F82 /* Actions */,
-				DD18CF432B573BF500CF3F82 /* Models */,
 				DD18CF422B573BF300CF3F82 /* Views */,
-				DD18CF412B573BEF00CF3F82 /* ViewModels */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -270,11 +272,6 @@
 		DD18CF282B573B4800CF3F82 /* Stats */ = {
 			isa = PBXGroup;
 			children = (
-				DD18CF4A2B573C0C00CF3F82 /* Screens */,
-				DD18CF492B573C0900CF3F82 /* Actions */,
-				DD18CF482B573C0700CF3F82 /* Models */,
-				DD18CF472B573C0500CF3F82 /* Views */,
-				DD18CF462B573C0000CF3F82 /* ViewModels */,
 			);
 			path = Stats;
 			sourceTree = "<group>";
@@ -282,11 +279,7 @@
 		DD18CF292B573B4B00CF3F82 /* New Task */ = {
 			isa = PBXGroup;
 			children = (
-				DD18CF4F2B573C1A00CF3F82 /* Screens */,
-				DD18CF4E2B573C1700CF3F82 /* Actions */,
-				DD18CF4D2B573C1500CF3F82 /* Models */,
 				DD18CF4C2B573C1300CF3F82 /* Views */,
-				DD18CF4B2B573C0F00CF3F82 /* ViewModels */,
 			);
 			path = "New Task";
 			sourceTree = "<group>";
@@ -295,10 +288,7 @@
 			isa = PBXGroup;
 			children = (
 				DD18CF542B573C3400CF3F82 /* Screens */,
-				DD18CF532B573C3000CF3F82 /* Actions */,
-				DD18CF522B573C2C00CF3F82 /* Models */,
 				DD18CF512B573C2700CF3F82 /* Views */,
-				DD18CF502B573C2100CF3F82 /* ViewModels */,
 			);
 			path = "Task List";
 			sourceTree = "<group>";
@@ -306,11 +296,7 @@
 		DD18CF2B2B573B5200CF3F82 /* Calendar - Week */ = {
 			isa = PBXGroup;
 			children = (
-				DD18CF5E2B573C7400CF3F82 /* Screens */,
-				DD18CF5D2B573C7100CF3F82 /* Actions */,
-				DD18CF5C2B573C6E00CF3F82 /* Models */,
 				DD18CF5B2B573C6B00CF3F82 /* Views */,
-				DD18CF5A2B573C6900CF3F82 /* ViewModels */,
 			);
 			path = "Calendar - Week";
 			sourceTree = "<group>";
@@ -318,11 +304,7 @@
 		DD18CF2C2B573B5D00CF3F82 /* Calendar - Day */ = {
 			isa = PBXGroup;
 			children = (
-				DD18CF632B573C8200CF3F82 /* Screens */,
-				DD18CF622B573C8000CF3F82 /* Actions */,
-				DD18CF612B573C7C00CF3F82 /* Models */,
 				DD18CF602B573C7A00CF3F82 /* Views */,
-				DD18CF5F2B573C7700CF3F82 /* ViewModels */,
 			);
 			path = "Calendar - Day";
 			sourceTree = "<group>";
@@ -330,11 +312,7 @@
 		DD18CF2D2B573B6100CF3F82 /* Calendar - Month */ = {
 			isa = PBXGroup;
 			children = (
-				DD18CF592B573C6600CF3F82 /* Screens */,
-				DD18CF582B573C6200CF3F82 /* Actions */,
-				DD18CF572B573C6000CF3F82 /* Models */,
 				DD18CF562B573C5D00CF3F82 /* Views */,
-				DD18CF552B573C5A00CF3F82 /* ViewModels */,
 			);
 			path = "Calendar - Month";
 			sourceTree = "<group>";
@@ -342,29 +320,21 @@
 		DD18CF2E2B573B6E00CF3F82 /* Root */ = {
 			isa = PBXGroup;
 			children = (
+				31A18B552B8721530014078B /* Themes */,
 				314D2F022B35308E008B4281 /* ContentView.swift */,
-				DD18CF2F2B573B7800CF3F82 /* Screens */,
 				311363FA2B5E149600559799 /* Media.xcassets */,
 				31AC4E0F2B7BEDE400D10361 /* RootView.swift */,
+				31A18B662B87246E0014078B /* WrapperView.swift */,
+				31A18B682B872D1D0014078B /* RootViewPrev.swift */,
 			);
 			path = Root;
-			sourceTree = "<group>";
-		};
-		DD18CF2F2B573B7800CF3F82 /* Screens */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Screens;
 			sourceTree = "<group>";
 		};
 		DD18CF302B573B8D00CF3F82 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				DD18CF362B573BA600CF3F82 /* ViewModels */,
 				DD18CF352B573BA300CF3F82 /* Views */,
-				DD18CF342B573B9F00CF3F82 /* Screens */,
 				DD18CF332B573B9B00CF3F82 /* Models */,
-				DD18CF322B573B9900CF3F82 /* Actions */,
 				DD18CF312B573B9400CF3F82 /* ViewModifiers */,
 			);
 			path = Common;
@@ -381,15 +351,10 @@
 				31725A7B2B79D37D00A35808 /* HomeButton.swift */,
 				31725A7D2B79D38F00A35808 /* Checkbox.swift */,
 				31AC4E0D2B7BE03600D10361 /* StatsButton.swift */,
+				31A18B622B8722800014078B /* TagButton.swift */,
+				31A18B642B8722940014078B /* ThemeButton.swift */,
 			);
 			path = ViewModifiers;
-			sourceTree = "<group>";
-		};
-		DD18CF322B573B9900CF3F82 /* Actions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Actions;
 			sourceTree = "<group>";
 		};
 		DD18CF332B573B9B00CF3F82 /* Models */ = {
@@ -400,33 +365,12 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		DD18CF342B573B9F00CF3F82 /* Screens */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Screens;
-			sourceTree = "<group>";
-		};
 		DD18CF352B573BA300CF3F82 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				31725A7F2B79D88F00A35808 /* NavigationMenu.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		DD18CF362B573BA600CF3F82 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		DD18CF3C2B573BE100CF3F82 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		DD18CF3D2B573BE400CF3F82 /* Views */ = {
@@ -437,103 +381,13 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		DD18CF3E2B573BE600CF3F82 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		DD18CF3F2B573BE800CF3F82 /* Actions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Actions;
-			sourceTree = "<group>";
-		};
-		DD18CF402B573BEB00CF3F82 /* Screens */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Screens;
-			sourceTree = "<group>";
-		};
-		DD18CF412B573BEF00CF3F82 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		DD18CF422B573BF300CF3F82 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				682113CF2B70268A002EC834 /* SettingsView.swift */,
+				31A18B6C2B8754760014078B /* AppearanceView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		DD18CF432B573BF500CF3F82 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		DD18CF442B573BF900CF3F82 /* Actions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Actions;
-			sourceTree = "<group>";
-		};
-		DD18CF452B573BFB00CF3F82 /* Screens */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Screens;
-			sourceTree = "<group>";
-		};
-		DD18CF462B573C0000CF3F82 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		DD18CF472B573C0500CF3F82 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		DD18CF482B573C0700CF3F82 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		DD18CF492B573C0900CF3F82 /* Actions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Actions;
-			sourceTree = "<group>";
-		};
-		DD18CF4A2B573C0C00CF3F82 /* Screens */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Screens;
-			sourceTree = "<group>";
-		};
-		DD18CF4B2B573C0F00CF3F82 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		DD18CF4C2B573C1300CF3F82 /* Views */ = {
@@ -544,34 +398,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		DD18CF4D2B573C1500CF3F82 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		DD18CF4E2B573C1700CF3F82 /* Actions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Actions;
-			sourceTree = "<group>";
-		};
-		DD18CF4F2B573C1A00CF3F82 /* Screens */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Screens;
-			sourceTree = "<group>";
-		};
-		DD18CF502B573C2100CF3F82 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		DD18CF512B573C2700CF3F82 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -580,33 +406,12 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		DD18CF522B573C2C00CF3F82 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		DD18CF532B573C3000CF3F82 /* Actions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Actions;
-			sourceTree = "<group>";
-		};
 		DD18CF542B573C3400CF3F82 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
 				31AC4E032B797B3300D10361 /* TaskListScreen.swift */,
 			);
 			path = Screens;
-			sourceTree = "<group>";
-		};
-		DD18CF552B573C5A00CF3F82 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		DD18CF562B573C5D00CF3F82 /* Views */ = {
@@ -622,34 +427,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		DD18CF572B573C6000CF3F82 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		DD18CF582B573C6200CF3F82 /* Actions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Actions;
-			sourceTree = "<group>";
-		};
-		DD18CF592B573C6600CF3F82 /* Screens */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Screens;
-			sourceTree = "<group>";
-		};
-		DD18CF5A2B573C6900CF3F82 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		DD18CF5B2B573C6B00CF3F82 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -659,61 +436,12 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		DD18CF5C2B573C6E00CF3F82 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		DD18CF5D2B573C7100CF3F82 /* Actions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Actions;
-			sourceTree = "<group>";
-		};
-		DD18CF5E2B573C7400CF3F82 /* Screens */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Screens;
-			sourceTree = "<group>";
-		};
-		DD18CF5F2B573C7700CF3F82 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		DD18CF602B573C7A00CF3F82 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				55E15D5F2B7467CC00C05363 /* DayView.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		DD18CF612B573C7C00CF3F82 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		DD18CF622B573C8000CF3F82 /* Actions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Actions;
-			sourceTree = "<group>";
-		};
-		DD18CF632B573C8200CF3F82 /* Screens */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Screens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -780,7 +508,6 @@
 				311363FB2B5E149600559799 /* Media.xcassets in Resources */,
 				314D2F102B353308008B4281 /* .swiftlint.yml in Resources */,
 				314D2F152B353470008B4281 /* Localizable.strings in Resources */,
-				314D2F082B35308E008B4281 /* Preview Assets.xcassets in Resources */,
 				314D2F052B35308E008B4281 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -843,15 +570,20 @@
 				31AC4E102B7BEDE400D10361 /* RootView.swift in Sources */,
 				31725A802B79D88F00A35808 /* NavigationMenu.swift in Sources */,
 				55B42F452B72B3A9007C3334 /* CalendarHelper.swift in Sources */,
+				31A18B672B87246E0014078B /* WrapperView.swift in Sources */,
+				31A18B652B8722940014078B /* ThemeButton.swift in Sources */,
 				31CCD7042B5C95C00001616D /* AddTaskView.swift in Sources */,
 				31AC4E0A2B79BFEF00D10361 /* MonthStruct.swift in Sources */,
 				31725A7A2B79D36400A35808 /* NewTaskButton.swift in Sources */,
 				31D4D2A02B7966D7005D0C32 /* Task+helper.swift in Sources */,
 				31CCD6D92B5C5CD80001616D /* DataController.swift in Sources */,
 				31725A7E2B79D38F00A35808 /* Checkbox.swift in Sources */,
+				31A18B592B87217B0014078B /* Theme.swift in Sources */,
 				559B3ACD2B82F81D00CBB4A2 /* weekCell.swift in Sources */,
 				31AC4E042B797B3300D10361 /* TaskListScreen.swift in Sources */,
 				31D4D2AE2B797353005D0C32 /* TaskManager+helper.swift in Sources */,
+				31A18B632B8722800014078B /* TagButton.swift in Sources */,
+				31A18B5F2B8721F10014078B /* DataSource.swift in Sources */,
 				31AC4E0E2B7BE03600D10361 /* StatsButton.swift in Sources */,
 				31725A7C2B79D37D00A35808 /* HomeButton.swift in Sources */,
 				559B3AC92B82D01300CBB4A2 /* weekView.swift in Sources */,
@@ -860,7 +592,11 @@
 				31725A762B79D30300A35808 /* WeekButton.swift in Sources */,
 				31AC4E0C2B79C00A00D10361 /* DateHolder.swift in Sources */,
 				314D2F012B35308E008B4281 /* ProdDashboardApp.swift in Sources */,
+				31A18B612B87222F0014078B /* ThemeManager.swift in Sources */,
 				55B42F442B72B3A9007C3334 /* CalendarCell.swift in Sources */,
+				31A18B692B872D1D0014078B /* RootViewPrev.swift in Sources */,
+				31A18B5B2B8721B70014078B /* ColorThemes.swift in Sources */,
+				31A18B6D2B8754760014078B /* AppearanceView.swift in Sources */,
 				31725A782B79D33200A35808 /* SettingsButton.swift in Sources */,
 				55B42F412B72B373007C3334 /* DateScrollerView.swift in Sources */,
 				31CCD7022B5C94920001616D /* EditTaskView.swift in Sources */,
@@ -1017,6 +753,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Swiftly;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1048,6 +785,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Swiftly;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

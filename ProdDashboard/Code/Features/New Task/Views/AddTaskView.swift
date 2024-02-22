@@ -13,8 +13,9 @@ struct AddTaskView: View {
     let dataController = DataController.shared
     
     @State private var name = ""
-    @State private var selectedDate = Date()
+//    @State private var selectedDate = Date()
     @State private var selectedDates: Set<DateComponents> = []
+    @Binding var selectedDate: Date
     
     var body: some View {
         NavigationView {
@@ -24,11 +25,7 @@ struct AddTaskView: View {
                     
                     DatePicker("Select a date", selection: $selectedDate, displayedComponents: .date)
                         .datePickerStyle(DefaultDatePickerStyle())
-                    
-                    VStack {
-                        MultiDatePicker("Select dates", selection: $selectedDates)
-                    }
-                    
+                
                     let convertedDates = selectedDates.compactMap { dateComponents -> Date? in
                         let calendar = Calendar.current
                         return calendar.date(from: dateComponents)
@@ -58,8 +55,8 @@ struct AddTaskView: View {
     }
 }
 
-struct AddTaskView_Previews: PreviewProvider {
-    static var previews: some View {
-        AddTaskView()
-    }
-}
+//struct AddTaskView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AddTaskView()
+//    }
+//}
