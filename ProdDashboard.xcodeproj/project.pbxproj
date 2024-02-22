@@ -52,6 +52,10 @@
 		55B42F452B72B3A9007C3334 /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B42F432B72B3A9007C3334 /* CalendarHelper.swift */; };
 		55E15D602B7467CC00C05363 /* DayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E15D5F2B7467CC00C05363 /* DayView.swift */; };
 		682113D02B70268A002EC834 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682113CF2B70268A002EC834 /* SettingsView.swift */; };
+		DD2921D22B87E4D500111216 /* RecActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2921D12B87E4D500111216 /* RecActions.swift */; };
+		DD2921D42B87E4EA00111216 /* NLPActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2921D32B87E4EA00111216 /* NLPActions.swift */; };
+		DD2921D72B87E50100111216 /* prodDashReg 1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = DD2921D62B87E50100111216 /* prodDashReg 1.mlmodel */; };
+		DD2921D92B87E50900111216 /* prodData_cyclical.csv in Resources */ = {isa = PBXBuildFile; fileRef = DD2921D82B87E50900111216 /* prodData_cyclical.csv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +108,10 @@
 		682113CF2B70268A002EC834 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B720F694C42BE6ED43A379D0 /* Pods-ProdDashboard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProdDashboard.release.xcconfig"; path = "Target Support Files/Pods-ProdDashboard/Pods-ProdDashboard.release.xcconfig"; sourceTree = "<group>"; };
 		C5A91E2B2AB39743184B0F8E /* Pods-ProdDashboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProdDashboard.debug.xcconfig"; path = "Target Support Files/Pods-ProdDashboard/Pods-ProdDashboard.debug.xcconfig"; sourceTree = "<group>"; };
+		DD2921D12B87E4D500111216 /* RecActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecActions.swift; sourceTree = "<group>"; };
+		DD2921D32B87E4EA00111216 /* NLPActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLPActions.swift; sourceTree = "<group>"; };
+		DD2921D62B87E50100111216 /* prodDashReg 1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = "prodDashReg 1.mlmodel"; path = "../../../../../../../../Library/Messages/Attachments/89/09/1F804096-4341-4CC8-886E-6D2B444A3BBD/prodDashReg 1.mlmodel"; sourceTree = "<group>"; };
+		DD2921D82B87E50900111216 /* prodData_cyclical.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = prodData_cyclical.csv; path = ../../../../../../../../Downloads/prodData_cyclical.csv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,6 +287,8 @@
 		DD18CF292B573B4B00CF3F82 /* New Task */ = {
 			isa = PBXGroup;
 			children = (
+				DD2921D52B87E4F700111216 /* MLModels */,
+				DD2921D02B87E4C400111216 /* MLActions */,
 				DD18CF4C2B573C1300CF3F82 /* Views */,
 			);
 			path = "New Task";
@@ -444,6 +454,24 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		DD2921D02B87E4C400111216 /* MLActions */ = {
+			isa = PBXGroup;
+			children = (
+				DD2921D12B87E4D500111216 /* RecActions.swift */,
+				DD2921D32B87E4EA00111216 /* NLPActions.swift */,
+			);
+			path = MLActions;
+			sourceTree = "<group>";
+		};
+		DD2921D52B87E4F700111216 /* MLModels */ = {
+			isa = PBXGroup;
+			children = (
+				DD2921D62B87E50100111216 /* prodDashReg 1.mlmodel */,
+				DD2921D82B87E50900111216 /* prodData_cyclical.csv */,
+			);
+			path = MLModels;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -509,6 +537,7 @@
 				314D2F102B353308008B4281 /* .swiftlint.yml in Resources */,
 				314D2F152B353470008B4281 /* Localizable.strings in Resources */,
 				314D2F052B35308E008B4281 /* Assets.xcassets in Resources */,
+				DD2921D92B87E50900111216 /* prodData_cyclical.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,6 +610,7 @@
 				31A18B592B87217B0014078B /* Theme.swift in Sources */,
 				559B3ACD2B82F81D00CBB4A2 /* weekCell.swift in Sources */,
 				31AC4E042B797B3300D10361 /* TaskListScreen.swift in Sources */,
+				DD2921D22B87E4D500111216 /* RecActions.swift in Sources */,
 				31D4D2AE2B797353005D0C32 /* TaskManager+helper.swift in Sources */,
 				31A18B632B8722800014078B /* TagButton.swift in Sources */,
 				31A18B5F2B8721F10014078B /* DataSource.swift in Sources */,
@@ -593,6 +623,7 @@
 				31AC4E0C2B79C00A00D10361 /* DateHolder.swift in Sources */,
 				314D2F012B35308E008B4281 /* ProdDashboardApp.swift in Sources */,
 				31A18B612B87222F0014078B /* ThemeManager.swift in Sources */,
+				DD2921D42B87E4EA00111216 /* NLPActions.swift in Sources */,
 				55B42F442B72B3A9007C3334 /* CalendarCell.swift in Sources */,
 				31A18B692B872D1D0014078B /* RootViewPrev.swift in Sources */,
 				31A18B5B2B8721B70014078B /* ColorThemes.swift in Sources */,
@@ -600,6 +631,7 @@
 				31725A782B79D33200A35808 /* SettingsButton.swift in Sources */,
 				55B42F412B72B373007C3334 /* DateScrollerView.swift in Sources */,
 				31CCD7022B5C94920001616D /* EditTaskView.swift in Sources */,
+				DD2921D72B87E50100111216 /* prodDashReg 1.mlmodel in Sources */,
 				31CCD7002B5C932D0001616D /* LoginView.swift in Sources */,
 				31CCD6D72B5C58420001616D /* TaskModel.xcdatamodeld in Sources */,
 			);

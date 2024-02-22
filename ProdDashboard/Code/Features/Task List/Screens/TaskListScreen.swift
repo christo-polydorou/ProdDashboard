@@ -33,7 +33,7 @@ struct TaskListScreen: View {
             }
             .sheet(isPresented: $addTask) {
                 
-                AddTaskView(selectedDate: $currentDate)
+                AddTaskView()
             }
         }        
     }

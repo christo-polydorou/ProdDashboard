@@ -60,7 +60,7 @@ struct DayView: View {
 //                NavigationMenu().offset(y: 20)
             }
             .sheet(isPresented: $addTask) {
-                AddTaskView(selectedDate: $currDate)
+                AddTaskView()
             }
         }
         .presentationDetents([.fraction(0.9)])
