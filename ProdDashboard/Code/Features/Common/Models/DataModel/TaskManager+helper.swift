@@ -25,6 +25,11 @@ extension CDTask {
         set { startDate_ = newValue }
     }
     
+    var endDate: Date {
+        get { endDate_ ?? Date() }
+        set { endDate_ = newValue }
+    }
+    
 //    var completed_b: Binding<Bool> {
 //        get { $completed }
 //        set { completed = newValue }

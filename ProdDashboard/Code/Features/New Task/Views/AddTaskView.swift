@@ -12,54 +12,88 @@ struct AddTaskView: View {
     @Environment(\.dismiss) var dismiss
     let dataController = DataController.shared
     
-    @State private var name = ""
-    @State private var selectedDate = Date()
-    @State private var selectedDates: Set<DateComponents> = []
+    @State private var hasTime = false
+    @State private var inputName = ""
+    @State private var inputTag = ""
+    @State private var suggestedName = ""
+    @State private var suggestedTag = ""
+    @State private var startDate = Date()
+    @State private var endDate = Date()
+    @State private var recStart = Date()
+    @State private var pred = 0.0
+    @State private var gottenRec = false
     
     var body: some View {
         NavigationView {
             Form {
                 Section {
-                    TextField("Task name", text: $name)
-                    
-                    DatePicker("Select a date", selection: $selectedDate, displayedComponents: .date)
-                        .datePickerStyle(DefaultDatePickerStyle())
-                    
-                    VStack {
-                        MultiDatePicker("Select dates", selection: $selectedDates)
+                    TextField("Task name", text: $inputName)
+                    TextField("Tag", text: $inputTag)
+                    DatePicker("Select a date", selection: $startDate, displayedComponents: .date).datePickerStyle(DefaultDatePickerStyle())
+                    Toggle(isOn: $hasTime) {
+                        Text("Add Time")
                     }
-                    
-                    let convertedDates = selectedDates.compactMap { dateComponents -> Date? in
-                        let calendar = Calendar.current
-                        return calendar.date(from: dateComponents)
+                    if hasTime {
+                        Section {
+                            VStack {
+                                DatePicker("Start", selection: $startDate, displayedComponents: .hourAndMinute)
+                                DatePicker("End", selection: $endDate, displayedComponents: .hourAndMinute)
+                                Button() {
+                                    let result = getRecommendation(name: inputName, tag: inputTag, startDate: startDate)
+                                    suggestedName = result.0.0
+                                    suggestedTag = result.0.1
+                                    pred = result.1.0
+                                    recStart = result.1.1
+                                    gottenRec = true
+                                } label: {
+                                    Text("Get Recommendation").padding()
+                                }.buttonStyle(BorderlessButtonStyle()).background(Color.green).foregroundColor(.white).cornerRadius(8).padding().frame(maxWidth: .infinity)
+                        }
+                            if gottenRec {
+                                    HStack {
+                                        Text("Recommended Duration: ")
+                                        if pred <= 0 {
+                                            Text("No recommendation available")
+                                        } else {
+                                            Text("\(Int(pred)) minutes")
+                                        }
+                                    }
+                                    HStack {
+                                        Text("Recommended Start Time: ")
+                                        if pred <= 0 {
+                                            Text("No recommendation available")
+                                        } else {
+                                            Text(convertDateToTimeString(date: recStart))
+                                        }
+                                    }
+                                Button() {
+                                    startDate = recStart
+                                    endDate = startDate.addingTimeInterval(60 * pred)
+                                } label: {
+                                    Text("Use Recommended Time").padding()
+                                }.buttonStyle(BorderlessButtonStyle()).background(Color.green).foregroundColor(.white).cornerRadius(8).padding().frame(maxWidth: .infinity)
+                            }
+                        }
                     }
-
                     HStack {
                         Spacer()
-                        Button("Add Task") {
-//                            DataController().addTask(name: name, date: selectedDate, dates: convertedDates, context: managedObjContext)
-//                            dismiss()
-                            let task = CDTask(name: name, startDate: Date(), context: context)
+                        Button() {
+                            let task = CDTask(name: suggestedName, startDate: Date(), context: context)
                             DataController.shared.save()
                             dismiss()
-                        }
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color.green)
-                        .cornerRadius(8)
+                        } label: {
+                            Text("Add Task").fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                        }.buttonStyle(BorderlessButtonStyle()).foregroundColor(.black).padding().background(Color.green).cornerRadius(8).frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
                         Spacer()
                     }
-                    
                 }
-            }
-            .background(Color(hex: 0xF9E7C4)) // Set background color for the entire view
-            .navigationBarTitle("New Task") // Set navigation bar title
+            }.background(Color(hex: 0xF9E7C4)).navigationBarTitle("Add New Task")
         }
     }
 }
 
-//struct AddFoodView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AddTaskView()
-//    }
-//}
+struct AddTaskView_Previews: PreviewProvider {
+    static var previews: some View {
+        AddTaskView()
+    }
+}
