@@ -14,7 +14,8 @@ struct SettingsView: View {
     @State private var isShowingNewSchedule = false
     @State private var isShowingEditSchedule = false
     @State private var selectedDate = Date()
-    @State private var schedules: [ScheduleEntry] = [] // Array to store schedule entries
+    //@State var schedules: [ScheduleEntry] = [] // Array to store schedule entries
+    @EnvironmentObject var scheduleManager: ScheduleManager
 
     var body: some View {
         ZStack {
@@ -58,7 +59,7 @@ struct SettingsView: View {
                         .background(dataSource.selectedTheme.buttonColor)
                         .cornerRadius(10)
                         .sheet(isPresented: $isShowingNewSchedule) {
-                            NewScheduleView(schedules: $schedules)
+                            NewScheduleView(schedules: $scheduleManager.schedules)
                         }
                         
                         Button("Edit Schedule") {
@@ -69,7 +70,7 @@ struct SettingsView: View {
                         .background(dataSource.selectedTheme.buttonColor)
                         .cornerRadius(10)
                         .sheet(isPresented: $isShowingEditSchedule) {
-                            EditScheduleView(schedules: $schedules)
+                            EditScheduleView(schedules: $scheduleManager.schedules)
                         }
                     }
                 }
@@ -113,15 +114,18 @@ struct SettingsView: View {
             .padding(.top, 10)
             .padding(.bottom, 200)
         }
+        .environmentObject(scheduleManager)
     }
 }
 
 struct NewScheduleView: View {
-    @Binding var schedules: [ScheduleEntry] // Binding to update the parent array
+    //@Binding var schedules: [ScheduleEntry] // Binding to update the parent array
     @EnvironmentObject var dataSource: DataSource // Access to the selected theme
     @State private var startTime = Date()
     @State private var endTime = Date()
     @State private var selectedWeekdays: Set<Int> = [] // Set to store selected weekdays
+    @ObservedObject var scheduleManager = ScheduleManager.shared
+    @Binding var schedules: [ScheduleEntry]
 
     var body: some View {
         ZStack {
@@ -171,7 +175,7 @@ struct NewScheduleView: View {
                 Button("Add Schedule") {
                     for weekday in selectedWeekdays {
                         let newEntry = ScheduleEntry(startTime: startTime, endTime: endTime, weekday: weekday)
-                        schedules.append(newEntry)
+                        ScheduleManager.shared.schedules.append(newEntry)
                     }
                     // Optionally, you can add validation or handle duplicates here
                 }
@@ -197,14 +201,17 @@ struct NewScheduleView: View {
         case 7: return "S"
         default: return ""
         }
+        //.environmentObject(scheduleManager)
     }
 }
 
 
 
 struct EditScheduleView: View {
-    @Binding var schedules: [ScheduleEntry] // Binding to update the parent array
+    //@Binding var schedules: [ScheduleEntry] // Binding to update the parent array
     @EnvironmentObject var dataSource: DataSource
+    @ObservedObject var scheduleManager = ScheduleManager.shared
+    @Binding var schedules: [ScheduleEntry]
     
     var body: some View {
         ZStack {
@@ -216,15 +223,15 @@ struct EditScheduleView: View {
                     .font(.title)
                     .fontWeight(.bold)
                     .padding(.bottom, 20)
-                ForEach(schedules.indices, id: \.self) { index in
+                ForEach(ScheduleManager.shared.schedules.indices, id: \.self) { index in
                     Section(header: Text("Schedule \(index + 1)")) {
-                        let schedule = schedules[index]
+                        let schedule = ScheduleManager.shared.schedules[index]
                         VStack {
                             Text("Start Time: \(schedule.startTime, formatter: dateFormatter)")
                             Text("End Time: \(schedule.endTime, formatter: dateFormatter)")
                             Text("Weekday: \(weekdayLabel(for: schedule.weekday))")
                             Button("Remove Schedule") {
-                                schedules.remove(at: index)
+                                ScheduleManager.shared.schedules.remove(at: index)
                             }
                             .foregroundColor(.red)
                             
@@ -260,9 +267,11 @@ private let dateFormatter: DateFormatter = {
 
 
 
+
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
             .environmentObject(DataSource())
+            .environmentObject(ScheduleManager())
     }
 }
