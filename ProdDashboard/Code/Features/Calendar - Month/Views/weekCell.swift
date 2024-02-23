@@ -48,18 +48,89 @@ struct WeekCell: View {
                                     HStack {
                                         Image(systemName: "calendar.badge.clock")
                                             .font(.system(size: 15, weight: .light))
-                                        Text("insert start date")
+                                        Text(getHourAndMinute(from: task.startDate))
                                     }.frame(width: 135, height: 15, alignment: .leading)
                                         
                                 }
+                                .background(backgroundColorForTag())
+                                
                             }
                         }.onDelete(perform: deleteTask)
+                
                     }.scrollContentBackground(.hidden)
+                        
                 }
             )
             .frame(maxWidth: 350, maxHeight: 82)
                     .cornerRadius(10)
 //                    .shadow(radius: 3, y: 5)
+    }
+    
+    
+    private func backgroundColorForTag() -> Color {
+        guard let taskTag = filteredTasks.first?.tag else { return .clear } // Assuming the tag is taken from the first task
+        switch taskTag {
+            case "Health & Wellness":
+                return Color.red
+            case "Daily Life & Errands":
+                return Color.orange
+            case "Meal & Meal Prep":
+                return Color.yellow
+            case "Work & Internships":
+                return Color.green
+            case "Academic Work":
+                return Color.blue
+            case "Research & Reading":
+                return Color.purple
+            case "Household Chores":
+                return Color.gray
+            case "Personal Development":
+                return Color.pink
+            case "General":
+                return Color.black
+            case "Exercise & Fitness":
+                return Color.primary
+            default:
+                return Color.secondary
+        }
+    }
+    
+    
+    
+    
+    func getHourAndMinute(from date: Date) -> String {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.hour, .minute], from: date)
+        
+        // Extracting individual time components
+        let hour = components.hour ?? 0
+        let minute = components.minute ?? 0
+        
+        // Determine AM/PM
+        let amPM: String
+        if hour >= 12 {
+            amPM = "PM"
+        } else {
+            amPM = "AM"
+        }
+        
+        // Convert to 12-hour format
+        var hourIn12HourFormat = hour % 12
+        if hourIn12HourFormat == 0 {
+            hourIn12HourFormat = 12 // 0 hour is 12 AM in 12-hour format
+        }
+
+        // Formatting the time string
+        let hourString: String
+        if hourIn12HourFormat < 10 {
+            hourString = "\(hourIn12HourFormat)"
+        } else {
+            hourString = String(format: "%02d", hourIn12HourFormat)
+        }
+        
+        let timeString = "\(hourString):\(String(format: "%02d", minute)) \(amPM)"
+        
+        return timeString
     }
     
     
@@ -108,5 +179,3 @@ struct WeekCell_Previews: PreviewProvider {
         CalendarCell(count: 1, startingSpaces: 1, daysInMonth: 1, daysInPrevMonth: 1)
     }
 }
- 
-

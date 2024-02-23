@@ -57,20 +57,20 @@ struct UncompletedSection: View {
                     .frame(width: 100, alignment: .leading)
                     .padding(.leading, 20)
                 
-                Picker(selection: $selectedOption, label: Text("Select an option")) {
-                    ForEach(0..<options.count, id: \.self) { index in
-                        Text(self.options[index]).tag(index)
-                            .foregroundColor(.white)
-                    }
-                }
-                .pickerStyle(MenuPickerStyle())
-                .font(.system(size: 14, design: .default))
-                .frame(maxWidth: 100, maxHeight: 40)
-                .background(.gray)
-                .cornerRadius(10)
-                .foregroundColor(.white)
-            }
-            .offset(x: -75, y: 12)
+//                Picker(selection: $selectedOption, label: Text("Select an option")) {
+//                    ForEach(0..<options.count, id: \.self) { index in
+//                        Text(self.options[index]).tag(index)
+//                            .foregroundColor(.white)
+//                    }
+//                }
+//                .pickerStyle(MenuPickerStyle())
+//                .font(.system(size: 14, design: .default))
+//                .frame(maxWidth: 100, maxHeight: 40)
+//                .background(.gray)
+//                .cornerRadius(10)
+//                .foregroundColor(.white)
+            }.offset(x: -135, y: 12)
+ //           .offset(x: -75, y: 12)
             
             
             List {
