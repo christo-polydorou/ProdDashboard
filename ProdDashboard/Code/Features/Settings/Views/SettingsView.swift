@@ -118,55 +118,72 @@ struct SettingsView: View {
 
 struct NewScheduleView: View {
     @Binding var schedules: [ScheduleEntry] // Binding to update the parent array
+    @EnvironmentObject var dataSource: DataSource // Access to the selected theme
     @State private var startTime = Date()
     @State private var endTime = Date()
     @State private var selectedWeekdays: Set<Int> = [] // Set to store selected weekdays
 
     var body: some View {
-        VStack {
-            // Date pickers for start and end times
-            DatePicker("Start Time", selection: $startTime, displayedComponents: [.hourAndMinute])
-                .datePickerStyle(GraphicalDatePickerStyle())
-                .padding()
-            DatePicker("End Time", selection: $endTime, displayedComponents: [.hourAndMinute])
-                .datePickerStyle(GraphicalDatePickerStyle())
-                .padding()
+        ZStack {
+            Rectangle() // Background rectangle to cover the entire view
+                .fill(dataSource.selectedTheme.backgroundColor)
+                .ignoresSafeArea()
             
-            // Buttons for each weekday
-            HStack {
-                ForEach(1 ..< 8, id: \.self) { weekday in
-                    Button(action: {
-                        if selectedWeekdays.contains(weekday) {
-                            selectedWeekdays.remove(weekday)
-                        } else {
-                            selectedWeekdays.insert(weekday)
+            VStack {
+                // Bold text for the "New Schedule" header
+                Text("New Schedule")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .padding(.bottom, 20) // Add some spacing below the header
+                
+                // Date pickers for start and end times
+                DatePicker("Start Time", selection: $startTime, displayedComponents: [.hourAndMinute])
+                    .datePickerStyle(GraphicalDatePickerStyle())
+                    .padding()
+                DatePicker("End Time", selection: $endTime, displayedComponents: [.hourAndMinute])
+                    .datePickerStyle(GraphicalDatePickerStyle())
+                    .padding()
+                
+                Text("Scheduled Days:")
+                    .font(.headline)
+                    //.padding(.bottom, 10)
+                // Buttons for each weekday
+                HStack { // Adjust the spacing as needed
+                    ForEach(1 ..< 8, id: \.self) { weekday in
+                        Button(action: {
+                            if selectedWeekdays.contains(weekday) {
+                                selectedWeekdays.remove(weekday)
+                            } else {
+                                selectedWeekdays.insert(weekday)
+                            }
+                        }) {
+                            Text(weekdayLabel(for: weekday))
+                                .padding(10)
+                                .foregroundColor(selectedWeekdays.contains(weekday) ? .white : .black)
+                                .background(selectedWeekdays.contains(weekday) ? dataSource.selectedTheme.buttonColor : dataSource.selectedTheme.backgroundColor.opacity(0.5))
+                                .cornerRadius(8)
                         }
-                    }) {
-                        Text(weekdayLabel(for: weekday))
-                            .padding()
-                            .foregroundColor(selectedWeekdays.contains(weekday) ? .white : .black)
-                            .background(selectedWeekdays.contains(weekday) ? Color.blue : Color.gray.opacity(0.5))
-                            .cornerRadius(8)
                     }
                 }
-            }
-            .padding()
-            
-            // Button to add the schedule entry
-            Button("Add Schedule") {
-                for weekday in selectedWeekdays {
-                    let newEntry = ScheduleEntry(startTime: startTime, endTime: endTime, weekday: weekday)
-                    schedules.append(newEntry)
+
+                
+                // Button to add the schedule entry
+                Button("Add Schedule") {
+                    for weekday in selectedWeekdays {
+                        let newEntry = ScheduleEntry(startTime: startTime, endTime: endTime, weekday: weekday)
+                        schedules.append(newEntry)
+                    }
+                    // Optionally, you can add validation or handle duplicates here
                 }
-                // Optionally, you can add validation or handle duplicates here
+                .frame(maxWidth: .infinity)
+                .foregroundColor(.white)
+                .padding()
+                .background(dataSource.selectedTheme.buttonColor)
+                .cornerRadius(8)
+                .padding()
             }
-            .frame(maxWidth: .infinity)
-            .foregroundColor(.white)
-            .padding()
-            .background(Color(red: 0.02, green: 0.47, blue: 0.34))
-            .cornerRadius(8)
-            .padding()
         }
+        .cornerRadius(10)
     }
     
     func weekdayLabel(for weekday: Int) -> String {
@@ -183,12 +200,22 @@ struct NewScheduleView: View {
     }
 }
 
+
+
 struct EditScheduleView: View {
     @Binding var schedules: [ScheduleEntry] // Binding to update the parent array
+    @EnvironmentObject var dataSource: DataSource
     
     var body: some View {
-        NavigationView {
-            List {
+        ZStack {
+            Rectangle() // Background rectangle to cover the entire view
+                .fill(dataSource.selectedTheme.backgroundColor)
+                .ignoresSafeArea()
+            VStack {
+                Text("Edit Schedule")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .padding(.bottom, 20)
                 ForEach(schedules.indices, id: \.self) { index in
                     Section(header: Text("Schedule \(index + 1)")) {
                         let schedule = schedules[index]
@@ -200,19 +227,23 @@ struct EditScheduleView: View {
                                 schedules.remove(at: index)
                             }
                             .foregroundColor(.red)
+                            
                         }
                     }
+                    
+                    .padding(.bottom, 10)
                 }
             }
-            .navigationTitle("Edit Schedule")
+        }
         }
     }
     
-    private let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        return formatter
-    }()
+    
+private let dateFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.timeStyle = .short
+    return formatter
+}()
     
     private func weekdayLabel(for weekday: Int) -> String {
         switch weekday {
@@ -226,7 +257,7 @@ struct EditScheduleView: View {
         default: return ""
         }
     }
-}
+
 
 
 struct SettingsView_Previews: PreviewProvider {
