@@ -36,11 +36,15 @@ extension CDTask {
     }
     
     convenience init(name: String,
-                     startDate: Date, 
+                     startDate: Date,
+                     duration: Double,
+                     tag: String,
                      context: NSManagedObjectContext){
         self.init(context: context)
         self.name = name
         self.startDate = startDate
+        self.duration = duration
+        self.tag = tag
     }
     
     public override func awakeFromInsert() {

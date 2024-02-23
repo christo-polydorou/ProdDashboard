@@ -16,6 +16,16 @@ struct WeekView: View {
     @State private var sendDate = ""
     @State private var week = 0
     
+    init() {
+               let calendar = Calendar.current
+               let currentDate = Date()
+               let firstDayOfMonth = CalendarHelper().firstOfMonth(currentDate)
+               let dayOffset = calendar.component(.day, from: currentDate) - 1
+               let weekdayOfFirstDay = CalendarHelper().weekDay(firstDayOfMonth) - 1
+               let currentWeek = (dayOffset + weekdayOfFirstDay) / 7
+               _week = State(initialValue: currentWeek)
+           }
+    
     private var daysInMonth: Int {
             CalendarHelper().daysInMonth(dateHolder.date)
         }

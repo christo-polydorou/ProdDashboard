@@ -72,8 +72,10 @@ func getRecommendation(name: String, tag: String, startDate: Date) -> ((String, 
     let testInterval = DateInterval(start: startDate ?? Date(), end: endDate ?? Date())
     // END
     
-    let recStart = recommendTime(name: suggestedName, tag: suggestedTag, freeTimes: [testInterval])
+    var recStart = recommendTime(name: suggestedName, tag: suggestedTag, freeTimes: [testInterval])
     print("Suggested Name: \(suggestedName), Suggested Tag: \(suggestedTag), Prediction: \(pred) minutes: Recommended Start: \(convertDateToTimeString(date: recStart))")
+    
+    
     return ((suggestedName, suggestedTag), (pred, recStart))
 }
 
@@ -108,37 +110,80 @@ func convertDateToTimeString(date: Date) -> String {
 
 
 
-//
-//func updateModel(task: CDTask) {
-//    var featureProviders = [MLFeatureProvider]()
-//
-//    let nameLabel = "Name"
-//    let tagLabel = "Tags"
-//    let sinLabel = "sin"
-//    let cosLabel = "cos"
-//
-//    let nameValue = MLFeatureValue(task.name)
-//    let tagValue = MLFeatureValue(task.tag)
-//    let sinValue = MLFeatureValue(task.sin)
-//    let cosValue = MLFeatureValue(task.cos)
-//
-//    let dataPointFeatures: [String: MLFeatureValue] = [nameLabel: nameValue,
-//                                                        tagLabel: tagValue,
-//                                                        sinLabel: sinValue,
-//                                                        cosLabel: cosValue]
-//
-//    if let provider = try? MLDictionaryFeatureProvider(dictionary: dataPointFeatures) {
-//        featureProviders.append(provider)
-//    }
-//
-//    guard let modelURL = Bundle.main.url(forResource: "prodDashReg_1", withExtension: "mlmodel") else {
-//        fatalError("Failed to load model")
-//    }
-//
-//
-//
-//    let trainingData = MLArrayBatchProvider(array: featureProviders)
-//
-//    guard let updateTask = try? MLUpdateTask(forModelAt: modelURL, trainingData: trainingData, completionHandler: updateContext)
-//
-//}
+func updateModel(task: CDTask) {
+    // Define the labels for your features
+    let nameLabel = "Name"
+    let tagLabel = "Tags"
+    let sinLabel = "sin"
+    let cosLabel = "cos"
+    
+    // Assuming task properties are of the correct type, convert them to MLFeatureValue
+    let nameValue = MLFeatureValue(string: task.name)
+    let tagValue = MLFeatureValue(string: task.tag)
+    let seconds = getSecondsFromDate(date: task.startDate)
+    let secondsX = cos((seconds / 86400) * 2 * Double.pi)
+    let secondsY = sin((seconds / 86400) * 2 * Double.pi)
+    let sinValue = MLFeatureValue(double: secondsY)
+    let cosValue = MLFeatureValue(double: secondsX)
+
+    // Create a dictionary of your data point features
+    let dataPointFeatures: [String: MLFeatureValue] = [nameLabel: nameValue,
+                                                        tagLabel: tagValue,
+                                                        sinLabel: sinValue,
+                                                        cosLabel: cosValue]
+
+    // Create an MLDictionaryFeatureProvider from your features
+    guard let provider = try? MLDictionaryFeatureProvider(dictionary: dataPointFeatures) else {
+        print("Error creating feature provider")
+        return
+    }
+
+    // Add the feature provider to an array
+    var featureProviders = [MLFeatureProvider]()
+    featureProviders.append(provider)
+
+    // Locate the model file in your app bundle
+    guard let modelURL = Bundle.main.url(forResource: "prodDashReg_1", withExtension: "mlmodelc") else {
+        fatalError("Failed to load model")
+    }
+
+    // Create an MLArrayBatchProvider from your array of feature providers
+    let trainingData = MLArrayBatchProvider(array: featureProviders)
+
+    // Create the update task with a completion handler
+    guard let updateTask = try? MLUpdateTask(forModelAt: modelURL, trainingData: trainingData, completionHandler: { context in
+        // Handle the completion of the update task
+        if context.task.error != nil {
+            // Handle error
+            print("Model update failed: \(context.task.error!.localizedDescription)")
+        } else {
+            // Success, model updated
+            print("Model update successful.")
+            
+            // Optionally, save the updated model
+            // For example: context.model.write(to: <#T##URL#>)
+        }
+    }) else {
+        print("Failed to create update task")
+        return
+    }
+
+    // Start the update task
+    updateTask.resume()
+}
+
+func combineDateWithTime(date: Date, time: Date) -> Date? {
+    let calendar = Calendar.current
+
+    let dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
+    let timeComponents = calendar.dateComponents([.hour, .minute], from: time)
+
+    var combinedComponents = DateComponents()
+    combinedComponents.year = dateComponents.year
+    combinedComponents.month = dateComponents.month
+    combinedComponents.day = dateComponents.day
+    combinedComponents.hour = timeComponents.hour
+    combinedComponents.minute = timeComponents.minute
+
+    return calendar.date(from: combinedComponents)
+}

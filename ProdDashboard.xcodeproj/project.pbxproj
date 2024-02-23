@@ -44,7 +44,6 @@
 		31CCD7042B5C95C00001616D /* AddTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CCD7032B5C95C00001616D /* AddTaskView.swift */; };
 		31D4D2A02B7966D7005D0C32 /* Task+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4D29F2B7966D7005D0C32 /* Task+helper.swift */; };
 		31D4D2AE2B797353005D0C32 /* TaskManager+helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D4D2AD2B797353005D0C32 /* TaskManager+helper.swift */; };
-		31E53A442B88098B00E3BA95 /* prodDashReg 1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 31E53A422B88098B00E3BA95 /* prodDashReg 1.mlmodel */; };
 		31E53A452B88098B00E3BA95 /* prodData_cyclical.csv in Resources */ = {isa = PBXBuildFile; fileRef = 31E53A432B88098B00E3BA95 /* prodData_cyclical.csv */; };
 		559B3AC92B82D01300CBB4A2 /* weekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559B3AC82B82D01300CBB4A2 /* weekView.swift */; };
 		559B3ACB2B82F5E400CBB4A2 /* interWeekview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 559B3ACA2B82F5E400CBB4A2 /* interWeekview.swift */; };
@@ -56,6 +55,8 @@
 		682113D02B70268A002EC834 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682113CF2B70268A002EC834 /* SettingsView.swift */; };
 		DD2921D22B87E4D500111216 /* RecActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2921D12B87E4D500111216 /* RecActions.swift */; };
 		DD2921D42B87E4EA00111216 /* NLPActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2921D32B87E4EA00111216 /* NLPActions.swift */; };
+		DD2921DC2B8820F000111216 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2921DB2B8820F000111216 /* Functions.swift */; };
+		DD2921DF2B882F6500111216 /* prodDashReg 1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = DD2921DE2B882F6500111216 /* prodDashReg 1.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,7 +98,6 @@
 		31CCD7032B5C95C00001616D /* AddTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskView.swift; sourceTree = "<group>"; };
 		31D4D29F2B7966D7005D0C32 /* Task+helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+helper.swift"; sourceTree = "<group>"; };
 		31D4D2AD2B797353005D0C32 /* TaskManager+helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TaskManager+helper.swift"; sourceTree = "<group>"; };
-		31E53A422B88098B00E3BA95 /* prodDashReg 1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = "prodDashReg 1.mlmodel"; path = "../../../../../../../../Downloads/prodDashReg 1.mlmodel"; sourceTree = "<group>"; };
 		31E53A432B88098B00E3BA95 /* prodData_cyclical.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = prodData_cyclical.csv; path = ../../../../../../../../Downloads/prodData_cyclical.csv; sourceTree = "<group>"; };
 		559B3AC82B82D01300CBB4A2 /* weekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = weekView.swift; sourceTree = "<group>"; };
 		559B3ACA2B82F5E400CBB4A2 /* interWeekview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = interWeekview.swift; sourceTree = "<group>"; };
@@ -112,6 +112,8 @@
 		C5A91E2B2AB39743184B0F8E /* Pods-ProdDashboard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProdDashboard.debug.xcconfig"; path = "Target Support Files/Pods-ProdDashboard/Pods-ProdDashboard.debug.xcconfig"; sourceTree = "<group>"; };
 		DD2921D12B87E4D500111216 /* RecActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecActions.swift; sourceTree = "<group>"; };
 		DD2921D32B87E4EA00111216 /* NLPActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NLPActions.swift; sourceTree = "<group>"; };
+		DD2921DB2B8820F000111216 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		DD2921DE2B882F6500111216 /* prodDashReg 1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = "prodDashReg 1.mlmodel"; path = "../../../../../../../../.Trash/prodDashReg 1.mlmodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,7 +219,7 @@
 		31E53A412B88096900E3BA95 /* MLModels */ = {
 			isa = PBXGroup;
 			children = (
-				31E53A422B88098B00E3BA95 /* prodDashReg 1.mlmodel */,
+				DD2921DE2B882F6500111216 /* prodDashReg 1.mlmodel */,
 				31E53A432B88098B00E3BA95 /* prodData_cyclical.csv */,
 			);
 			path = MLModels;
@@ -306,6 +308,7 @@
 		DD18CF2A2B573B4E00CF3F82 /* Task List */ = {
 			isa = PBXGroup;
 			children = (
+				DD2921DA2B8820E300111216 /* Functions */,
 				DD18CF542B573C3400CF3F82 /* Screens */,
 				DD18CF512B573C2700CF3F82 /* Views */,
 			);
@@ -472,6 +475,14 @@
 			path = MLActions;
 			sourceTree = "<group>";
 		};
+		DD2921DA2B8820E300111216 /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				DD2921DB2B8820F000111216 /* Functions.swift */,
+			);
+			path = Functions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -606,6 +617,7 @@
 				31725A7A2B79D36400A35808 /* NewTaskButton.swift in Sources */,
 				31D4D2A02B7966D7005D0C32 /* Task+helper.swift in Sources */,
 				31CCD6D92B5C5CD80001616D /* DataController.swift in Sources */,
+				DD2921DC2B8820F000111216 /* Functions.swift in Sources */,
 				31725A7E2B79D38F00A35808 /* Checkbox.swift in Sources */,
 				31A18B592B87217B0014078B /* Theme.swift in Sources */,
 				559B3ACD2B82F81D00CBB4A2 /* weekCell.swift in Sources */,
@@ -619,6 +631,7 @@
 				559B3AC92B82D01300CBB4A2 /* weekView.swift in Sources */,
 				682113D02B70268A002EC834 /* SettingsView.swift in Sources */,
 				311363F92B5E104900559799 /* extensions.swift in Sources */,
+				DD2921DF2B882F6500111216 /* prodDashReg 1.mlmodel in Sources */,
 				31725A762B79D30300A35808 /* WeekButton.swift in Sources */,
 				31AC4E0C2B79C00A00D10361 /* DateHolder.swift in Sources */,
 				314D2F012B35308E008B4281 /* ProdDashboardApp.swift in Sources */,
@@ -631,7 +644,6 @@
 				31725A782B79D33200A35808 /* SettingsButton.swift in Sources */,
 				55B42F412B72B373007C3334 /* DateScrollerView.swift in Sources */,
 				31CCD7022B5C94920001616D /* EditTaskView.swift in Sources */,
-				31E53A442B88098B00E3BA95 /* prodDashReg 1.mlmodel in Sources */,
 				31CCD7002B5C932D0001616D /* LoginView.swift in Sources */,
 				31CCD6D72B5C58420001616D /* TaskModel.xcdatamodeld in Sources */,
 			);
