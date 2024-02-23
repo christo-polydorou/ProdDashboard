@@ -52,7 +52,7 @@ struct WeekCell: View {
                                     }.frame(width: 135, height: 15, alignment: .leading)
                                         
                                 }
-                                .background(backgroundColorForTag())
+                                //.background(backgroundColorForTag())
                                 
                             }
                         }.onDelete(perform: deleteTask)

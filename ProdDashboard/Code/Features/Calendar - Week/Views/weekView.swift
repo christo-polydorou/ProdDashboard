@@ -62,7 +62,8 @@ struct WeekView: View {
                         .padding(.leading, 50)
                 }
                 
-                Text(CalendarHelper().monthYearString(dateHolder.date))
+                //Text(CalendarHelper().monthYearString(dateHolder.date))
+                Text("Week")
                     .font(.title)
                     .bold()
                     .animation(.none)
