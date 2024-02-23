@@ -143,7 +143,7 @@ func updateModel(task: CDTask) {
     featureProviders.append(provider)
 
     // Locate the model file in your app bundle
-    guard let modelURL = Bundle.main.url(forResource: "prodDashReg_1", withExtension: "mlmodelc") else {
+    guard let modelURL = Bundle.main.url(forResource: "prodDashReg 1", withExtension: "mlmodelc") else {
         fatalError("Failed to load model")
     }
 

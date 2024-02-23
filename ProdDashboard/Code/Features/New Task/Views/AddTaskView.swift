@@ -88,10 +88,6 @@ struct AddTaskView: View {
                             Text("Add Task").fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                         }.buttonStyle(BorderlessButtonStyle()).foregroundColor(.black).padding().background(Color.green).cornerRadius(8).frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
                         Spacer()
-                        Button("Update") {
-                            let task2 = CDTask(name: inputName, startDate: startDate, duration: pred, tag: inputTag, context: context)
-                            updateModel(task: task2)
-                        }
                     }
                 }
             }.background(Color(hex: 0xF9E7C4)).navigationBarTitle("Add New Task")
