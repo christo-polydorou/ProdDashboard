@@ -1,13 +1,17 @@
-//
 //  NLPActions.swift
 //  ProdDashboard
-//
-//  Created by Aidan Morris on 2/13/24.
-//
 
 import Foundation
 import NaturalLanguage
 
+/*
+ Inputs: input - String to match to dataset;
+         columnName - String representing column to match input to
+ 
+ Output: String optional representing closest matching string for given input; Returns input name if no close match found
+ 
+ Calls embedding function and calculates distance between the input string and datapoints in ML model training set
+ */
 func findClosestMatch(for input: String, columnName: String) -> String? {
         let dataSet = loadDataSetFromCSV(columnName: columnName)
         let embedding = NLEmbedding.sentenceEmbedding(for: .english)
@@ -29,7 +33,13 @@ func findClosestMatch(for input: String, columnName: String) -> String? {
             return closestMatch
         }
     }
-    
+
+
+/*
+ Input: columnName - String reprsenting column to load from CSV
+ 
+ Output: Array of strings containing observations from given column
+ */
 func loadDataSetFromCSV(columnName: String) -> [String] {
     guard let filepath = Bundle.main.path(forResource: "prodData_cyclical", ofType: "csv") else {
         print("CSV file not found")
