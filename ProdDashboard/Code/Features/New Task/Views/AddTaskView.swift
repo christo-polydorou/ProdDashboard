@@ -1,9 +1,5 @@
-//
 //  AddTaskView.swift
 //  ProdDashboard
-//
-//  Created by Christo Polydorou on 1/20/24.
-//
 
 import SwiftUI
 
@@ -12,34 +8,34 @@ struct AddTaskView: View {
     @Environment(\.dismiss) var dismiss
     let dataController = DataController.shared
     
-    @State private var hasTime = false
-    @State private var inputName = ""
-    @State private var inputTag = ""
-    @State private var suggestedName = ""
-    @State private var suggestedTag = ""
-    @State private var startDate = Date()
-    @State private var endDate = Date()
-    @State private var recStart = Date()
-    @State private var pred = 0.0
-    @State private var gottenRec = false
+    @State private var hasTime = false // Determines if time selector/recommendation is displayed
+    @State private var inputName = "" // Stores user inputted name
+    @State private var inputTag = "" // Stores user inputted tag
+    @State private var suggestedName = "" // Stores NLP suggested name
+    @State private var suggestedTag = "" // Stores NLP suggested tag
+    @State private var startDate = Date() // Stores task start time/date
+    @State private var endDate = Date() // Stores task end time
+    @State private var recStart = Date() // Stores ML recommended start
+    @State private var pred = 0.0 // Stores ML prediction
+    @State private var gottenRec = false // Keeps track of if a recommendation has been given
     
     var body: some View {
         NavigationView {
             Form {
                 Section {
-                    TextField("Task name", text: $inputName)
-                    TextField("Tag", text: $inputTag)
+                    TextField("Task name", text: $inputName) // Task name input field
+                    TextField("Tag", text: $inputTag) // Task tag input field
                     DatePicker("Select a date", selection: $startDate, displayedComponents: .date).datePickerStyle(DefaultDatePickerStyle())
-                    Toggle(isOn: $hasTime) {
+                    Toggle(isOn: $hasTime) { // Toggleable button for if a task has a time
                         Text("Add Time")
                     }
-                    if hasTime {
+                    if hasTime { // Displays time selectors and recommendation buttons
                         Section {
                             VStack {
-                                DatePicker("Start", selection: $startDate, displayedComponents: .hourAndMinute)
-                                DatePicker("End", selection: $endDate, displayedComponents: .hourAndMinute)
+                                DatePicker("Start", selection: $startDate, displayedComponents: .hourAndMinute) // Start time picker
+                                DatePicker("End", selection: $endDate, displayedComponents: .hourAndMinute) // End time picker
                                 Button() {
-                                    let result = getRecommendation(name: inputName, tag: inputTag, startDate: startDate)
+                                    let result = getRecommendation(name: inputName, tag: inputTag, startDate: startDate) // Calls model functions to get a tuple of tuples of form ((NLP suggested name, NLP suggested tag), (ML predicted duration, ML recommended start time))
                                     suggestedName = result.0.0
                                     suggestedTag = result.0.1
                                     pred = result.1.0
@@ -49,7 +45,7 @@ struct AddTaskView: View {
                                     Text("Get Recommendation").padding()
                                 }.buttonStyle(BorderlessButtonStyle()).background(Color.green).foregroundColor(.white).cornerRadius(8).padding().frame(maxWidth: .infinity)
                         }
-                            if gottenRec {
+                            if gottenRec { // Displays recommendation
                                     HStack {
                                         Text("Recommended Duration: ")
                                         if pred <= 0 {
@@ -66,7 +62,7 @@ struct AddTaskView: View {
                                             Text(convertDateToTimeString(date: recStart))
                                         }
                                     }
-                                Button() {
+                                Button() { // Fills input fields with recommendation
                                     if let combinedDate = combineDateWithTime(date: startDate, time: recStart) {
                                                                             recStart = combinedDate
                                     }
@@ -80,7 +76,7 @@ struct AddTaskView: View {
                     }
                     HStack {
                         Spacer()
-                        Button() {
+                        Button() { // Adds user inputted task into the database
                             let task = CDTask(name: inputName, startDate: startDate, duration: pred, tag: inputTag, context: context)
                             DataController.shared.save()
                             dismiss()
