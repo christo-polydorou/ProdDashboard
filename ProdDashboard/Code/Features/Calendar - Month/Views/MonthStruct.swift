@@ -7,6 +7,7 @@
 
 import Foundation
 
+// defines the month structure to build monthView and weekView
 struct MonthStruct {
     var monthType: MonthType
     var dayInt: Int
@@ -15,6 +16,7 @@ struct MonthStruct {
     }
 }
 
+// how calendar differentiates past, present and future months.
 enum MonthType {
     case previous
     case current
