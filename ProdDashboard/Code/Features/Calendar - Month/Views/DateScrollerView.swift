@@ -7,14 +7,16 @@
 
 import SwiftUI
 
+// DateScrollerView defines the Month View
 struct DateScrollerView: View {
     @EnvironmentObject var dateHolder: DateHolder
     @EnvironmentObject var dataSource: DataSource
     
     @State private var showingDayView = false
-    @State private var sendCount = 0
-    @State private var sendDate = ""
-    
+    @State private var sendCount = 0 // temp variable that sends the dayView the selected day
+    @State private var sendDate = "" // temp variable that sends the dayview the selected date
+
+    // helper methods that calculate dates and calendar information from the dateHolder variable
     private var daysInMonth: Int {
             CalendarHelper().daysInMonth(dateHolder.date)
         }
@@ -38,9 +40,10 @@ struct DateScrollerView: View {
         private var formattedDate: String {
             CalendarHelper().monthYearString(dateHolder.date)
         }
-    
+
+    // defines the MonthView screen
     var body: some View {
-//        Rectangle().foregroundColor(.clear).background(Color(red: 1, green: 0.95, blue: 0.91)).edgesIgnoringSafeArea(.all) // Background Color
+
         VStack {
             HStack {
                 Spacer()
@@ -73,14 +76,15 @@ struct DateScrollerView: View {
         .background(dataSource.selectedTheme.backgroundColor)
     }
     
-    func previousMonth() {
+    func previousMonth() { // changes the month in month view
         dateHolder.date = CalendarHelper().minusMonth(dateHolder.date)
     }
 
-    func nextMonth() {
+    func nextMonth() { 
         dateHolder.date = CalendarHelper().plusMonth(dateHolder.date)
     }
-    
+
+    // creates the visual row of weekdays
     var daysOfWeekStack: some View {
         HStack(spacing: 1) {
             Text("Sun").dayOfWeek()
@@ -93,6 +97,7 @@ struct DateScrollerView: View {
         }
     }
 
+      // defines the grid of calendarCell structs with CalendarCell structs, on clicking, sends you to a DayView
     var calendarGrid: some View {
         
         VStack(spacing: 10) {
@@ -135,6 +140,7 @@ struct DateScrollerView_Previews: PreviewProvider {
     }
 }
 
+// returns the horizontal list of days for a view
 extension Text {
     func dayOfWeek() -> some View {
         self.frame(maxWidth: .infinity)
