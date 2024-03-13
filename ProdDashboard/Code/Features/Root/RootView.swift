@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+// defines the navigation bar at the bottom of the screen
 struct RootView: View {
     @State private var selection = 1
     
@@ -20,11 +21,7 @@ struct RootView: View {
                     Label("Settings", systemImage: "gear")
                 }
                 .tag(0)
-//            TaskListScreen()
-//                .tabItem() {
-//                    Label("Stats", systemImage: "chart.bar")
-//                }
-//                .tag(1)
+
             TaskListScreen()
                 .tabItem() {
                     Label("Home", systemImage: "house.fill")
@@ -47,8 +44,4 @@ struct RootView: View {
     }
 }
 
-//#Preview {
-//    RootView()
-//        .environmentObject(DataSource())
-//        .environmentObject(DateHolder())
-//}
+
