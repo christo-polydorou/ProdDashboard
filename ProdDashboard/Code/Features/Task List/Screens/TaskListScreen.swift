@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 import CoreData
 
+//defines the main task list and the main dayView of the app.
 struct TaskListScreen: View {
     @EnvironmentObject var dataSource: DataSource
     @Environment(\.managedObjectContext) var context
@@ -28,6 +29,7 @@ struct TaskListScreen: View {
                 }.padding(.leading).padding(.trailing)
                 let date = Date().formatted(date: .abbreviated, time: .omitted)
                 Text(date).frame(maxWidth: .infinity, alignment: .leading).padding(.leading, 25).padding(.bottom, 25).fontWeight(.light) // Date
+               // displays a list of uncompleted and completed tasks
                 UncompletedSection()
                 CompletedSection()
             }
@@ -38,6 +40,7 @@ struct TaskListScreen: View {
     }
 }
 
+// displays a list of all uncompleted tasks
 struct UncompletedSection: View {
 
     @Environment(\.managedObjectContext) var context
@@ -56,21 +59,9 @@ struct UncompletedSection: View {
                     .underline()
                     .frame(width: 100, alignment: .leading)
                     .padding(.leading, 20)
-                
-//                Picker(selection: $selectedOption, label: Text("Select an option")) {
-//                    ForEach(0..<options.count, id: \.self) { index in
-//                        Text(self.options[index]).tag(index)
-//                            .foregroundColor(.white)
-//                    }
-//                }
-//                .pickerStyle(MenuPickerStyle())
-//                .font(.system(size: 14, design: .default))
-//                .frame(maxWidth: 100, maxHeight: 40)
-//                .background(.gray)
-//                .cornerRadius(10)
-//                .foregroundColor(.white)
+
             }.offset(x: -135, y: 12)
- //           .offset(x: -75, y: 12)
+
             
             
             List {
@@ -95,15 +86,7 @@ struct UncompletedSection: View {
                     }
                 }.onDelete(perform: deleteTask)
             }.scrollContentBackground(.hidden)
-            
-//            .gesture(
-//                LongPressGesture(minimumDuration: 1.0)
-//                    .onEnded { _ in
-//                        // Perform the action when long press ends
-//                        // You can show an action sheet or navigate to a delete view here
-//                        // For simplicity, let's assume you want to delete the task directly
-//                        CDTask.delete(task: task)                    }
-//            )
+        
             
         }
         .onAppear{
@@ -111,6 +94,8 @@ struct UncompletedSection: View {
             Swift.print("Number of tasks: \(tasksCount)")
         }
     }
+
+    // deletes a task from the coreData list of tasks
     private func deleteTask(offsets: IndexSet) {
             withAnimation {
                 offsets.map { tasks[$0] }
@@ -119,13 +104,10 @@ struct UncompletedSection: View {
                 DataController.shared.save()
             }
         }
-//    private var filteredTasks: [CDTask] {
-//            let currentDate = Date()
-//            return tasks.filter { task in
-//                guard let taskDate = task.startDate_ else { return false } // Ensure task has a date
-//                return Calendar.current.isDate(taskDate, inSameDayAs: currentDate)
-//            }
-//        }
+
+
+    // method that accesses that list of task objects stored in core data, filters them and
+    // returns a new list of tasks on the current day
     private var filteredTasks: [CDTask] {
         let currentDate = Date()
         let currentDayStart = Calendar.current.startOfDay(for: currentDate)
@@ -138,6 +120,7 @@ struct UncompletedSection: View {
 }
 
 
+// displays a list of all completed tasks
 struct CompletedSection: View {
     @Environment(\.managedObjectContext) var context
     @FetchRequest(fetchRequest: CDTask.fetch(), animation: .bouncy)
