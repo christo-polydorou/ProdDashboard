@@ -7,7 +7,8 @@
 
 import Foundation
 
-
+// class contains helper methods that returns different information the monthView and weekView
+// need to correctly know how to display the ranges of each month
 class CalendarHelper {
     let calendar = Calendar.current
     let dateFormatter = DateFormatter()
