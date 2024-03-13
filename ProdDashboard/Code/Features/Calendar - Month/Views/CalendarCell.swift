@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// creates the rectangle that contains that given day.
 struct CalendarCell: View {
     @Environment(\.managedObjectContext) var context
     @FetchRequest(fetchRequest: CDTask.fetch(), animation: .bouncy)
@@ -14,17 +15,19 @@ struct CalendarCell: View {
     
     @EnvironmentObject var dateHolder: DateHolder
     @EnvironmentObject var dataSource: DataSource
+
+    //variables that help create a viewable struct of a date
     let count: Int
     let startingSpaces: Int
     let daysInMonth: Int
     let daysInPrevMonth: Int
-    //var sendDate: String
+    
     
     
     
     var body: some View {
         
-        Rectangle().foregroundColor(.clear)
+        Rectangle().foregroundColor(.clear) // defines the rectangle shape
             .background(cellColor)
             .edgesIgnoringSafeArea(.all) // Background Color
             .overlay(
@@ -40,9 +43,10 @@ struct CalendarCell: View {
             )
             .frame(maxWidth: 100, maxHeight: .infinity)
                     .cornerRadius(10)
-//                    .shadow(radius: 3, y: 5)
+
     }
-    
+
+    // creates a gradient cell color with temperature based on the number of tasks on that day.
     private var cellColor: Color {
         let taskCount = filteredTasks.count
         let maxTaskCount = 10 // Define the maximum task count to adjust the darkness
@@ -68,7 +72,9 @@ struct CalendarCell: View {
     
     
     
-    
+
+    // method that accesses that list of task objects stored in core data, filters them and
+    // returns a new list of tasks that are on the day of the date sent to calendarCell
     private var filteredTasks: [CDTask] {
         let currentDayString = monthStruct().day()
         let currentDayDate = Calendar.current.date(bySetting: .day, value: Int(currentDayString)!, of: Date())!
@@ -81,11 +87,12 @@ struct CalendarCell: View {
     }
     
     
-    
+    // color of the number in the cell based on if that number is within the range of the month
     func textColor(type: MonthType) -> Color {
         return type == MonthType.current ? Color.black: Color.gray
     }
-    
+
+    // creates a structure that provides information to the MonthView about the current day and the range of that month/which month it is
     func monthStruct() -> MonthStruct {
         let start = startingSpaces == 0 ? startingSpaces + 7 :startingSpaces
         if (count <= start) {
