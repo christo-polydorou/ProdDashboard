@@ -7,7 +7,9 @@
 
 import SwiftUI
 
+// shows lists of uncompleted and completed tasks for a given day
 struct DayView: View {
+    // variables sent view to determine the day
     var count: Int
     var startingSpaces: Int
     var daysInMonth: Int
@@ -17,7 +19,6 @@ struct DayView: View {
     @Environment(\.managedObjectContext) var context
     @EnvironmentObject var dateHolder: DateHolder
     @EnvironmentObject var dataSource: DataSource
-    //@Environment(\.managedObjectContext) var managedObjContext
     @FetchRequest(sortDescriptors: []) var tasks: FetchedResults<CDTask>
 
     @State private var showingAddView = false
@@ -27,13 +28,15 @@ struct DayView: View {
     @State private var currDate = Date()
     
     @State private var addTask = false
-    
+
+    // returns string version of current date
     private var currentDateString: String {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MMMM dd, yyyy"
             return dateFormatter.string(from: Date())
         }
-    
+
+    //defines the components of the view
     var body: some View {
         ZStack {
             Rectangle().foregroundColor(.clear).background(dataSource.selectedTheme.backgroundColor).edgesIgnoringSafeArea(.all) // Background Color
@@ -48,7 +51,7 @@ struct DayView: View {
                     }.modifier(NewTaskButton(dataSource: dataSource))
                 }.padding(.leading).padding(.trailing)
                 let date = Date().formatted(date: .abbreviated, time: .omitted)
-//                Text(sendDate).frame(maxWidth: .infinity, alignment: .leading).padding(.leading, 25).padding(.bottom, 25).fontWeight(.light) // Date
+//                // displays a list of uncompleted and completed tasks on the day determined by the passed variables
                 UncompletedSection2(count: count,
                                     startingSpaces: startingSpaces,
                                     daysInMonth: daysInMonth,
@@ -66,19 +69,21 @@ struct DayView: View {
         .presentationDetents([.fraction(0.9)])
         
     }
-    
+    // returns string version of current date
     func currentDate() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM dd, yyyy" // Customize the date format as needed
         return dateFormatter.string(from: Date())
     }
-    
+    // returns string of date in HH:mm:ss form
     func convertDateToTimeString(date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm:ss"
         return formatter.string(from: date)
     }
-    
+
+    // creates a structure that provides information to the MonthView about the current day and the range
+    // of tha month/which month it is
     func monthStruct() -> MonthStruct {
         let start = startingSpaces == 0 ? startingSpaces + 7 :startingSpaces
         if (count <= start) {
@@ -93,232 +98,12 @@ struct DayView: View {
         return MonthStruct(monthType: MonthType.current, dayInt: day)
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-//    var body: some View {
-//        
-//       // let todaysDate = monthStruct().day
-//        
-//        
-//        NavigationView {
-//            //Text("hello")
-//            VStack(alignment: .leading) {
-//                
-//                Text(monthStruct().day())
-//                    .font(.largeTitle) // Make the title larger
-//                    .padding(.top, -50) // Adjust top padding as needed
-//                    .padding(.leading, 20)
-//                    .padding(.horizontal, 150)
-//                    .frame(maxWidth: .infinity, alignment: .leading)
-//                
-//                Text(sendDate) // Display the current date
-//                    .font(.subheadline)
-//                    .foregroundColor(.black)
-//                    .padding(.top, -25) // Adjust top padding as needed
-//                    .padding(.horizontal, 150)
-//                    .padding(.leading, 20)
-//                
-//                Section {
-//                    List {
-//                        ForEach(filteredTasks, id: \.self) { task in
-//                            NavigationLink(destination: EditTaskView(task: task)) {
-//                                HStack {
-//                                    VStack(alignment: .leading, spacing: 6) {
-//                                        Text(task.name!)
-//                                            .bold()
-////                                        Text(convertDateToTimeString(date: task.date!))
-//                                    }
-//                                    Spacer()
-//                                }
-//                            }
-//                        }
-//                        .onDelete(perform: deleteTask)
-//                    }
-//                    .listStyle(DefaultListStyle()) // Use PlainListStyle for a more compact appearance
-//                    .background(Color.white)
-//                    .cornerRadius(10) // Add corner radius for a container-like appearance
-//                    .padding(.bottom, 10)
-//                }
-//                
-////                HStack(alignment: .bottom) {
-////                   // Text("Nav Bar: ").padding(10).bold()
-////                    Spacer().frame(width: 135, height: 0)
-////                    // NavigationLink to navigate to SettingsView
-////                    NavigationLink(destination: SettingsView(), isActive: $showingSettings) {
-////                            EmptyView()
-////                        }
-////                        .hidden()
-////                        Button {
-////                            showingSettings.toggle()
-////                            
-////                        } label: {
-////                            Image(systemName: "gear")
-////                            .resizable()
-////                            .aspectRatio(contentMode: .fit)
-////                            .frame(width: 35, height: 35)
-////                            .foregroundColor(.black)
-////                        }
-////                    
-////                    
-////                    Spacer().frame(width: 20, height: 0)
-////                    
-////                    NavigationLink(destination: DateScrollerView(), isActive: $showingMonthCal) {
-////                        EmptyView()
-////                    }
-////                    .hidden()
-////                    Button {
-////                        showingMonthCal.toggle()
-////                        
-////                        
-////                        
-////                    } label: {
-////                        Image(systemName: "calendar")
-////                        .resizable()
-////                        .aspectRatio(contentMode: .fit)
-////                        .frame(width: 35, height: 35)
-////                        .foregroundColor(.black)
-////                    }
-////                    
-////                    Spacer().frame(width: 20, height: 0)
-////                    
-////                }
-//            }
-//            .background(Color(hex: 0xF9E7C4))
-////            .toolbar {
-////                ToolbarItem(placement: .navigationBarTrailing) {
-////                    Button {
-////                        showingAddView.toggle()
-////                        editMode = .inactive
-////                    }
-////                label: {
-////                        Image("AddTask")
-////                            .resizable()
-////                            .aspectRatio(contentMode: .fit)
-////                            .frame(width: 100, height: 100) // Adjust the size as needed
-////                    }
-////                }
-////                //                ToolbarItem(placement: .navigationBarLeading) {
-////                //                    EditButton()
-////                //                }
-////            }
-////            .sheet(isPresented: $showingAddView) {
-////                AddFoodView()
-////            }
-//        }
-//        
-////        NavigationView {
-////            HStack () {
-////                Text("Content")
-////                    .toolbar {
-////                        Button("Add 1") {}
-////                        Button("Add 2") {}
-////                        Button("Add 3") {}
-////                    }
-////            }
-////        }
-////
-////        HStack () {
-////            Text("NavBar")
-////                .background(Color(hex: 0xF9E7C4))
-////
-////                .environment(\.editMode, $editMode)
-////                .navigationViewStyle(.stack)
-////        }
-//    }
-////     Deletes food at the current offset
-//    private func deleteTask(offsets: IndexSet) {
-//        withAnimation {
-//            offsets.map { task[$0] }
-//            .forEach(context.delete)
-//            
-//            // Saves to our database
-//            DataController().save()
-//        }
-//    }
-//    
-//    func currentDate() -> String {
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "MMMM dd, yyyy" // Customize the date format as needed
-//        return dateFormatter.string(from: Date())
-//    }
-//    
-//    func convertDateToTimeString(date: Date) -> String {
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "HH:mm:ss"
-//        return formatter.string(from: date)
-//    }
-//    
-//    func monthStruct() -> MonthStruct {
-//        let start = startingSpaces == 0 ? startingSpaces + 7 :startingSpaces
-//        if (count <= start) {
-//            let day = daysInPrevMonth + count - start
-//            return MonthStruct(monthType: MonthType.previous, dayInt: day)
-//        } else if (count - start > daysInMonth) {
-//            let day = count - start - daysInMonth
-//            return MonthStruct(monthType: MonthType.next, dayInt: day)
-//        }
-//        
-//        let day = count - start
-//        return MonthStruct(monthType: MonthType.current, dayInt: day)
-//    }
-//    
-//
-//    
-//    
-//    
-////    private var filteredTasks: [Task] {
-////            task.filter { Calendar.current.isDate($0.date ?? Date(), inSameDayAs: Date()) }
-////        }
-//    
-//    private var filteredTasks: [Task] {
-//        let currentDayString = monthStruct().day()
-//        let currentDayDate = Calendar.current.date(bySetting: .day, value: Int(currentDayString)!, of: Date())!
-//        
-//        let sendDateComponents = sendDate.components(separatedBy: " ")
-//        let sendDateMonth = sendDateComponents[0]
-//        let sendDateYear = sendDateComponents[1]
-//        
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "LLL yyyy"
-//        let sendDateDate = dateFormatter.date(from: "\(sendDateMonth) \(sendDateYear)")!
-//        
-//        return task.filter { task in
-//            let taskDate = Calendar.current.startOfDay(for: task.date ?? Date())
-//            let sendDateDay = Calendar.current.startOfDay(for: sendDateDate)
-//            
-//            return Calendar.current.isDate(taskDate, inSameDayAs: currentDayDate) ||
-//                   Calendar.current.isDate(taskDate, inSameDayAs: sendDateDay)
-//        }
-//    }
-//    
-//    
-    
+   
     
 }
 
 
-
+// displays a list of all uncompleted tasks
 struct UncompletedSection2: View {
     var count: Int
     var startingSpaces: Int
@@ -333,30 +118,7 @@ struct UncompletedSection2: View {
     var body: some View {
         VStack {
             Text("To-Do").offset(x: -135, y: 12).font(.title).fontWeight(.light).underline()
-//            List(filteredTasks) { task in
-////                NavigationLink(destination: EditTaskView(task: task)) {
-//                    if !(task.completed) {
-//                        VStack {
-//                            HStack {
-//                                Image(systemName: task.completed ? "largecircle.fill.circle" : "circle")
-//                                    .onTapGesture {
-//                                        task.completed.toggle()
-//                                        DataController.shared.save()
-//                                    }
-//                                Text(task.name).bold().frame(width: 175, height: 15, alignment: .leading)
-//                            }
-//                            HStack {
-//                                Image(systemName: "calendar.badge.clock")
-//                                    .font(.system(size: 20, weight: .light))
-//                                Text("insert start date")
-//                            }.frame(width: 175, height: 15, alignment: .leading)
-//
-//                        }
-//
-//                    }
-////                }
-//            }.scrollContentBackground(.hidden)
-            
+
             List {
                 ForEach(filteredTasks) { task in
                     if !(task.completed) {
@@ -379,24 +141,13 @@ struct UncompletedSection2: View {
                     }
                 }.onDelete(perform: deleteTask)
             }.scrollContentBackground(.hidden)
-            
-            
-            
-            
-//            .gesture(
-//                LongPressGesture(minimumDuration: 1.0)
-//                    .onEnded { _ in
-//                        // Perform the action when long press ends
-//                        // You can show an action sheet or navigate to a delete view here
-//                        // For simplicity, let's assume you want to delete the task directly
-//                        CDTask.delete(task: task)                    }
-//            )
-            
-                
+                 
         }
         
         
     }
+    
+    // deletes a task from the coreData list of tasks
     private func deleteTask(offsets: IndexSet) {
             withAnimation {
                 offsets.map { tasks[$0] }
@@ -432,27 +183,9 @@ struct UncompletedSection2: View {
         return MonthStruct(monthType: MonthType.current, dayInt: day)
     }
     
-//    private var filteredTasks: [CDTask] {
-//        let currentDayString = monthStruct().day()
-//        let currentDayDate = Calendar.current.date(bySetting: .day, value: Int(currentDayString)!, of: Date())!
-//        
-//        let sendDateComponents = sendDate.components(separatedBy: " ")
-//        let sendDateMonth = sendDateComponents[0]
-//        let sendDateYear = sendDateComponents[1]
-//        
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "LLL yyyy"
-//        let sendDateDate = dateFormatter.date(from: "\(sendDateMonth) \(sendDateYear)")!
-//        
-//        return tasks.filter { task in
-//            let taskDate = Calendar.current.startOfDay(for: task.date ?? Date())
-//            let sendDateDay = Calendar.current.startOfDay(for: sendDateDate)
-//             
-//            return Calendar.current.isDate(taskDate, inSameDayAs: currentDayDate) ||
-//                   Calendar.current.isDate(taskDate, inSameDayAs: sendDateDay)
-//        }
-//    }
-    
+
+    // method that accesses that list of task objects stored in core data, filters them and
+    // returns a new list of tasks on the day passed to dayView
     private var filteredTasks: [CDTask] {
         let currentDayString = monthStruct().day()
         let currentDayDate = Calendar.current.date(bySetting: .day, value: Int(currentDayString)!, of: Date())!
@@ -467,6 +200,7 @@ struct UncompletedSection2: View {
 
 
 
+// displays a list of all completed tasks
 struct CompletedSection2: View {
     var count: Int
     var startingSpaces: Int
