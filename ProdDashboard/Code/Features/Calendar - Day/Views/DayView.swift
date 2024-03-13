@@ -134,7 +134,7 @@ struct UncompletedSection2: View {
                             HStack {
                                 Image(systemName: "calendar.badge.clock")
                                     .font(.system(size: 20, weight: .light))
-                                Text("insert start date")
+                                Text(getHourAndMinute(from: task.startDate))
                             }.frame(width: 175, height: 15, alignment: .leading)
                                 
                         }
@@ -215,26 +215,7 @@ struct CompletedSection2: View {
     var body: some View {
         VStack {
             Text("Done").offset(x: -135, y: 12).font(.title).fontWeight(.light).underline()
-//            List(filteredTasks) { task in
-//                if (task.completed) {
-//                    VStack {
-//                        HStack {
-//                            Image(systemName: task.completed ? "largecircle.fill.circle" : "circle")
-//                                .onTapGesture {
-//                                    task.completed.toggle()
-//                                    DataController.shared.save()
-//                                }
-//                            Text(task.name).bold().frame(width: 175, height: 15, alignment: .leading)
-//                        }
-//                        HStack {
-//                            Image(systemName: "calendar.badge.clock")
-//                                .font(.system(size: 20, weight: .light))
-//                            Text("insert start date")
-//                        }.frame(width: 175, height: 15, alignment: .leading)
-//                    }
-//                
-//                }
-//            }.scrollContentBackground(.hidden)
+
             List {
                 ForEach(filteredTasks) { task in
                     if (task.completed) {
@@ -250,7 +231,7 @@ struct CompletedSection2: View {
                             HStack {
                                 Image(systemName: "calendar.badge.clock")
                                     .font(.system(size: 20, weight: .light))
-                                Text("insert start date")
+                                Text(getHourAndMinute(from: task.startDate))
                             }.frame(width: 175, height: 15, alignment: .leading)
                                 
                         }
