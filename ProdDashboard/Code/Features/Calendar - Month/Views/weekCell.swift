@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// creates the rectangle with the list of tasks for that day
 struct WeekCell: View {
     @Environment(\.managedObjectContext) var context
     @EnvironmentObject var dataSource: DataSource
@@ -14,6 +15,8 @@ struct WeekCell: View {
     var tasks: FetchedResults<CDTask>
     
     @EnvironmentObject var dateHolder: DateHolder
+
+    //variables that help create a viewable struct of a date
     let count: Int
     let startingSpaces: Int
     let daysInMonth: Int
@@ -67,37 +70,11 @@ struct WeekCell: View {
     }
     
     
-    private func backgroundColorForTag() -> Color {
-        guard let taskTag = filteredTasks.first?.tag else { return .clear } // Assuming the tag is taken from the first task
-        switch taskTag {
-            case "Health & Wellness":
-                return Color.red
-            case "Daily Life & Errands":
-                return Color.orange
-            case "Meal & Meal Prep":
-                return Color.yellow
-            case "Work & Internships":
-                return Color.green
-            case "Academic Work":
-                return Color.blue
-            case "Research & Reading":
-                return Color.purple
-            case "Household Chores":
-                return Color.gray
-            case "Personal Development":
-                return Color.pink
-            case "General":
-                return Color.black
-            case "Exercise & Fitness":
-                return Color.primary
-            default:
-                return Color.secondary
-        }
-    }
+   
     
     
     
-    
+    // returns the hour and minute of a given date instance in string format
     func getHourAndMinute(from date: Date) -> String {
         let calendar = Calendar.current
         let components = calendar.dateComponents([.hour, .minute], from: date)
@@ -133,7 +110,7 @@ struct WeekCell: View {
         return timeString
     }
     
-    
+    // deletes a task from the coreData list of tasks
     private func deleteTask(offsets: IndexSet) {
             withAnimation {
                 offsets.map { tasks[$0] }
@@ -143,7 +120,8 @@ struct WeekCell: View {
             }
         }
     
-    
+    // method that accesses that list of task objects stored in core data, filters them and
+    // returns a new list of tasks that are on the day of the date sent to calendarCell
     private var filteredTasks: [CDTask] {
         let currentDayString = monthStruct().day()
         let currentDayDate = Calendar.current.date(bySetting: .day, value: Int(currentDayString)!, of: Date())!
@@ -154,11 +132,14 @@ struct WeekCell: View {
             return Calendar.current.isDate(taskDayDate, inSameDayAs: currentDayDate)
         }
     }
-    
+
+    // color of the number in the cell based on if that number is within the range of the month
     func textColor(type: MonthType) -> Color {
         return type == MonthType.current ? Color.black: Color.gray
     }
     
+    // creates a structure that provides information to the MonthView about the current day and the range
+    // of tha month/which month it is
     func monthStruct() -> MonthStruct {
         let start = startingSpaces == 0 ? startingSpaces + 7 :startingSpaces
         if (count <= start) {
