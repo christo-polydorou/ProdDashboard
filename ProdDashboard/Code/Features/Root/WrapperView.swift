@@ -7,16 +7,14 @@
 
 import SwiftUI
 
+// invisible view that calls the navigation view, and thus the rest of the views, with the specified color theme
 struct WrapperView: View {
     @EnvironmentObject var dataSource: DataSource
     @State private var selectedTab: Int = 1
     
     var body: some View {
-//        @State var selectedThemeID: Int = 0
-//        @Binding var intBinding: Int
-//
+
         ForEach(0..<ThemeManager.themes.count, id: \.self) { theme in
-//            var selectedThemeID: Int = 0
             if ThemeManager.themes[theme].themeName == dataSource.selectedTheme.themeName {
                 RootView(selectedTab: $selectedTab)
             }
