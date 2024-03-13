@@ -7,15 +7,17 @@
 
 import SwiftUI
 
+// defines the objects in the weekView
 struct WeekView: View {
     @EnvironmentObject var dateHolder: DateHolder
     @EnvironmentObject var dataSource: DataSource
     
     @State private var showingDayView = false
-    @State private var sendCount = 0
-    @State private var sendDate = ""
-    @State private var week = 0
-    
+    @State private var sendCount = 0 // temp variable that sends the dayView the selected day
+    @State private var sendDate = "" // temp variable that sends the dayview the selected date
+    @State private var week = 0 // stores the week of the month
+
+    // initializes the current week based on the current day
     init() {
                let calendar = Calendar.current
                let currentDate = Date()
@@ -25,7 +27,8 @@ struct WeekView: View {
                let currentWeek = (dayOffset + weekdayOfFirstDay) / 7
                _week = State(initialValue: currentWeek)
            }
-    
+
+    // helper methods that calculate dates and calendar information from the dateHolder variable
     private var daysInMonth: Int {
             CalendarHelper().daysInMonth(dateHolder.date)
         }
@@ -49,6 +52,7 @@ struct WeekView: View {
         private var formattedDate: String {
             CalendarHelper().monthYearString(dateHolder.date)
         }
+
     
     var body: some View {
         VStack {
@@ -85,7 +89,7 @@ struct WeekView: View {
         
         
     }
-    
+    // defines the grid of weekCell structs with weekCell structs, on clicking, sends you to a DayView
     var weekGrid: some View {
         
         VStack {
@@ -108,13 +112,13 @@ struct WeekView: View {
         }
         
     }
-    
+    // increments week variable
     func previousWeek() {
         if (week > 0) {
             week -= 1
         }
     }
-    
+    // deccrements week variable
     func nextWeek() {
         if (week < 5) {
             week += 1
